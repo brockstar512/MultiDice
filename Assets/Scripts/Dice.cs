@@ -12,7 +12,7 @@ public class Dice : MonoBehaviour
 
     Vector3 initPosition;//throw location
 
-    public int diceValue;
+    static public int diceValue;
     public DiceRollCheck[] diceRollCheck;
     //the array is added in the inspector then you add which scripts that have that script you want in the array list
     //this will create an empty array you then populate that array by dragging the game objects in that lsit

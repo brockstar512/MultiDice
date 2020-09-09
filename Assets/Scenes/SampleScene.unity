@@ -243,6 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ea888891aab4d40b5866bae20ec2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlightMaterial: {fileID: 2100000, guid: 2ed0903c89123443ea4e8bfea0e7e4c7, type: 2}
+  defaultMaterial: {fileID: 0}
+  selectableTag: Selectable
 --- !u!4 &500599446
 Transform:
   m_ObjectHideFlags: 0
@@ -981,6 +984,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mass
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026611653297736056, guid: e7f68692d4fcf4c49a3954568b53fb3f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Selectable
       objectReference: {fileID: 0}
     - target: {fileID: 5285906030466158833, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
