@@ -650,7 +650,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026611653297736056}
   serializedVersion: 2
-  m_Mass: 2
+  m_Mass: 3
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -684,7 +684,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d563a564808bc4ad98c5940db002f296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceValue: 0
+  diceRollCheck:
+  - {fileID: 771380188592948065}
+  - {fileID: 771380188182876939}
+  - {fileID: 771380187491229621}
+  - {fileID: 771380187733193242}
+  - {fileID: 771380188583850802}
+  - {fileID: 771380187736323036}
+--- !u!114 &3127567448845228777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026611653297736056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &874256097389476843
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -692,6 +716,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8052994932809076077, guid: a1e7863c6a0334b9ab27e40c12187f49,
+        type: 3}
+      propertyPath: m_TagString
+      value: Selectable
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a1e7863c6a0334b9ab27e40c12187f49,
         type: 3}
       propertyPath: m_LocalPosition.x

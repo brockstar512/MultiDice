@@ -268,12 +268,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 500599444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14f35572c8915499cb77c89a53bfc14a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e076fcb7e5434c7586ceadee2064f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 2100000, guid: 2ed0903c89123443ea4e8bfea0e7e4c7, type: 2}
-  defaultMaterial: {fileID: -9168796071809029343, guid: a1e7863c6a0334b9ab27e40c12187f49,
-    type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,78 +884,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &771380187491229621 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 771380187491229621, guid: e7f68692d4fcf4c49a3954568b53fb3f,
-    type: 3}
-  m_PrefabInstance: {fileID: 874256097857047978}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc29e99afd8e74fdc96cba711b8200a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &771380187733193242 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 771380187733193242, guid: e7f68692d4fcf4c49a3954568b53fb3f,
-    type: 3}
-  m_PrefabInstance: {fileID: 874256097857047978}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc29e99afd8e74fdc96cba711b8200a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &771380187736323036 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 771380187736323036, guid: e7f68692d4fcf4c49a3954568b53fb3f,
-    type: 3}
-  m_PrefabInstance: {fileID: 874256097857047978}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc29e99afd8e74fdc96cba711b8200a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &771380188182876939 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 771380188182876939, guid: e7f68692d4fcf4c49a3954568b53fb3f,
-    type: 3}
-  m_PrefabInstance: {fileID: 874256097857047978}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc29e99afd8e74fdc96cba711b8200a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &771380188583850802 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 771380188583850802, guid: e7f68692d4fcf4c49a3954568b53fb3f,
-    type: 3}
-  m_PrefabInstance: {fileID: 874256097857047978}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc29e99afd8e74fdc96cba711b8200a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &771380188592948065 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 771380188592948065, guid: e7f68692d4fcf4c49a3954568b53fb3f,
-    type: 3}
-  m_PrefabInstance: {fileID: 874256097857047978}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc29e99afd8e74fdc96cba711b8200a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &874256097857047978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -966,44 +891,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
-      propertyPath: diceRollCheck.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
-      propertyPath: diceRollCheck.Array.data[0]
-      value: 
-      objectReference: {fileID: 771380188592948065}
-    - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
-      propertyPath: diceRollCheck.Array.data[1]
-      value: 
-      objectReference: {fileID: 771380188182876939}
-    - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
-      propertyPath: diceRollCheck.Array.data[2]
-      value: 
-      objectReference: {fileID: 771380187491229621}
-    - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
-      propertyPath: diceRollCheck.Array.data[3]
-      value: 
-      objectReference: {fileID: 771380187733193242}
-    - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
-      propertyPath: diceRollCheck.Array.data[4]
-      value: 
-      objectReference: {fileID: 771380188583850802}
-    - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
-      propertyPath: diceRollCheck.Array.data[5]
-      value: 
-      objectReference: {fileID: 771380187736323036}
-    - target: {fileID: 771380187435926211, guid: e7f68692d4fcf4c49a3954568b53fb3f,
-        type: 3}
-      propertyPath: m_Mass
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026611653297736056, guid: e7f68692d4fcf4c49a3954568b53fb3f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Selectable
-      objectReference: {fileID: 0}
     - target: {fileID: 5285906030466158833, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
       propertyPath: m_LocalPosition.x
