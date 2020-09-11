@@ -3,49 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectClicker : MonoBehaviour
-//https://www.youtube.com/watch?v=EANtTI6BCxk
 {
+    [SerializeField] private string selectableTag = "Selectable";
+    private ISelectionResponse _selectionResponse; 
+    private Transform _selection;
 
-    [SerializeField] Material highlightMaterial;
-    [SerializeField] Material defaultMaterial;
-    [SerializeField] private string selectableTag = "Selectable"; 
-    
-    private Transform selected;
 
+private void Awake()
+{
+    _selectionResponse = GetComponent<ISelectionResponse>();
+}
     void Update()
     {
-       if(selected != null)
+         //if(Input.GetMouseButtonDown(0))
+        //{ //this is broken because of the clicking
+        //selection/deselection response
+
+       if(_selection != null)
        {
-           var selectionRenderer = selected.GetComponent<Renderer>();
-           selectionRenderer.material = defaultMaterial;
-           selected = null;
+           _selectionResponse.OnDeselect(_selection);
        }
-        if (Input.GetMouseButtonDown(0)) { 
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //  i dont know if i want out hit because i want the ray cast to return a variable value
-        if (Physics.Raycast(ray, out hit,100.0f))//how far a ray will go before it stops
-        {
-            var selection = hit.transform;//the variable grabs the transform of whatever you hit
 
-            if(selection.CompareTag(selectableTag))//if what your clicking on has the tag selectable
+            
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//creating a ray and casting it into the scene
+            //deterining what was selected
+            _selection = null;
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit,100.0f))//how far a ray will go before it stops
             {
+                var selection = hit.transform;//the variable grabs the transform of whatever you hit
+                if(selection.CompareTag(selectableTag))//if what your clicking on has the tag selectable
+                {
+                    _selection = selection;//if whatever you clivked on has a selectable tag then _selection eqauls that
+                }
+            }
           
-            var selectionRenderer = selection.GetComponent<Renderer>();
-            if(selectionRenderer != null){
-                selectionRenderer.material = highlightMaterial;
+            //selection/deselection response
+            //if you have selected something
+            //then it'll pass it on to selection response
+            if(_selection != null)
+            {
+                _selectionResponse.OnSelect(_selection);
             }
-            selected = selection;
-            }
-        }
-    }
-    }
-
-    private void PrintName(GameObject go)
-    {
-        print(go.name);//(i think i could just click the side value
+        //}
     }
 }
-//hit.transform.GetComponent(Variables);
 
-//var values: Dice = hit.transform.GetComponent(Variables);
+//youtube
+//https://www.youtube.com/watch?v=QDldZWvNK_E
