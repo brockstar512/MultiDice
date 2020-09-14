@@ -15,10 +15,7 @@ private void Awake()
 }
     void Update()
     {
-         //if(Input.GetMouseButtonDown(0))
-        //{ //this is broken because of the clicking
-        //selection/deselection response
-
+       
        if(_selection != null)
        {
            _selectionResponse.OnDeselect(_selection);
@@ -26,6 +23,8 @@ private void Awake()
 
             
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//creating a ray and casting it into the scene
+            
+            
             //deterining what was selected
             _selection = null;
             RaycastHit hit;
@@ -35,6 +34,14 @@ private void Awake()
                 if(selection.CompareTag(selectableTag))//if what your clicking on has the tag selectable
                 {
                     _selection = selection;//if whatever you clivked on has a selectable tag then _selection eqauls that
+
+                    if(Input.GetMouseButtonDown(0))//i think i have have this within the orginal ray cast. if I cick ojbect something changes about that object
+                    { 
+                        Debug.Log(hit.transform.name);
+                        //hit.collider.gameObject.GetComponent<KeepDice>();
+                        hit.transform.parent.gameObject.GetComponent<KeepDice>().ClickMe();
+                
+                    }
                 }
             }
           
@@ -45,7 +52,8 @@ private void Awake()
             {
                 _selectionResponse.OnSelect(_selection);
             }
-        //}
+
+ 
     }
 }
 
