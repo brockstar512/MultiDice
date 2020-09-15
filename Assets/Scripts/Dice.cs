@@ -9,10 +9,17 @@ public class Dice : MonoBehaviour
     bool hasLanded;
     bool hasThrown;
     //we need access to the dice value on all the children and we do that by creating an array
+    
+    public bool stay; //if clicked this will destroy the dice
+    //this is important
 
     Vector3 initPosition;//throw location
+    
+    [SerializeField] GameObject errorMessage;
+    
 
-    static public int diceValue;
+
+    public int diceValue;
     public DiceRollCheck[] diceRollCheck;
     //the array is added in the inspector then you add which scripts that have that script you want in the array list
     //this will create an empty array you then populate that array by dragging the game objects in that lsit
@@ -24,6 +31,8 @@ public class Dice : MonoBehaviour
         initPosition = transform.position;
         rb.useGravity= false;//this will not have gravity at the start so it won't automatically fall but it will have kinetamic so it wont slide around  
         rb.isKinematic = true;
+        errorMessage.SetActive(false);
+        
 
     }
 
@@ -40,28 +49,38 @@ public class Dice : MonoBehaviour
             //is sleeping just means if the rb hasn't moved
             hasLanded = true;//when you throw it change has landed to true
             SideValueCheck();
-            rb.useGravity = false; //we dont need gravity of its laying down
+            //rb.useGravity = false; //we dont need gravity of its laying down
         }
         else if(rb.IsSleeping() && hasLanded && diceValue == 0)//if the dice is sleeping and the value is unreadable, reroll;
         //if dice value is not being checked in update the dice will run everytime the rb stops bc dice value does not change from zero
-        {
+        {//error roll
+            //errorMessage.SetActive(true);
             RollAgain();
             //it might be good to add a message so it doesn't look like a glitch
         }
+
+        //stay is going to equal if you want to keep the dice from its parent keep dice
+        stay = transform.parent.gameObject.GetComponent<KeepDice>().saveDice;
 
     }
 
     void RollDice()
     {
+        
         if(!hasThrown && !hasLanded)//if it has not been thrown and is not landed roll
         {
             hasThrown = true;
             rb.useGravity= true;//now it will fall
             rb.AddTorque(Random.Range(0,500),Random.Range(0,500),Random.Range(0,500));// give its random torque so its not falling straight down
         }
-        else if(hasThrown && hasLanded)//if has rolled and you have thrown reset
+        else if(hasThrown && hasLanded && !stay)//if has rolled and you have thrown reset and if you dont want it to stay
         {
             Reset();
+        }
+        else if(hasThrown && hasLanded && stay)
+        {
+            //i can pass info into function as an argument or an array, but right now I'm just going to completely destroy the items
+            Destroy(transform.parent.gameObject);
         }
     }
 
@@ -71,15 +90,18 @@ public class Dice : MonoBehaviour
         hasThrown = false;
         hasLanded = false;
         rb.useGravity = false; //this will allow it to flow before rolling the dice
-        rb.isKinematic = false;   
+        rb.isKinematic = false;
+        // errorMessage.SetActive(false);
+          
     }
 
     void RollAgain()
     {
-            Reset();
-            hasThrown = true;
-            rb.useGravity= true;//now it will fall
-            rb.AddTorque(Random.Range(0,500),Random.Range(0,500),Random.Range(0,500));// 
+        
+        Reset();
+        hasThrown = true;
+        rb.useGravity= true;//now it will fall
+        rb.AddTorque(Random.Range(0,500),Random.Range(0,500),Random.Range(0,500));// 
     }
 
     void SideValueCheck()
@@ -95,6 +117,7 @@ public class Dice : MonoBehaviour
                 //in the array. this dice value eqauls the side value variable in that script
                 diceValue = side.sideValue;
                 Debug.Log(diceValue + " has been rolled");
+                //diceValue and dice value is important
             }
         }
     }
