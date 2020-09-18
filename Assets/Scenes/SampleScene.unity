@@ -273,7 +273,7 @@ PrefabInstance:
     - target: {fileID: 9151339043073630946, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
@@ -1095,7 +1095,7 @@ PrefabInstance:
     - target: {fileID: 9151339043073630946, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
@@ -1282,7 +1282,7 @@ PrefabInstance:
     - target: {fileID: 9151339043073630946, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
@@ -1569,7 +1569,7 @@ PrefabInstance:
     - target: {fileID: 9151339043073630946, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
@@ -1647,7 +1647,7 @@ PrefabInstance:
     - target: {fileID: 9151339043073630946, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
@@ -1788,6 +1788,21 @@ PrefabInstance:
       propertyPath: errorMessage
       value: 
       objectReference: {fileID: 118196949}
+    - target: {fileID: 3127567448845228777, guid: e7f68692d4fcf4c49a3954568b53fb3f,
+        type: 3}
+      propertyPath: outlineColor.r
+      value: 0.9706017
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127567448845228777, guid: e7f68692d4fcf4c49a3954568b53fb3f,
+        type: 3}
+      propertyPath: outlineColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127567448845228777, guid: e7f68692d4fcf4c49a3954568b53fb3f,
+        type: 3}
+      propertyPath: outlineColor.b
+      value: 0.759434
+      objectReference: {fileID: 0}
     - target: {fileID: 5285906030466158833, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1841,6 +1856,11 @@ PrefabInstance:
     - target: {fileID: 5285906030466158833, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603882184987050762, guid: e7f68692d4fcf4c49a3954568b53fb3f,
+        type: 3}
+      propertyPath: saveDice
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9151339043073630946, guid: e7f68692d4fcf4c49a3954568b53fb3f,

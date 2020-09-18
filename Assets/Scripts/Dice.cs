@@ -16,7 +16,7 @@ public class Dice : MonoBehaviour
     Vector3 initPosition;//throw location
     
     [SerializeField] GameObject errorMessage;
-    
+
 
 
     public int diceValue;
@@ -32,7 +32,6 @@ public class Dice : MonoBehaviour
         rb.useGravity= false;//this will not have gravity at the start so it won't automatically fall but it will have kinetamic so it wont slide around  
         rb.isKinematic = true;
         errorMessage.SetActive(false);
-        
 
     }
 
@@ -82,6 +81,7 @@ public class Dice : MonoBehaviour
             //i can pass info into function as an argument or an array, but right now I'm just going to completely destroy the items
             Destroy(transform.parent.gameObject);
         }
+        TotalDiceHandler.roundOver = true;
     }
 
     void Reset()
