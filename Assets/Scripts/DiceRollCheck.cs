@@ -7,12 +7,14 @@ public class DiceRollCheck : MonoBehaviour
     //this script goes on each trigger game object
     bool onGround;
     public int sideValue;
+    
 
     void OnTriggerStay(Collider col)
     {
         if(col.tag == "Ground")//if the trigger hits the collider with tag ground
         {
             onGround = true;
+
         }
     }
 

@@ -14,8 +14,9 @@ public class Dice : MonoBehaviour
     //this is important
 
     Vector3 initPosition;//throw location
-    
+    [SerializeField] GameObject buttonController;
     [SerializeField] GameObject errorMessage;
+    
 
 
 
@@ -32,6 +33,7 @@ public class Dice : MonoBehaviour
         rb.useGravity= false;//this will not have gravity at the start so it won't automatically fall but it will have kinetamic so it wont slide around  
         rb.isKinematic = true;
         errorMessage.SetActive(false);
+        
 
     }
 
@@ -45,6 +47,9 @@ public class Dice : MonoBehaviour
             RollDice();
             //this will roll dice and reset dice
             //it also rerolls but i may change that
+
+            //after we roll we get a button that says score whats selected or end round.
+            buttonController.SetActive(true);
         }
 
         if(rb.IsSleeping() && !hasLanded && hasThrown)
@@ -70,10 +75,10 @@ public class Dice : MonoBehaviour
 
     
     void RollDice()
-    {
+    {  
         //this function rolls the dice. if it has not landed and if it has not landed.
         //it make it gives the item gravity and a torque to throw it
-        if(!hasThrown && !hasLanded)//if it has not been thrown and is not landed roll
+        if (!hasThrown && !hasLanded)//if it has not been thrown and is not landed roll
         {
             hasThrown = true;
             rb.useGravity= true;//now it will fall

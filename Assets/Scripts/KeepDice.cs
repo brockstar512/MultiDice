@@ -6,6 +6,7 @@ public class KeepDice : MonoBehaviour
 {
     [SerializeField] public bool saveDice = false;
     [SerializeField] private bool selectionConfirmed = false;
+
     
 
 
