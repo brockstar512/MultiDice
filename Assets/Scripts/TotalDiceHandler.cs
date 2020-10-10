@@ -15,15 +15,17 @@ public class TotalDiceHandler : MonoBehaviour
     int five = 0;
     int six = 0;
 
+    bool somethingHasBeenSelected = false;
+
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && roundOver)
-        {
-            KeepDiceAndScore();
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space) && roundOver)
+    //    {
+    //        KeepDiceAndScore();
             
-        }
-    }
+    //    }
+    //}
 
 
     public void KeepDiceAndScore()
@@ -35,6 +37,9 @@ public class TotalDiceHandler : MonoBehaviour
                 Scoring(die.diceValue);
                 //destroy the dice with stay??
                 //Destroy(die);
+                die.stay = false;
+
+                somethingHasBeenSelected = true;
             }
         }
         //once this function is done iterating you want to cumulate score

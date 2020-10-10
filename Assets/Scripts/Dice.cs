@@ -37,9 +37,14 @@ public class Dice : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        //update rolls the side if space is pressed. it will check the value if the dice
+        //has landed and if there is an error when rolled. the dice will be rerolled.
+        // it will also keep track of whhich dice has stay active from the keep dice.
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            RollDice();//this will roll dice and reset dice
+            RollDice();
+            //this will roll dice and reset dice
+            //it also rerolls but i may change that
         }
 
         if(rb.IsSleeping() && !hasLanded && hasThrown)
@@ -63,23 +68,34 @@ public class Dice : MonoBehaviour
 
     }
 
+    
     void RollDice()
     {
-        
+        //this function rolls the dice. if it has not landed and if it has not landed.
+        //it make it gives the item gravity and a torque to throw it
         if(!hasThrown && !hasLanded)//if it has not been thrown and is not landed roll
         {
             hasThrown = true;
             rb.useGravity= true;//now it will fall
             rb.AddTorque(Random.Range(0,500),Random.Range(0,500),Random.Range(0,500));// give its random torque so its not falling straight down
+            //This is the force that it rolls^
         }
-        else if(hasThrown && hasLanded && !stay)//if has rolled and you have thrown reset and if you dont want it to stay
+    }
+
+    public void roundOver()
+    {
+        //this function resets the dice that are not clicked. it destroys the dice that are.
+        //it also tells dice handler that the round is over.
+
+        ////RESETS WHEN THROW / LANDED  / DON"T WANT IT TO STAY
+        if (hasThrown && hasLanded && !stay)
         {
             Reset();
         }
-        else if(hasThrown && hasLanded && stay)
+        // DESTOYS THE DICE WHEN THROWN / LANDED  / WANT TO KEEP FOR SCORING.
+        else if (hasThrown && hasLanded && stay)
         {
-            //i can pass info into function as an argument or an array, but right now I'm just going to completely destroy the items
-            Destroy(transform.parent.gameObject);
+            Destroy(transform.parent.gameObject);//i can pass info into function as an argument or an array, but right now I'm just going to completely destroy the items
         }
         TotalDiceHandler.roundOver = true;
     }
@@ -97,7 +113,6 @@ public class Dice : MonoBehaviour
 
     void RollAgain()
     {
-        
         Reset();
         hasThrown = true;
         rb.useGravity= true;//now it will fall
@@ -116,7 +131,7 @@ public class Dice : MonoBehaviour
                 // this dice value in this script eqals the side value that is true
                 //in the array. this dice value eqauls the side value variable in that script
                 diceValue = side.sideValue;
-                Debug.Log(diceValue + " has been rolled");
+                //Debug.Log(diceValue + " has been rolled");
                 //diceValue and dice value is important
             }
         }
