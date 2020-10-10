@@ -8,6 +8,8 @@ public class ObjectClicker : MonoBehaviour
     private ISelectionResponse _selectionResponse; 
     private Transform _selection;
 
+    
+
 
 private void Awake()
 {
@@ -20,6 +22,7 @@ private void Awake()
        if(_selection != null)
        {
            _selectionResponse.OnDeselect(_selection);
+            
        }
 
             
@@ -52,6 +55,8 @@ private void Awake()
             if(_selection != null)
             {
                 _selectionResponse.OnSelect(_selection);
+           
+
             }
 
  

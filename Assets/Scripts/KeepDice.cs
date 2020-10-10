@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class KeepDice : MonoBehaviour
 {
+    
     [SerializeField] public bool saveDice = false;
     [SerializeField] private bool selectionConfirmed = false;
-
+    //static bool saves me
     
 
 
@@ -19,9 +20,13 @@ public class KeepDice : MonoBehaviour
 
         if(selectionConfirmed){
             outlineSelected.OutlineWidth = 20;
+
+            ButtonController.somethingIsSelected = true;
         }
         else{
             outlineSelected.OutlineWidth = 0;
+
+            ButtonController.somethingIsSelected = false;
         }
     }
 }

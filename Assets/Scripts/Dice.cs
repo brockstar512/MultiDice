@@ -48,8 +48,7 @@ public class Dice : MonoBehaviour
             //this will roll dice and reset dice
             //it also rerolls but i may change that
 
-            //after we roll we get a button that says score whats selected or end round.
-            buttonController.SetActive(true);
+
         }
 
         if(rb.IsSleeping() && !hasLanded && hasThrown)
@@ -59,6 +58,8 @@ public class Dice : MonoBehaviour
             hasLanded = true;//when you throw it change has landed to true
             SideValueCheck();
             //rb.useGravity = false; //we dont need gravity of its laying down
+
+
         }
         else if(rb.IsSleeping() && hasLanded && diceValue == 0)//if the dice is sleeping and the value is unreadable, reroll;
         //if dice value is not being checked in update the dice will run everytime the rb stops bc dice value does not change from zero
@@ -67,6 +68,13 @@ public class Dice : MonoBehaviour
             RollAgain();
             //it might be good to add a message so it doesn't look like a glitch
         }
+
+
+        if (hasLanded && diceValue > 0) { buttonController.SetActive(true); }
+            //after we roll we get a button that says score whats selected or end round.
+
+        
+
 
         //stay is going to equal if you want to keep the dice from its parent keep dice
         stay = transform.parent.gameObject.GetComponent<KeepDice>().saveDice;
@@ -102,7 +110,7 @@ public class Dice : MonoBehaviour
         {
             Destroy(transform.parent.gameObject);//i can pass info into function as an argument or an array, but right now I'm just going to completely destroy the items
         }
-        TotalDiceHandler.roundOver = true;
+        //TotalDiceHandler.roundOver = true;
     }
 
     void Reset()

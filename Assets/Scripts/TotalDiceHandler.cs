@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TotalDiceHandler : MonoBehaviour
 {
+    public int totalScore;
     List<int> diceSelected = new List<int>();
     public Dice[] totalDice;
     static public bool roundOver = false;
@@ -15,17 +16,9 @@ public class TotalDiceHandler : MonoBehaviour
     int five = 0;
     int six = 0;
 
-    bool somethingHasBeenSelected = false;
+    //bool somethingHasBeenSelected = false;
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space) && roundOver)
-    //    {
-    //        KeepDiceAndScore();
-            
-    //    }
-    //}
+
 
 
     public void KeepDiceAndScore()
@@ -35,16 +28,12 @@ public class TotalDiceHandler : MonoBehaviour
             if (die.stay)
             {
                 Scoring(die.diceValue);
-                //destroy the dice with stay??
-                //Destroy(die);
+                //stops scoring dice that haven't veen selected this round
                 die.stay = false;
-
-                somethingHasBeenSelected = true;
             }
         }
         //once this function is done iterating you want to cumulate score
         Score();
-        roundOver = false;
     }
 
     public void Scoring(int diceValue)
@@ -223,11 +212,13 @@ public class TotalDiceHandler : MonoBehaviour
         }
 
         //three pairs
-        Debug.Log("YOURE SCORE IS" + score);
-        //when i click space bar it runs the score as I reset it
-        //reset selected
-        //chill out with the space bar useage.
+
+        //if score is greater than 0 do this 
+        Debug.Log("YOURE SCORE THIS ROUND IS " + score);
+        totalScore += score;
+        Debug.Log("YOURE TOTAL SCORE IS" + totalScore);
         ScoreReset();
+        //esle run game over
     }
 
 
@@ -245,7 +236,8 @@ public class TotalDiceHandler : MonoBehaviour
         Debug.Log("HERE IS FIVE" + five);
         six = 0;
         Debug.Log("HERE IS SIX" + six);
-
+        Debug.Log("YOURE SCORE Reset To  " + 0);
+        score = 0;
     }
 
 }
