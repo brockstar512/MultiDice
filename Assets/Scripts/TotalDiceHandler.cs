@@ -33,6 +33,8 @@ public class TotalDiceHandler : MonoBehaviour
             if (die.stay)
             {
                 Scoring(die.diceValue);
+                //destroy the dice with stay??
+                //Destroy(die);
             }
         }
         //once this function is done iterating you want to cumulate score
@@ -217,7 +219,9 @@ public class TotalDiceHandler : MonoBehaviour
 
         //three pairs
         Debug.Log("YOURE SCORE IS" + score);
-
+        //when i click space bar it runs the score as I reset it
+        //reset selected
+        //chill out with the space bar useage.
         ScoreReset();
     }
 
