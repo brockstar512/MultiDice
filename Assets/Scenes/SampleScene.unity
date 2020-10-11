@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -68}
   m_SizeDelta: {x: 250, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &106369446
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -330,6 +330,10 @@ PrefabInstance:
       propertyPath: errorMessage
       value: 
       objectReference: {fileID: 118196949}
+    - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
+      propertyPath: buttonController
+      value: 
+      objectReference: {fileID: 1010520253}
     - target: {fileID: 5285906030466158833, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1558,6 +1562,10 @@ PrefabInstance:
       propertyPath: errorMessage
       value: 
       objectReference: {fileID: 118196949}
+    - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
+      propertyPath: buttonController
+      value: 
+      objectReference: {fileID: 1010520253}
     - target: {fileID: 5285906030466158833, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1887,7 +1895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2053,6 +2061,10 @@ PrefabInstance:
       propertyPath: errorMessage
       value: 
       objectReference: {fileID: 118196949}
+    - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
+      propertyPath: buttonController
+      value: 
+      objectReference: {fileID: 1010520253}
     - target: {fileID: 5285906030466158833, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2332,32 +2344,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 709199080}
     m_Modifications:
     - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
-      propertyPath: errorMessage
-      value: 
-      objectReference: {fileID: 118196949}
-    - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
-      propertyPath: scoreButton
-      value: 
-      objectReference: {fileID: 106369444}
-    - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
       propertyPath: buttonController
       value: 
       objectReference: {fileID: 1010520253}
-    - target: {fileID: 3127567448845228777, guid: e7f68692d4fcf4c49a3954568b53fb3f,
-        type: 3}
-      propertyPath: outlineColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3127567448845228777, guid: e7f68692d4fcf4c49a3954568b53fb3f,
-        type: 3}
-      propertyPath: outlineColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3127567448845228777, guid: e7f68692d4fcf4c49a3954568b53fb3f,
-        type: 3}
-      propertyPath: outlineColor.b
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 618886723, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}
+      propertyPath: errorMessage
+      value: 
+      objectReference: {fileID: 118196949}
     - target: {fileID: 5285906030466158833, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2413,20 +2406,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6603882184987050762, guid: e7f68692d4fcf4c49a3954568b53fb3f,
-        type: 3}
-      propertyPath: saveDice
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9151339043073630946, guid: e7f68692d4fcf4c49a3954568b53fb3f,
         type: 3}
       propertyPath: m_Name
       value: dice
-      objectReference: {fileID: 0}
-    - target: {fileID: 9151339043073630946, guid: e7f68692d4fcf4c49a3954568b53fb3f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7f68692d4fcf4c49a3954568b53fb3f, type: 3}

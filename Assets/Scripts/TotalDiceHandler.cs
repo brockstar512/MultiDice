@@ -222,11 +222,17 @@ public class TotalDiceHandler : MonoBehaviour
 
         //three pairs
 
+        if(score > 0) { 
         //if score is greater than 0 do this 
         Debug.Log("YOURE SCORE THIS ROUND IS " + score);
         totalScore += score;
         Debug.Log("YOURE TOTAL SCORE IS" + totalScore);
         ScoreReset();
+        }
+        else
+        {
+            Debug.Log("GAME OVER");
+        }
         //esle run game over
     }
 
