@@ -16,10 +16,14 @@ public class TotalDiceHandler : MonoBehaviour
     int five = 0;
     int six = 0;
 
-    //bool somethingHasBeenSelected = false;
 
+    [SerializeField] GameObject buttonHander;
+    [SerializeField] GameObject scoreRollButton;
 
-
+    void Awake()
+    {
+        buttonHander.SetActive(false);
+    }
 
     public void KeepDiceAndScore()
     {
@@ -34,6 +38,9 @@ public class TotalDiceHandler : MonoBehaviour
         }
         //once this function is done iterating you want to cumulate score
         Score();
+        scoreRollButton.SetActive(false);
+        buttonHander.SetActive(false);
+        ButtonController.somethingIsSelected = false;
     }
 
     public void Scoring(int diceValue)
@@ -66,6 +73,8 @@ public class TotalDiceHandler : MonoBehaviour
 
         print("here are the value selected"+six + five + four + three + two + one);
 
+        
+        
     }
     public void Score()
     {

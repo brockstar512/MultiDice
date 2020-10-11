@@ -33,7 +33,11 @@ public class Dice : MonoBehaviour
         rb.useGravity= false;//this will not have gravity at the start so it won't automatically fall but it will have kinetamic so it wont slide around  
         rb.isKinematic = true;
         errorMessage.SetActive(false);
-        
+
+        //trying to get rid of the button handler in the beginning until the buttons land
+        buttonController.SetActive(false);
+
+
 
     }
 

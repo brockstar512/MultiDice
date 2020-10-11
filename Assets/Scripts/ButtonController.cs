@@ -8,6 +8,9 @@ public class ButtonController : MonoBehaviour
     //static bool that checkif if any of the dice switch it on
     public static bool somethingIsSelected = false;
 
+    [SerializeField] GameObject scoreButton;
+    [SerializeField] GameObject endRoundButton;
+
     void Awake()
     {
 
@@ -19,10 +22,14 @@ public class ButtonController : MonoBehaviour
         if (somethingIsSelected)
         {
             //Debug.Log("ON");
+            scoreButton.SetActive(true);
+            endRoundButton.SetActive(false);
         }
         else
         {
             //Debug.Log("OFF");
+            endRoundButton.SetActive(true);
+            scoreButton.SetActive(false);
         }
     }
 }
