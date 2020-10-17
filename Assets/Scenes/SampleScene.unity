@@ -595,6 +595,8 @@ GameObject:
   - component: {fileID: 500599446}
   - component: {fileID: 500599445}
   - component: {fileID: 500599447}
+  - component: {fileID: 500599449}
+  - component: {fileID: 500599448}
   m_Layer: 0
   m_Name: GameClicker
   m_TagString: Selectable
@@ -614,7 +616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ea888891aab4d40b5866bae20ec2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectableTag: Selectable
 --- !u!4 &500599446
 Transform:
   m_ObjectHideFlags: 0
@@ -641,6 +642,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e076fcb7e5434c7586ceadee2064f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &500599448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500599444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad126430b5f8c4301b0db286d61f45e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &500599449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500599444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf594a9c0c87f42c086630562af85f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectableTag: Selectable
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

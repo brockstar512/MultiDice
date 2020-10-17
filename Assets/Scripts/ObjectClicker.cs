@@ -4,64 +4,40 @@ using UnityEngine;
 
 public class ObjectClicker : MonoBehaviour
 {
-    [SerializeField] private string selectableTag = "Selectable";
-    private ISelectionResponse _selectionResponse; 
-    private Transform _selection;
+    private IRayProvider _rayProvider;
+    private ISelector _selector;
+    private ISelectionResponse _selectionResponse;
+    
+    private Transform _currentSelection;
 
     
+    
+    private void Awake()
+    {
+        _rayProvider = GetComponent<IRayProvider>();
+        _selector = GetComponent<ISelector>();
+        _selectionResponse = GetComponent<ISelectionResponse>();
+    }
 
-
-private void Awake()
-{
-    _selectionResponse = GetComponent<ISelectionResponse>();
-}
     void Update()
     {
 
+       if(_currentSelection != null){ _selectionResponse.OnDeselect(_currentSelection);}
 
-       if(_selection != null)
-       {
-           _selectionResponse.OnDeselect(_selection);
-            
-       }
+        var ray = _rayProvider.CreateRay();
+        RaycastHit hit;
+        _selector.Check(ray);
 
-            
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//creating a ray and casting it into the scene
-            
-            
-            //deterining what was selected
-            _selection = null;
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit,100.0f))//how far a ray will go before it stops
-            {
-                var selection = hit.transform;//the variable grabs the transform of whatever you hit
-                if(selection.CompareTag(selectableTag))//if what your clicking on has the tag selectable
-                {
-                    _selection = selection;//if whatever you clivked on has a selectable tag then _selection eqauls that
-
-                    if(Input.GetMouseButtonDown(0))//i think i have have this within the orginal ray cast. if I cick ojbect something changes about that object
-                    { 
-                        Debug.Log(hit.transform.name);
-                        //hit.collider.gameObject.GetComponent<KeepDice>();
-                        hit.transform.parent.gameObject.GetComponent<KeepDice>().ClickMe();
-                
-                    }
-                }
-            }
-          
-            //selection/deselection response
-            //if you have selected something
-            //then it'll pass it on to selection response
-            if(_selection != null)
-            {
-                _selectionResponse.OnSelect(_selection);
-           
-
-            }
-
- 
+        _currentSelection = _selector.GetSelection();
+        if (_currentSelection != null){_selectionResponse.OnSelect(_currentSelection);}
     }
 }
 
-//youtube
-//https://www.youtube.com/watch?v=QDldZWvNK_E
+
+
+
+
+
+
+
+
