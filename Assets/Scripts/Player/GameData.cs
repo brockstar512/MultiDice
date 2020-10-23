@@ -8,7 +8,7 @@ using System.Linq;
 //and what the bet is
 public class GameData
 {
-    public List<PlayerController> playersData;
+    public List<PlayerData> playersData;
     public int roundTotal;
     public int numberOfPlayers;
     public string bet;
@@ -16,7 +16,7 @@ public class GameData
     public System.DateTime start_time;
 
 
-    public class PlayerController
+    public class PlayerData
     {
         //player has all information about the player - round data
         //there should be a game controller that has all information for each player - workout data
@@ -34,7 +34,7 @@ public class GameData
     public GameData()
     {
         //each game creates new game data , each player input creates new player data
-        playersData = new List<PlayerController>();
+        playersData = new List<PlayerData>();
         //numberOfPlayers = playersData.Count();
         //I ONLY NEED PLAYER COUNT TO MAKE SURE THEY DON"T EXEED PLAYER LIMIT
         start_time = System.DateTime.Now;
@@ -48,6 +48,9 @@ public class GameData
 //https://www.youtube.com/watch?v=dk5WuADwlDU
 //interesting conversation with tegan
 //and what informs your performance is perspective.
+
+
+
 
 //          class.variable calls what this variable returns 
 //
