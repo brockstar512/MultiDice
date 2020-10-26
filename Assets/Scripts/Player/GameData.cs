@@ -8,39 +8,42 @@ using System.Linq;
 //and what the bet is
 public class GameData
 {
-    public List<PlayerData> playersData;
+    public List<PlayerData> players;
     public int roundTotal;
     public int numberOfPlayers;
     public string bet;
     //could also include start date
     public System.DateTime start_time;
 
-
-    public class PlayerData
-    {
-        //player has all information about the player - round data
-        //there should be a game controller that has all information for each player - workout data
-        public string playerName;
-        public bool isInPlay;
-        
-        //this is going to be the list of the score for each round
-        //then after its that persons round is over it goes into their total score
-        public List<int> roundScore;
-        public int totalScore;
-
-    }
-
-
+    //this is what new is creating
     public GameData()
     {
         //each game creates new game data , each player input creates new player data
-        playersData = new List<PlayerData>();
-        //numberOfPlayers = playersData.Count();
-        //I ONLY NEED PLAYER COUNT TO MAKE SURE THEY DON"T EXEED PLAYER LIMIT
+        players = new List<PlayerData>();
         start_time = System.DateTime.Now;
 
     }
+
 }
+public class PlayerData
+{
+    public string playerName;
+    public bool isInPlay;
+    public List<int> roundScore;
+    public int totalScore;
+
+    public PlayerData()
+    {
+        isInPlay = true;
+        totalScore = 0;
+    }
+
+}
+
+
+
+
+
 
 
 
