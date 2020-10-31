@@ -7,13 +7,18 @@ public class PromptController : MonoBehaviour
 {
     public GameObject playerCount;//this ended up doing nothing
     public int count;
+    public int playerNumber=1;
     public Text ActiveNumber;
     public GameObject numberPrompt;
     [SerializeField] playerController playerController;
-    //accumulate an array of players to give to player controller to make them officali players
+    
 
     public GameObject namePrompt;
     public GameObject playerList;
+
+
+    public GameObject confirmationPanel;
+
 
 
     public bool promptExists= false;
@@ -64,16 +69,6 @@ public class PromptController : MonoBehaviour
   //the button in the number prompt calls this function and passes it a number
     public void PlayerInputCount(int playerCount)
     {
-        ////
-        ////--------
-        //if (promptExists)
-        //{
-        //    Destroy(newPlayer);//this chunk needs to be refactor
-        //}
-        //promptExists = false;
-        ////--------
-        ////
-		/////make a function thats tied to that button that also deletes the second or 1st child of the list.
 
 
         GameObject newPlayer = Instantiate(namePrompt) as GameObject;
@@ -81,9 +76,10 @@ public class PromptController : MonoBehaviour
         newPlayer.transform.SetParent(playerList.transform, false);
         newPlayer.transform.localRotation = Quaternion.identity;
         promptExists = true;
+        newPlayer.transform.GetChild(1).gameObject.transform.GetComponent<Text>().text = playerNumber.ToString();
+        playerNumber++;
 
-        count--;//i do if I can figure out. give count to gamedata or I can just do .count();
-
+        count--;        
     }
 
     public void MoreInputs()
@@ -92,8 +88,16 @@ public class PromptController : MonoBehaviour
         //delete the first child **
         if (count > 0)
         {
-            
+            //this controls making more prompts.
             PlayerInputCount(count);
+        }
+        else if(count <= 0)
+        {
+            //Debug.Log("game is ready");
+            //set another button up that increases count + 1
+            //activate the last prompt that says here are the players
+            confirmationPanel.SetActive(true);
+            this.gameObject.SetActive(false);
         }
     }
 

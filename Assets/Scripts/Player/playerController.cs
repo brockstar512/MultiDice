@@ -18,8 +18,9 @@ public class playerController : MonoBehaviour
 
     public void GameSetup()
     {
-        data = new GameData();
+        //data = new GameData();
         //for each item in the list. .add into gamedata . list
+        //this can capture all the game data
     }
 
     //this type of reference works
