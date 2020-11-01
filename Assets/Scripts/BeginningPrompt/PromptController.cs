@@ -19,7 +19,7 @@ public class PromptController : MonoBehaviour
 
     public GameObject confirmationPanel;
 
-
+    public string mostRecentName;
 
     public bool promptExists= false;
 

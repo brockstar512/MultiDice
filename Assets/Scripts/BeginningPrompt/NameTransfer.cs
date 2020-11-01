@@ -30,7 +30,6 @@ public class NameTransfer : MonoBehaviour
         //create a game 
         data = new GameData();
         //start_time = System.DateTime.Now;
-        data.players = new List<PlayerData>();
         Debug.Log(data.start_time);
     }
     void Update()
@@ -40,33 +39,23 @@ public class NameTransfer : MonoBehaviour
 
     public void StoreName()
     {
+        //**** MAYBE I NEED TO GRAB THE CURRENT NAMESPACES NAME
+        //I need to grab this insantiated gameObject.. right now its grabbing the inactive one
         theName = inputField.GetComponent<Text>().text;
+        //get the game object that is instantiated ... count - 1
+        //theName = inputField.GetComponent<Text>().text;
+
         //textDisplay.GetComponent<Text>().text = "Welcome " + theName;
-        //create the new player data within data
-        //data.players = new List<PlayerData>();
-        //create the new player data on its own
-        Debug.Log(theName);//name is nothing
-        theName = "MARK";
+        Debug.Log("HERE IS NAME"+theName);
         player = new PlayerData();
+        //theName = "MARK";
         player.playerName = theName;
         data.players.Add(player);
-        //data.players.Add();
-        //data.players.playerName = theName;
-        //data.players.Add(player);
         //Destroy(promptListParent.transform.GetChild(2));
-        Debug.Log("Here is the players count" + data.players.Count);
-        Debug.Log("Here is the players name" + data.players[0].playerName);
+        //Debug.Log("Here is the players count" + data.players.Count);//works
+       // Debug.Log("Here is the players name" + data.players[0].playerName);
     }
     
 
-    public void StorageNameController(PlayerData[] player)
-    {
-        //i can add the player data to an array to add to the game data or I can manually add it to the game data
-
-    }
-    //public void ConfirmationNameList(GameData data)
-    //{
-
-    //}
+   
 }
-//delete other children

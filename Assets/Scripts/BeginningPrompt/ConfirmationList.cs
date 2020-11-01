@@ -11,23 +11,24 @@ public class ConfirmationList : MonoBehaviour
 
     void Awake()
     {
-        //Debug.Log("Here is the players count" + NameTransfer.data.players.Count);
-        //foreach (PlayerData playeritem in NameTransfer.data.players)
-        //{
-        //    Debug.Log("NAME: " + playeritem.playerName);
-        //    GameObject Player = Instantiate(playerListItemConfirmed) as GameObject;
-        //    Player.SetActive(true);
-        //    Player.transform.SetParent(confirmationListParent.transform, false);
-        //    Player.transform.localRotation = Quaternion.identity;
-        //    Player.transform.GetComponent<Text>().text = playeritem.playerName;
-        //}
+        //Debug.Log("Here is the players count" + data.players.Count);
+        //Debug.Log("Here is the players count" + NameTransfer.data.players[0].playerName);
+        foreach (PlayerData playeritem in NameTransfer.data.players)
+        {
+            Debug.Log("NAME: " + playeritem.playerName);
+            GameObject Player = Instantiate(playerListItemConfirmed) as GameObject;
+            Player.SetActive(true);
+            Player.transform.SetParent(confirmationListParent.transform, false);
+            Player.transform.localRotation = Quaternion.identity;
+            Player.transform.GetComponent<Text>().text = playeritem.playerName;
+        }
     }
 
     //public void ConfirmationList(GameData data)
     //{
     //    Debug.Log("Here is the players count" + data.players.Count);
     //}
-    
+
 }
 //i might need to either passit in through a script that is still alive at this time or ...
 //make a back end so its serialized and pull it in
