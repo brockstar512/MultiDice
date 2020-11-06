@@ -70,13 +70,13 @@ public class PromptController : MonoBehaviour
     public void PlayerInputCount(int playerCount)
     {
 
-
-        GameObject newPlayer = Instantiate(namePrompt) as GameObject;
-        newPlayer.SetActive(true);
-        newPlayer.transform.SetParent(playerList.transform, false);
-        newPlayer.transform.localRotation = Quaternion.identity;
+        namePrompt.SetActive(true);
+        //GameObject newPlayer = Instantiate(namePrompt) as GameObject;
+        //newPlayer.SetActive(true);
+        //newPlayer.transform.SetParent(playerList.transform, false);
+        //newPlayer.transform.localRotation = Quaternion.identity;
         promptExists = true;
-        newPlayer.transform.GetChild(1).gameObject.transform.GetComponent<Text>().text = playerNumber.ToString();
+        namePrompt.transform.GetChild(1).gameObject.transform.GetComponent<Text>().text = playerNumber.ToString();
         playerNumber++;
 
         count--;        

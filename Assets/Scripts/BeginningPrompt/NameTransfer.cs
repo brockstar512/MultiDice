@@ -8,6 +8,8 @@ public class NameTransfer : MonoBehaviour
     public string theName;
     public GameObject inputField;
     public GameObject namePrompt;
+    public InputField textOfInput;
+    
 
 
     public PlayerData player;
@@ -39,12 +41,13 @@ public class NameTransfer : MonoBehaviour
 
     public void StoreName()
     {
+        //i might need to just referesh the poptmp 
         //**** MAYBE I NEED TO GRAB THE CURRENT NAMESPACES NAME
         //I need to grab this insantiated gameObject.. right now its grabbing the inactive one
-        theName = inputField.GetComponent<Text>().text;
-        //get the game object that is instantiated ... count - 1
+        theName = inputField.GetComponent<Text>().text; //this was grabbing the clone
+        
         //theName = inputField.GetComponent<Text>().text;
-
+        //theName = inputFieldParent.transform.GetChild(inputFieldParent.transform.childCount-1).gameObject.transform.GetComponent<Text>().text;
         //textDisplay.GetComponent<Text>().text = "Welcome " + theName;
         Debug.Log("HERE IS NAME"+theName);
         player = new PlayerData();
@@ -53,7 +56,10 @@ public class NameTransfer : MonoBehaviour
         data.players.Add(player);
         //Destroy(promptListParent.transform.GetChild(2));
         //Debug.Log("Here is the players count" + data.players.Count);//works
-       // Debug.Log("Here is the players name" + data.players[0].playerName);
+        // Debug.Log("Here is the players name" + data.players[0].playerName);
+        textOfInput.text = "";
+        //inputField.Clear();
+
     }
     
 
