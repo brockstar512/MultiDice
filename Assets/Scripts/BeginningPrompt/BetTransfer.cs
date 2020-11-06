@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BetTransfer : MonoBehaviour
 {
-    //this should reference not the main input field but the text under the input field in the heirchy
     public string theBet;
     public GameObject inputField;
 

@@ -23,6 +23,8 @@ public class PromptController : MonoBehaviour
 
     public bool promptExists= false;
 
+    public ConfirmationList confirmationList;
+
     void Awake()
     {
         count = 1;
@@ -66,15 +68,21 @@ public class PromptController : MonoBehaviour
         Destroy(numberPrompt);
     }
 
-  //the button in the number prompt calls this function and passes it a number
+    public void ReserectPrompt(int additionalCount)
+    {
+        count = 1;
+
+        this.gameObject.SetActive(true);
+        MoreInputs();
+        //try to rerender list from here
+        confirmationList.ReRender();
+    }
+
+    //the button in the number prompt calls this function and passes it a number
     public void PlayerInputCount(int playerCount)
     {
 
         namePrompt.SetActive(true);
-        //GameObject newPlayer = Instantiate(namePrompt) as GameObject;
-        //newPlayer.SetActive(true);
-        //newPlayer.transform.SetParent(playerList.transform, false);
-        //newPlayer.transform.localRotation = Quaternion.identity;
         promptExists = true;
         namePrompt.transform.GetChild(1).gameObject.transform.GetComponent<Text>().text = playerNumber.ToString();
         playerNumber++;
@@ -84,15 +92,15 @@ public class PromptController : MonoBehaviour
 
     public void MoreInputs()
     {
-        //put name in array. either here or in name transfor
-        //delete the first child **
+
         if (count > 0)
         {
-            //this controls making more prompts.
             PlayerInputCount(count);
         }
         else if(count <= 0)
         {
+            //if this is already active .... confirmationPanel.SetActive(true)
+
             //Debug.Log("game is ready");
             //set another button up that increases count + 1
             //activate the last prompt that says here are the players
