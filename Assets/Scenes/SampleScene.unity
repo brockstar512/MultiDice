@@ -1000,8 +1000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19aa971d99724e9e8dc414a5b5ff7b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  confirmationListParent: {fileID: 1555295196}
   playerListItemConfirmed: {fileID: 1105641367}
+  holder: {fileID: 1555295196}
 --- !u!114 &429218744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,6 +1016,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theBet: 
   inputField: {fileID: 945908501}
+  beginningPrompts: {fileID: 1904276247}
+  completeList: {fileID: 429218739}
   theGame: {fileID: 1129955962}
 --- !u!1 &439714428
 GameObject:

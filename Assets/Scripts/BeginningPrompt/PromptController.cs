@@ -75,7 +75,8 @@ public class PromptController : MonoBehaviour
         this.gameObject.SetActive(true);
         MoreInputs();
         //try to rerender list from here
-        confirmationList.ReRender();
+        //confirmationList.ReRender();
+        //Debug.Log("PROMPT CONTROLLER NameTransfer.data.players" + NameTransfer.data.players.Count);
     }
 
     //the button in the number prompt calls this function and passes it a number
@@ -104,12 +105,14 @@ public class PromptController : MonoBehaviour
             //Debug.Log("game is ready");
             //set another button up that increases count + 1
             //activate the last prompt that says here are the players
+            //confirmationList.ReRender();
+            confirmationList.ReRender();
             confirmationPanel.SetActive(true);
             this.gameObject.SetActive(false);
         }
     }
 
-
+    ///add name button calls more inputs and it runs store name
 }
 //i had a hard time figureing out the Text.text and how to grab text and over write text
 //i think if I was grabbing stopping at the text component id say Text blah blah blah getCOmponent<Text>()
