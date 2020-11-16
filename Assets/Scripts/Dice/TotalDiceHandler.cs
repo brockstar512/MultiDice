@@ -20,6 +20,8 @@ public class TotalDiceHandler : MonoBehaviour
     [SerializeField] GameObject buttonHander;
     [SerializeField] GameObject scoreRollButton;
 
+    public Display displayPlayerChanger;
+
     void Awake()
     {
         buttonHander.SetActive(false);
@@ -27,7 +29,7 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void KeepDiceAndScore()
     {
-        foreach (Dice die in totalDice)//i might need to reset total dice after each round
+        foreach (Dice die in totalDice)
         {
             if (die.stay)
             {
@@ -72,13 +74,28 @@ public class TotalDiceHandler : MonoBehaviour
         }
 
         print("here are the value selected"+six + five + four + three + two + one);
+        //what if I pass a button score handler to this and it assess what buttons to activate
+        //or I can just keep it all here. that way if it chooses a button it can zero out the important variables and rerun
 
         
         
     }
     public void Score()
     {
-        switch(six)
+        //create buttons for each possible score starting from highest to lowest
+        //each button should add the score they have
+        //reset the values that it takes from the dice
+        //and recursivly checks this score again
+        //so that when it gets to the bottom it checks the current round score you got and if it gets the the bottom and there is a score it just resets
+        //if you didnt get a score do whatever happens when you're suppose to get a game over
+        //only show a button if the child count is less than 6 so its not overwhelmed by buttons
+        //consider doing something with a dice if it was never counted
+
+
+        //in game over i need to set each child of what is holding the dice to true so that all the dice are on and
+        //i need to change the player
+
+        switch (six)
         {
             case 6:
                 score += 3000;
@@ -118,7 +135,7 @@ public class TotalDiceHandler : MonoBehaviour
                 score += 50;
                 break;
             default:
-                score+=0;
+                score += 0;
                 break;
         }
         switch (four)
@@ -220,9 +237,9 @@ public class TotalDiceHandler : MonoBehaviour
             score += 1500;
         }
 
-        //three pairs
+        ////three pairs
 
-        if(score > 0) { 
+        if (score > 0) { 
         //if score is greater than 0 do this 
         Debug.Log("YOURE SCORE THIS ROUND IS " + score);
         totalScore += score;
@@ -232,8 +249,15 @@ public class TotalDiceHandler : MonoBehaviour
         else
         {
             Debug.Log("GAME OVER");
+            //be sure to make sure to make a function that will skip the player if he is out
+            //also be sure that if player selects a die that will not generate point that is re awakens the die
+            displayPlayerChanger.NextPlayer();
+            score = 0;
+            totalScore = 0;
+
+
         }
-        //esle run game over
+        
     }
 
 

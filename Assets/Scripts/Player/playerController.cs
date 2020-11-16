@@ -7,29 +7,29 @@ public class playerController : MonoBehaviour
     public GameData data;
     public PlayerData player;
 
+    private int currentNum = 0;
 
 
-
-
-
-//compile an array of players
-//once that list of player is made pass it into data as
-//playersData
-
-    public void GameSetup()
+  //if player is not in play run this again
+    public int PlayerCountController()
     {
-        //data = new GameData();
-        //for each item in the list. .add into gamedata . list
-        //this can capture all the game data
+        int newPlayerNumber;
+        int playerCount = NameTransfer.data.numberOfPlayers;
+        if(currentNum >= playerCount)
+        {
+            newPlayerNumber = 0;
+        }
+        else
+        {
+            newPlayerNumber = currentNum + 1;
+        }
+        return newPlayerNumber;
     }
 
-    //this type of reference works
-    //data.numberOfPlayers = 1;
 
-    //data.playersData = new PlayerData();
-    //data.playersData.isInPlay = true;
+     
 
-    
+
 }
 
 

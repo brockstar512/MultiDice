@@ -16,9 +16,10 @@ public class Dice : MonoBehaviour
     Vector3 initPosition;//throw location
     [SerializeField] GameObject buttonController;
     [SerializeField] GameObject errorMessage;
-    
 
 
+    private float timePressed;
+    private float timeUpPressed;
 
     public int diceValue;
     public DiceRollCheck[] diceRollCheck;
@@ -26,6 +27,9 @@ public class Dice : MonoBehaviour
     //this will create an empty array you then populate that array by dragging the game objects in that lsit
     //this will break if you put an object in the array and you try and access something within the script of that object that does not exist
 
+
+    //bool touchBegan = false;
+    //bool touchEnded = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -43,10 +47,21 @@ public class Dice : MonoBehaviour
 
     void Update()
     {
+        if (Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Began)
+        {
+            TouchBegan();
+        }
+
+        if (Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Ended)
+        {
+            TouchEnded();
+            //touchEnded = true;
+        }
+        //MobileRollHelper();
         //update rolls the side if space is pressed. it will check the value if the dice
         //has landed and if there is an error when rolled. the dice will be rerolled.
         // it will also keep track of whhich dice has stay active from the keep dice.
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Ended)//*****
         {
             RollDice();
             //this will roll dice and reset dice
@@ -112,7 +127,8 @@ public class Dice : MonoBehaviour
         // DESTOYS THE DICE WHEN THROWN / LANDED  / WANT TO KEEP FOR SCORING.
         else if (hasThrown && hasLanded && stay)
         {
-            Destroy(transform.parent.gameObject);//i can pass info into function as an argument or an array, but right now I'm just going to completely destroy the items
+            //Destroy(transform.parent.gameObject);//i can pass info into function as an argument or an array, but right now I'm just going to completely destroy the items
+            this.gameObject.SetActive(false);
         }
         //TotalDiceHandler.roundOver = true;
     }
@@ -133,7 +149,7 @@ public class Dice : MonoBehaviour
         Reset();
         hasThrown = true;
         rb.useGravity= true;//now it will fall
-        rb.AddTorque(Random.Range(0,500),Random.Range(0,500),Random.Range(0,500));// 
+        rb.AddTorque(Random.Range(0,500),Random.Range(0,500),Random.Range(0,500));// THIS IS THE ACCELEROMETER VARIABLE
     }
 
     void SideValueCheck()
@@ -153,6 +169,21 @@ public class Dice : MonoBehaviour
             }
         }
     }
+
+
+    public void TouchBegan()
+    {
+                timePressed = Time.time;
+        //Debug.Log(timePressed - timeUpPressed);
+    }
+
+    public void TouchEnded()
+    {
+        timeUpPressed = Time.time;
+        Debug.Log(timePressed + "-----" + timeUpPressed);
+
+    }
+
 }
 
 //this dice script has an array of dice. it will iterate over the array and only the array that is attached to it.
