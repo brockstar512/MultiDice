@@ -3592,6 +3592,14 @@ MonoBehaviour:
   currentPlayerNum: 0
   currentName: {fileID: 276560187}
   currentScore: {fileID: 850128361}
+  totalDice:
+  - {fileID: 1424496200}
+  - {fileID: 1233595065}
+  - {fileID: 1795155503}
+  - {fileID: 1280324633}
+  - {fileID: 2077227477}
+  - {fileID: 2147476852}
+  - {fileID: 832968798}
 --- !u!1 &1555295196
 GameObject:
   m_ObjectHideFlags: 0

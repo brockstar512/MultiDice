@@ -127,14 +127,14 @@ public class Dice : MonoBehaviour
         // DESTOYS THE DICE WHEN THROWN / LANDED  / WANT TO KEEP FOR SCORING.
         else if (hasThrown && hasLanded && stay)
         {
-            //Destroy(transform.parent.gameObject);//i can pass info into function as an argument or an array, but right now I'm just going to completely destroy the items
-            this.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);//sets the game oject might need to set the parent
         }
         //TotalDiceHandler.roundOver = true;
     }
 
     void Reset()
     {
+        Debug.Log("reset is played");
         transform.position = initPosition;//put back to its original popsition
         hasThrown = false;
         hasLanded = false;
@@ -142,6 +142,14 @@ public class Dice : MonoBehaviour
         rb.isKinematic = false;
         // errorMessage.SetActive(false);
           
+    }
+
+    public void ResetForNewPlayer()
+    {
+        //make sure the die is not selection anymore and make sure there is 7
+        this.transform.parent.gameObject.SetActive(true);
+        this.gameObject.SetActive(true);
+        Reset();
     }
 
     void RollAgain()
@@ -180,8 +188,7 @@ public class Dice : MonoBehaviour
     public void TouchEnded()
     {
         timeUpPressed = Time.time;
-        Debug.Log(timePressed + "-----" + timeUpPressed);
-
+        //Debug.Log(timePressed + "-----" + timeUpPressed);
     }
 
 }
