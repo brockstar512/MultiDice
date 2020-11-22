@@ -13,6 +13,7 @@ public class KeepDice : MonoBehaviour
 
     public void ClickMe()
     {
+        Debug.Log("Clicked me is clicked");
         //var only has block scope
         var outlineSelected = GetComponent<Outline>();
         saveDice = !saveDice;
@@ -28,5 +29,15 @@ public class KeepDice : MonoBehaviour
 
             ButtonController.somethingIsSelected = false;
         }
+    }
+
+    public void ForceOutlineOff()
+    {
+        //when the die comes back you want to make sure the highlight is off
+        var outlineSelected = GetComponent<Outline>();
+        selectionConfirmed = false;
+        saveDice = false;
+        outlineSelected.OutlineWidth = 0;
+
     }
 }

@@ -149,6 +149,7 @@ public class Dice : MonoBehaviour
         //make sure the die is not selection anymore and make sure there is 7
         this.transform.parent.gameObject.SetActive(true);
         this.gameObject.SetActive(true);
+        this.gameObject.transform.parent.GetComponent<KeepDice>().ForceOutlineOff();
         Reset();
     }
 
