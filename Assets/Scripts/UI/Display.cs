@@ -28,14 +28,14 @@ public class Display : MonoBehaviour
 
     public void DisplayPlayer()
     {
-        Debug.Log(currentPlayerNum);
-        Debug.Log("DISPLAY PLAYER");
+        //Debug.Log(currentPlayerNum);
+        //Debug.Log("DISPLAY PLAYER");
         PlayerData currentPlayer = NameTransfer.data.players[currentPlayerNum];
         currentName.text = currentPlayer.playerName;
-        Debug.Log(currentPlayer.playerName);
+        //Debug.Log(currentPlayer.playerName);
         ReactivateDice();
     }
-
+    //if next player is not in recursively call this
     public void NextPlayer()
     {
         Debug.Log("NEXT PLAYER");
@@ -62,10 +62,6 @@ public class Display : MonoBehaviour
         {
             //this.gameObject.parent.gameObject.SetActive(true);//this thinks its referening to display
             //reset the location too
-            //die.stay = false;
-            //die.diceValue = 0;
-            //die.transform.parent.gameObject.SetActive(true);
-            //die.gameObject.SetActive(true);
             die.ResetForNewPlayer();
         }
     }
