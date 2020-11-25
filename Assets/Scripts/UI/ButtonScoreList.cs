@@ -22,27 +22,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.activeButtonCount = 0;//zeroes out which buttons are active
         totalDiceHandler.Score();//rerencer the buttons
     }
-    public void ButtonTwo()
-    {
-
-    }
-
-    public void ButtonThree()
-    {
-
-    }
-    public void ButtonFour()
-    {
-
-    }
-    public void ButtonFive()
-    {
-
-    }
-    public void ButtonSix()
-    {
-
-    }
+    //
 
     //1
     public void TwoTriplets()
@@ -53,6 +33,16 @@ public class ButtonScoreList : MonoBehaviour
     public void OneToSixStraight()
     {
         //1500
+        DeactivateButtons();
+        totalDiceHandler.one--;
+        totalDiceHandler.two--;
+        totalDiceHandler.three--;
+        totalDiceHandler.four--;
+        totalDiceHandler.five--;
+        totalDiceHandler.six--;
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.score += 1500;
+        totalDiceHandler.Score();
     }
     //3
     public void FourOfAkindWithPair()
@@ -78,46 +68,92 @@ public class ButtonScoreList : MonoBehaviour
     public void FourOfAKind()
     {
         //1000
+        DeactivateButtons();
+        //totalDiceHandler.one--;
+        //figure out what i have as four of a kind
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.score += 1000;
+        totalDiceHandler.Score();
     }
     //8
     public void TripleSix()
     {
         //600
+        DeactivateButtons();
+        totalDiceHandler.six-=3;
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.score += 600;
+        totalDiceHandler.Score();
     }
     //9
     public void TripleFive()
     {
         //500
+        DeactivateButtons();
+        totalDiceHandler.five-=3;
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.score += 500;
+        totalDiceHandler.Score();
     }
     //10
     public void TripleFour()
     {
         //400
+        DeactivateButtons();
+        totalDiceHandler.four-=3;
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.score += 400;
+        totalDiceHandler.Score();
     }
     //11
     public void TripleThree()
     {
         //300
+        DeactivateButtons();
+        totalDiceHandler.three-=3;
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.score += 300;
+        totalDiceHandler.Score();
     }
     //12
     public void TripleOnes()
     {
         //300
+        DeactivateButtons();
+        totalDiceHandler.one-=3;
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.score += 300;
+        totalDiceHandler.Score();
     }
     //13
     public void TripleTwo()
     {
         //200
+        DeactivateButtons();
+        totalDiceHandler.two-=3;
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.score += 200;
+        totalDiceHandler.Score();
     }
     //14
     public void SingleOne()
     {
         //100
+        DeactivateButtons();
+        totalDiceHandler.one--;
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.score += 100;
+        totalDiceHandler.Score();
     }
     //15
     public void SingleFive()
     {
         //50
+        DeactivateButtons();//deactivates all buttons
+        totalDiceHandler.five--;
+        totalDiceHandler.activeButtonCount = 0;//zeroes out which buttons are active
+        totalDiceHandler.score += 50;
+        totalDiceHandler.Score();//rerencer the buttons
     }
 
 

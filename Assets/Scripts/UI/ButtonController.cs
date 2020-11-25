@@ -10,6 +10,8 @@ public class ButtonController : MonoBehaviour
 
     [SerializeField] GameObject scoreButton;
     [SerializeField] GameObject endRoundButton;
+    public GameObject KeepScoreAndEndRoundButton;
+
 
     void Awake()
     {
@@ -24,12 +26,14 @@ public class ButtonController : MonoBehaviour
             //Debug.Log("ON");
             scoreButton.SetActive(true);
             endRoundButton.SetActive(false);
+            //KeepScoreAndEndRoundButton.SetActive(false);
         }
         else
         {
             //Debug.Log("OFF");
             endRoundButton.SetActive(true);
             scoreButton.SetActive(false);
+            //KeepScoreAndEndRoundButton.SetActive(false);
         }
     }
 }

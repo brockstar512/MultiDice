@@ -27,6 +27,7 @@ public class Dice : MonoBehaviour
     //this will create an empty array you then populate that array by dragging the game objects in that lsit
     //this will break if you put an object in the array and you try and access something within the script of that object that does not exist
 
+    public GameObject KeepScoreAndEndRoundButton;
 
     //bool touchBegan = false;
     //bool touchEnded = false;
@@ -102,7 +103,8 @@ public class Dice : MonoBehaviour
 
     
     void RollDice()
-    {  
+    {
+        KeepScoreAndEndRoundButton.SetActive(false);
         //this function rolls the dice. if it has not landed and if it has not landed.
         //it make it gives the item gravity and a torque to throw it
         if (!hasThrown && !hasLanded)//if it has not been thrown and is not landed roll

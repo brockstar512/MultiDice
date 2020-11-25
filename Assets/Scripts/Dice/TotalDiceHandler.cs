@@ -9,7 +9,7 @@ public class TotalDiceHandler : MonoBehaviour
     List<int> diceSelected = new List<int>();
     public Dice[] totalDice;
     static public bool roundOver = false;
-    int score = 0;
+    public int score = 0;
     public int one = 0;
     public int two = 0;
     public int three = 0;
@@ -20,6 +20,11 @@ public class TotalDiceHandler : MonoBehaviour
 
     [SerializeField] GameObject buttonHander;
     [SerializeField] GameObject scoreRollButton;
+    [SerializeField] GameObject KeepScoreAndEndRoundButton;
+
+    //keep score and continue// i should get this out of the parent button object...
+    //this should be active when you score point and you don't have any button children available. and total score is above a certain threshold
+    
 
     [Header("Score Buttons")]
     public GameObject buttonParent;
@@ -103,9 +108,10 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void Score()
     {
+        //maybe do a switch for the more complicated buttons
         bool hasScored = false;
-        Debug.Log("RUNNING SCORE");  
-        
+        Debug.Log("RUNNING SCORE");
+
         //if (one >= 1 && activeButtonCount < 6)
         //{
         //    buttonOne.SetActive(true);
@@ -113,55 +119,59 @@ public class TotalDiceHandler : MonoBehaviour
         //    activeButtonCount++;
         //    //return;//return out so you dont run the rest.. I HAD THIS RETURN SO IT DIDNT RUN THE GAME OVER FUNCTION or the ROUND OVER UNTIL EVRYTHING WAS DONE
         //}
-        //if (two >= 1 && activeButtonCount < 3)
-        //{
-        //    buttonTwo.SetActive(true);
-        //    activeButtonCount++;
-        //}
-        //if (three >= 1 && activeButtonCount < 3)
-        //{
-        //    buttonThree.SetActive(true);
-        //    activeButtonCount++;
-        //}
-        //if (four >= 1 && activeButtonCount < 3)
-        //{
-        //    buttonFour.SetActive(true);
-        //    activeButtonCount++;
-        //}
-        //if (five >= 1 && activeButtonCount < 3)
-        //{
-        //    buttonFive.SetActive(true);
-        //    activeButtonCount++;
-        //}
-        //if (six >= 1 && activeButtonCount < 3)
-        //{
-        //    buttonSix.SetActive(true);
-        //    activeButtonCount++;
-        //}
-
-        
-
-
+    
+        if (one >= 1 && activeButtonCount < 3)
+        {
+            buttonSingleOne.SetActive(true);
+            activeButtonCount++;
+        }
+        if (five >= 1 && activeButtonCount < 3)
+        {
+            buttonSingleFive.SetActive(true);
+            activeButtonCount++;
+        }
+        //if there are two of the same button?
 
 
 
         if (score > 0 && activeButtonCount == 0) { 
-        //if score is greater than 0 do this 
-        Debug.Log("YOURE SCORE THIS ROUND IS " + score);
-        totalScore += score;
-        Debug.Log("YOURE TOTAL SCORE IS" + totalScore);
-        ScoreReset();
+            Debug.Log("YOURE SCORE THIS ROUND IS " + score);
+            totalScore += score;
+            Debug.Log("YOURE TOTAL SCORE IS" + totalScore);
+            ScoreReset();
         }
         else if(score <= 0 && activeButtonCount == 0 && !hasScored)
         {
             Debug.Log("GAME OVER");
+
+            GameOver();
             //be sure to make sure to make a function that will skip the player if he is out
             //also be sure that if player selects a die that will not generate point that is re awakens the die
+        }
+
+    }
+
+    //CREATE A FUNCTION THAT LETS YOU STOP ROLLING IF YOU WANT TO KEEP YOUR POINTS
+    public void GameOver()
+    {
+            buttonHander.SetActive(false);
+            Debug.Log("GAME OVER FUNCTION YOU LOST");
             displayPlayerChanger.NextPlayer();
             score = 0;
             totalScore = 0;
-        }
         
+    }
+    public void KeepScoreNextRound()
+    {
+        //if you have enough point good! Otherwise game over for you
+        if (totalScore > 0){
+            displayPlayerChanger.NextPlayer();
+            KeepScoreAndEndRoundButton.SetActive(false);
+        }
+        else{
+            KeepScoreAndEndRoundButton.SetActive(false);
+            GameOver();
+        }
     }
 
     public void ScoreReset()
@@ -180,6 +190,9 @@ public class TotalDiceHandler : MonoBehaviour
         Debug.Log("HERE IS SIX" + six);
         Debug.Log("YOURE SCORE Reset To  " + 0);
         score = 0;
+
+        KeepScoreAndEndRoundButton.SetActive(true);
+
     }
 
 
