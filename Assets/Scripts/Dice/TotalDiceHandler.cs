@@ -21,6 +21,7 @@ public class TotalDiceHandler : MonoBehaviour
     [SerializeField] GameObject buttonHander;
     [SerializeField] GameObject scoreRollButton;
     [SerializeField] GameObject KeepScoreAndEndRoundButton;
+    public GameObject keepRollingButton;
 
     //keep score and continue// i should get this out of the parent button object...
     //this should be active when you score point and you don't have any button children available. and total score is above a certain threshold
@@ -174,6 +175,12 @@ public class TotalDiceHandler : MonoBehaviour
         }
     }
 
+    public void KeepRolling()
+    {
+        KeepScoreAndEndRoundButton.SetActive(false);
+        keepRollingButton.SetActive(false);
+    }
+
     public void ScoreReset()
     {
         one = 0;
@@ -192,6 +199,7 @@ public class TotalDiceHandler : MonoBehaviour
         score = 0;
 
         KeepScoreAndEndRoundButton.SetActive(true);
+        keepRollingButton.SetActive(true);
 
     }
 
