@@ -48,6 +48,7 @@ public class ButtonScoreList : MonoBehaviour
     public void FourOfAkindWithPair()
     {
         //1500
+        //totalDiceHandler.
     }
     //4
     public void ThreePairs()

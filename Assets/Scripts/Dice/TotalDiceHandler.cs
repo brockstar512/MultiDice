@@ -77,6 +77,16 @@ public class TotalDiceHandler : MonoBehaviour
 
     private void Scoring(int diceValue)
     {
+        //this should be an if statement
+        //see if I can get a refernce to a variable
+        //if a die have more than three
+
+        //ThreePairs()
+        //FourOfAkindWithPair()
+        //TwoTriplets()
+        //SixOfAKind()
+        //FiveOfAKind()
+
 
         switch (diceValue)
         {
@@ -112,15 +122,38 @@ public class TotalDiceHandler : MonoBehaviour
         //maybe do a switch for the more complicated buttons
         bool hasScored = false;
         Debug.Log("RUNNING SCORE");
+        
 
-        //if (one >= 1 && activeButtonCount < 6)
-        //{
-        //    buttonOne.SetActive(true);
-        //    //score++;//i want to increase the score. but i dont think this is necesarry/ this is so i dont get a game over right now
-        //    activeButtonCount++;
-        //    //return;//return out so you dont run the rest.. I HAD THIS RETURN SO IT DIDNT RUN THE GAME OVER FUNCTION or the ROUND OVER UNTIL EVRYTHING WAS DONE
-        //}
-    
+        if (six >= 3 && activeButtonCount < 3)
+        {
+            buttonTripleSix.SetActive(true);
+            activeButtonCount++;
+        }
+        if (five >= 3 && activeButtonCount < 3)
+        {
+            buttonTripleFive.SetActive(true);
+            activeButtonCount++;
+        }
+        if (four >= 3 && activeButtonCount < 3)
+        {
+            buttonTripleFour.SetActive(true);
+            activeButtonCount++;
+        }
+        if (three >= 3 && activeButtonCount < 3)
+        {
+            buttonTripleThree.SetActive(true);
+            activeButtonCount++;
+        }
+        if (one >= 3 && activeButtonCount < 3)
+        {
+            buttonTripleOnes.SetActive(true);
+            activeButtonCount++;
+        }
+        if (two >= 3 && activeButtonCount < 3)
+        {
+            buttonTripleTwo.SetActive(true);
+            activeButtonCount++;
+        }
         if (one >= 1 && activeButtonCount < 3)
         {
             buttonSingleOne.SetActive(true);
@@ -165,7 +198,7 @@ public class TotalDiceHandler : MonoBehaviour
     public void KeepScoreNextRound()
     {
         //if you have enough point good! Otherwise game over for you
-        if (totalScore > 0){
+        if (totalScore > 499){
             displayPlayerChanger.NextPlayer();
             KeepScoreAndEndRoundButton.SetActive(false);
         }
@@ -197,11 +230,17 @@ public class TotalDiceHandler : MonoBehaviour
         Debug.Log("HERE IS SIX" + six);
         Debug.Log("YOURE SCORE Reset To  " + 0);
         score = 0;
-
-        KeepScoreAndEndRoundButton.SetActive(true);
-        keepRollingButton.SetActive(true);
-
+        if(totalScore > 499) { 
+            KeepScoreAndEndRoundButton.SetActive(true);
+            keepRollingButton.SetActive(true);
+            //what i could do is hide dice when this unhides then, so this also hides them but the button shows them
+        }
     }
+
+    //private void hideDie()
+    //{
+    //    //dont need this because its going to reactivate a lot of dice that i want sleeping
+    //}
 
 
 
