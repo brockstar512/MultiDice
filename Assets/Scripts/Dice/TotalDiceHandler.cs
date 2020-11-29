@@ -18,6 +18,8 @@ public class TotalDiceHandler : MonoBehaviour
     public int six = 0;
 
 
+
+
     [SerializeField] GameObject buttonHander;
     [SerializeField] GameObject scoreRollButton;
     [SerializeField] GameObject KeepScoreAndEndRoundButton;
@@ -45,8 +47,15 @@ public class TotalDiceHandler : MonoBehaviour
     public GameObject buttonSingleOne;
     public GameObject buttonSingleFive;
 
-
-
+    //weird scoring
+    List<int> twoTriplesList = new List<int>();
+    List<int> fourOfAKindList = new List<int>();
+    List<int> fiveOfAKindList = new List<int>();
+    List<int> sixOfAKindList = new List<int>();
+    List<int> pairForFourOfAKindList = new List<int>();
+    //iterate over this list. subtract the variable
+    //.to string or maybe have a list of strings
+    //switch statement 
 
     public int activeButtonCount = 0;
 
@@ -55,6 +64,7 @@ public class TotalDiceHandler : MonoBehaviour
     void Awake()
     {
         buttonHander.SetActive(false);
+        
     }
 
     public void KeepDiceAndScore()
@@ -87,26 +97,156 @@ public class TotalDiceHandler : MonoBehaviour
         //SixOfAKind()
         //FiveOfAKind()
 
+        //have a list of kinds.
+        //if list count is >= 3 you have three of a kind
+        //if a button is pressed it subratcts or deletes the number that are the kind
+        //should each have a list or it just be numerical. if a number is greater than 3/ have a list for three of a kind
+        //have another list for five of a kind
+        //have a list for pairs
+        //or instead of having strings what if i got the literal numbers [6,5]
+        //so that list[0].ToString will equal 6 ... i dont think this will qork because im going to be passing it into a switch statment and it might be
+        //easier just to have it a string already
+        //case "six" //then subtract correstponding value from six
 
         switch (diceValue)
         {
             case 6:
                 six += 1;
+                if (six >= 2)
+                {
+                    pairForFourOfAKindList.Add(6);
+                }
+                if (six >= 3)
+                {
+                    twoTriplesList.Add(6);
+                }
+                if (six >= 4)
+                {
+                    fourOfAKindList.Add(6);
+                }
+                if (six >= 5)
+                {
+                    fiveOfAKindList.Add(6);
+                }
+                if (six >= 6)
+                {
+                    sixOfAKindList.Add(6);
+                }
                 break;
             case 5:
                 five += 1;
+                if (five >= 2)
+                {
+                    pairForFourOfAKindList.Add(five);
+                }
+                if (five >= 3)
+                {
+                    twoTriplesList.Add(five);
+                }
+                if (five >= 4)
+                {
+                    fourOfAKindList.Add(five);
+                }
+                if (five >= 5)
+                {
+                    fiveOfAKindList.Add(five);
+                }
+                if (five >= 6)
+                {
+                    sixOfAKindList.Add(five);
+                }
                 break;
             case 4:
                 four += 1;
+                if (four >= 2)
+                {
+                    pairForFourOfAKindList.Add(four);
+                }
+                if (four >= 3)
+                {
+                    twoTriplesList.Add(four);
+                }
+                if (four >= 4)
+                {
+                    fourOfAKindList.Add(four);
+                }
+                if (four >= 5)
+                {
+                    fiveOfAKindList.Add(four);
+                }
+                if (four >= 6)
+                {
+                    sixOfAKindList.Add(four);
+                }
                 break;
             case 3:
                 three += 1;
+                if (three >= 2)
+                {
+                    pairForFourOfAKindList.Add(three);
+                }
+                if (three >= 3)
+                {
+                    twoTriplesList.Add(three);
+                }
+                if (three >= 4)
+                {
+                    fourOfAKindList.Add(three);
+                }
+                if (three >= 5)
+                {
+                    fiveOfAKindList.Add(three);
+                }
+                if (three >= 6)
+                {
+                    sixOfAKindList.Add(three);
+                }
                 break;
             case 2:
                 two += 1;
+                if (two >= 2)
+                {
+                    pairForFourOfAKindList.Add(two);
+                }
+                if (two >= 3)
+                {
+                    twoTriplesList.Add(two);
+                }
+                if (two >= 4)
+                {
+                    fourOfAKindList.Add(two);
+                }
+                if (two >= 5)
+                {
+                    fiveOfAKindList.Add(two);
+                }
+                if (two >= 6)
+                {
+                    sixOfAKindList.Add(two);
+                }
                 break;
             case 1:
                 one += 1;
+                if (one >= 2)
+                {
+                    pairForFourOfAKindList.Add(one);
+                }
+                if (one >= 3)
+                {
+                    twoTriplesList.Add(one);
+                }
+                if (one >= 4)
+                {
+                    fourOfAKindList.Add(one);
+                }
+                if (one >= 5)
+                {
+                    fiveOfAKindList.Add(one);
+                }
+                if (one >= 6)
+                {
+                    sixOfAKindList.Add(one);
+                }
                 break;
             default:
                 Debug.Log("Danger");
@@ -213,6 +353,14 @@ public class TotalDiceHandler : MonoBehaviour
         KeepScoreAndEndRoundButton.SetActive(false);
         keepRollingButton.SetActive(false);
     }
+    public void SubtractThreePairs()
+    {
+
+    }
+    //public void SubtractSixOfAKind()
+    //{
+
+    //}
 
     public void ScoreReset()
     {
