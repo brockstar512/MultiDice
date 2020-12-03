@@ -55,6 +55,14 @@ public class Display : MonoBehaviour
         DisplayPlayer();
     }
 
+    public void DisplayScore()
+    {
+        //** CHANGE DISPLAYS NAME AND CHANCE NAMETRANSFER NAME
+        //I need to display score to make sure its properly being added. I should display total score
+        //I should add total score but keep track of score per round so in history they can have a breakdown
+        //PlayerData currentPlayer = NameTransfer.data.players[currentPlayerNum].totalScore;
+    }
+
     public void ReactivateDice()
     {
         //i could use the reset in die

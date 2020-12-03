@@ -9,7 +9,7 @@ public class playerController : MonoBehaviour
 
     private int currentNum = 0;
 
-
+    //is this running at all?*****
   //if player is not in play run this again
     public int PlayerCountController()
     {
@@ -23,6 +23,7 @@ public class playerController : MonoBehaviour
         {
             newPlayerNumber = currentNum + 1;
         }
+        //if player is not in maybe run again
         return newPlayerNumber;
     }
 
