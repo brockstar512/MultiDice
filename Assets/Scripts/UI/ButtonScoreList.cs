@@ -28,6 +28,12 @@ public class ButtonScoreList : MonoBehaviour
     public void TwoTriplets()
     {
         //2500
+        DeactivateButtons();
+        totalDiceHandler.SubtractTwoTriples();
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.score += 2500;
+        totalDiceHandler.Score();
+
     }
     //2
     public void OneToSixStraight()
@@ -48,31 +54,50 @@ public class ButtonScoreList : MonoBehaviour
     public void FourOfAkindWithPair()
     {
         //1500
-        //totalDiceHandler.
+        DeactivateButtons();
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.SubtractFourOfAKindListWithPair();
+        totalDiceHandler.score += 1500;
+        totalDiceHandler.Score();
     }
     //4
     public void ThreePairs()
     {
         //1500
+        DeactivateButtons();
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.SubtractThreePairs();
+        totalDiceHandler.score += 1500;
+        totalDiceHandler.Score();
     }
     //5
     public void SixOfAKind()
     {
         //3000
+        DeactivateButtons();
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.SubtractSixOfAKind();
+        totalDiceHandler.score += 3000;
+        totalDiceHandler.Score();
     }
     //6
     public void FiveOfAKind()
     {
         //2000
+        //
+        DeactivateButtons();
+        totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.SubtractFiveOfAKind();
+        totalDiceHandler.score += 2000;
+        totalDiceHandler.Score();
     }
     //7
     public void FourOfAKind()
     {
         //1000
         DeactivateButtons();
-        //totalDiceHandler.one--;
-        //figure out what i have as four of a kind
         totalDiceHandler.activeButtonCount = 0;
+        totalDiceHandler.SubtractFourOfAKind();
         totalDiceHandler.score += 1000;
         totalDiceHandler.Score();
     }
