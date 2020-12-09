@@ -17,8 +17,9 @@ public class TotalDiceHandler : MonoBehaviour
     public int five = 0;
     public int six = 0;
 
-
-
+    //add a game object that shows what score is that round so its [totalscore]+ score
+    public Text potentialPoints;
+    public ChangePlayerController changePlayerController;
 
     [SerializeField] GameObject buttonHander;
     [SerializeField] GameObject scoreRollButton;
@@ -58,7 +59,7 @@ public class TotalDiceHandler : MonoBehaviour
 
     public int activeButtonCount = 0;
 
-    public Display displayPlayerChanger;
+    public ChangePlayerController displayPlayerChanger;
 
     void Awake()
     {
@@ -247,7 +248,7 @@ public class TotalDiceHandler : MonoBehaviour
         //maybe do a switch for the more complicated buttons
         bool hasScored = false;
         Debug.Log("RUNNING SCORE");
-        
+        print("ASSESS WITH BUTTONS" + six + five + four + three + two + one);
 
         if (six >= 3 && activeButtonCount < 3)
         {
@@ -296,13 +297,14 @@ public class TotalDiceHandler : MonoBehaviour
         if (score > 0 && activeButtonCount == 0) { 
             Debug.Log("YOURE SCORE THIS ROUND IS " + score);
             totalScore += score;
-            Debug.Log("YOURE TOTAL SCORE IS" + totalScore);
+            
+            changePlayerController.PotentialPointsUIUpdate(totalScore);//this is adding all the total score to the UI after your done calculating the role
             ScoreReset();
         }
         else if(score <= 0 && activeButtonCount == 0 && !hasScored)
         {
+            
             Debug.Log("GAME OVER");
-
             GameOver();
             //be sure to make sure to make a function that will skip the player if he is out
             //also be sure that if player selects a die that will not generate point that is re awakens the die
@@ -314,25 +316,31 @@ public class TotalDiceHandler : MonoBehaviour
     public void GameOver()
     {
             buttonHander.SetActive(false);
-            Debug.Log("GAME OVER FUNCTION YOU LOST");
+            //Debug.Log("GAME OVER FUNCTION YOU LOST");
+            displayPlayerChanger.RolledNewScore(-1);
             displayPlayerChanger.NextPlayer();
             score = 0;
             totalScore = 0;
-        
     }
     public void KeepScoreNextRound()
     {
         //if you have enough point good! Otherwise game over for you
-        if (totalScore > 499){
+        if (totalScore > 100){
+            //should be 499
+            //add a variable that shows how the numbers are going to add if they keep going next to display score have a + total score that is this total score
+            displayPlayerChanger.RolledNewScore(totalScore);
+            totalScore = 0;//this will reset total score fo the next player
             displayPlayerChanger.NextPlayer();
             KeepScoreAndEndRoundButton.SetActive(false);
+            keepRollingButton.SetActive(false);
         }
         else{
             KeepScoreAndEndRoundButton.SetActive(false);
+            keepRollingButton.SetActive(false);
             GameOver();
         }
     }
-
+    
     public void KeepRolling()
     {
         KeepScoreAndEndRoundButton.SetActive(false);
@@ -355,10 +363,9 @@ public class TotalDiceHandler : MonoBehaviour
         Debug.Log("HERE IS SIX" + six);
         Debug.Log("YOURE SCORE Reset To  " + 0);
         score = 0;
-        if(totalScore > 499) { 
+        if(totalScore > 100) { 
             KeepScoreAndEndRoundButton.SetActive(true);
             keepRollingButton.SetActive(true);
-            //what i could do is hide dice when this unhides then, so this also hides them but the button shows them
         }
     }
 
@@ -629,13 +636,17 @@ public class TotalDiceHandler : MonoBehaviour
         }
         threePairsList.Clear();
     }
-
-
-    //private void hideDie()
+    //changePlayerController.PotentialPointsUIUpdate(totalScore);
+    //public void PotentialPointsUIUpdate()
     //{
-    //    //dont need this because its going to reactivate a lot of dice that i want sleeping
+    //    Debug.Log("-- 2 -- TOTAL SCORE IS RUNNING" + totalScore);//**
+    //    if (totalScore == 0) { potentialPoints.text = ""; }
+    //    else { potentialPoints.text = totalScore.ToString(); }
+    //    //this needs to run when the players switch and in game over
     //}
 
 
-
 }
+//keep rolling button
+
+//total potential score isn’t changing

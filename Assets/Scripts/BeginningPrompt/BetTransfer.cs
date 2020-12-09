@@ -17,10 +17,10 @@ public class BetTransfer : MonoBehaviour
     public void storeBet()
     {
         theBet = inputField.GetComponent<Text>().text;
-        NameTransfer.data.bet = theBet;
+        CurrentGame.data.bet = theBet;
 
         //activate the game and destroy everything else
-        Debug.Log(NameTransfer.data.bet);
+        Debug.Log(CurrentGame.data.bet);
 
         this.gameObject.SetActive(false);
         theGame.SetActive(true);

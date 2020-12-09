@@ -13,7 +13,7 @@ public class Display : MonoBehaviour
     //public float newRollScore;
     public Text currentName;
     public Text currentScore;
-
+    //thi acutal game objects
 
     //public string playerName;
     // Start is called before the first frame update

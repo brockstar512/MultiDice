@@ -10,7 +10,7 @@ public class ButtonController : MonoBehaviour
 
     [SerializeField] GameObject scoreButton;
     [SerializeField] GameObject endRoundButton;
-    public GameObject KeepScoreAndEndRoundButton;
+    //public GameObject KeepScoreAndEndRoundButton;
 
 
     void Awake()

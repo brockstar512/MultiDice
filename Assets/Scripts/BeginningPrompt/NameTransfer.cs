@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//display could be turn controller and name transfer could be called current game
+//this is attached to PromptList Controller
 public class NameTransfer : MonoBehaviour
 {
     public string theName;
-    public GameObject inputField;
-    public GameObject namePrompt;
-    public InputField textOfInput;
+    public GameObject inputField; //
+    public GameObject namePrompt; //
+    public InputField textOfInput; //
     
 
 
@@ -22,7 +24,7 @@ public class NameTransfer : MonoBehaviour
     [SerializeField] public static GameData data;
 
 
-    public GameObject promptListParent;
+    //public GameObject promptListParent;
 
     void Awake()
     {

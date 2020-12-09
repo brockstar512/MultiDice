@@ -12,7 +12,7 @@ public class ConfirmationList : MonoBehaviour
 
     private void RenderPlayerList()
     {
-        foreach (PlayerData playeritem in NameTransfer.data.players)
+        foreach (PlayerData playeritem in CurrentGame.data.players)
         {
             GameObject Player = Instantiate(playerListItemConfirmed) as GameObject;
             Player.SetActive(true);

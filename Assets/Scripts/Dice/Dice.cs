@@ -143,7 +143,7 @@ public class Dice : MonoBehaviour
         rb.useGravity = false; //this will allow it to flow before rolling the dice
         rb.isKinematic = false;
         // errorMessage.SetActive(false);
-          
+
     }
 
     public void ResetForNewPlayer()
@@ -175,7 +175,7 @@ public class Dice : MonoBehaviour
                 // this dice value in this script eqals the side value that is true
                 //in the array. this dice value eqauls the side value variable in that script
                 diceValue = side.sideValue;
-                //Debug.Log(diceValue + " has been rolled");
+                Debug.Log(diceValue + " has been rolled");
                 //diceValue and dice value is important
             }
         }
