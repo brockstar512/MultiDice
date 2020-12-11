@@ -20,7 +20,7 @@ public class BetTransfer : MonoBehaviour
         CurrentGame.data.bet = theBet;
 
         //activate the game and destroy everything else
-        Debug.Log(CurrentGame.data.bet);
+        //Debug.Log(CurrentGame.data.bet);
 
         this.gameObject.SetActive(false);
         theGame.SetActive(true);

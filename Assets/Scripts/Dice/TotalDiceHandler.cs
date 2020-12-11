@@ -76,8 +76,10 @@ public class TotalDiceHandler : MonoBehaviour
                 Scoring(die.diceValue);
                 //stops scoring dice that haven't veen selected this round
                 die.stay = false;
+                
             }
         }
+        ButtonTesting();
         //once this function is done iterating you want to cumulate score
         Score();
         scoreRollButton.SetActive(false);
@@ -87,6 +89,7 @@ public class TotalDiceHandler : MonoBehaviour
 
     private void Scoring(int diceValue)
     {
+        
 
         switch (diceValue)
         {
@@ -190,6 +193,7 @@ public class TotalDiceHandler : MonoBehaviour
                 two += 1;
                 if (two >= 2)
                 {
+                    Debug.Log("Adding something to the pair");
                     threePairsList.Add("two");
                     pairForFourOfAKindList.Add("two");
                 }
@@ -238,55 +242,128 @@ public class TotalDiceHandler : MonoBehaviour
                 Debug.Log("Danger");
                 break;
         }
-
+        
         print("here are the value selected"+six + five + four + three + two + one);
         
     }
 
+    private void ButtonTesting()
+    {
+        //if score has the correct numbers
+        //triple 6
+        //triple 5
+        //triple 4
+        //triple 3
+        //triple 3
+        //triple 1
+        //1tosix straght
+        one = 2;
+        two = 2;
+        three = 2;
+        four = 2;
+        five = 2;
+        //six = 2;
+    }
+
     public void Score()
     {
-        //maybe do a switch for the more complicated buttons
         bool hasScored = false;
-        Debug.Log("RUNNING SCORE");
-        print("ASSESS WITH BUTTONS" + six + five + four + three + two + one);
+        //Debug.Log("RUNNING SCORE");
+        print("ASSESS WITH BUTTONS" + "Six = "+ six + " Five = " + five + " Four = " + four + " Three = " + three + " Two = " + two + " One = " + one);
+        //1-six straight
+        if(one >= 1 && two >= 1 && three >= 1 && four >= 1 && five >= 1 && six >= 1&& activeButtonCount < 3)
+        {
+            Debug.Log("buttonTripleSix");
+            buttonOneToSixStraight.SetActive(true);
+            activeButtonCount++;
+        }
+        //TwoTriplets
+        if(twoTriplesList.Count >= 2 && activeButtonCount < 3)
+        {
+            Debug.Log("ButtonTwoTriplets");
+            buttonTwoTriplets.SetActive(true);
+            activeButtonCount++;
+        }
+        //FourOfAkindWithPair
+        if (pairForFourOfAKindList.Count >= 1 && fourOfAKindList.Count >= 1 && activeButtonCount < 3)
+        {
+            Debug.Log("buttonFourOfAkindWithPair");
+            buttonFourOfAkindWithPair.SetActive(true);
+            activeButtonCount++;
+        }
+        //ThreePairs
+        Debug.Log("Here is the pair " + threePairsList.Count);
+        if (threePairsList.Count >= 3 && activeButtonCount < 3)
+        {
+            Debug.Log("buttonThreePairs");
+            buttonThreePairs.SetActive(true);
+            activeButtonCount++;
+        }
+
+        if (sixOfAKindList.Count >=1 && activeButtonCount < 3)
+        {
+            Debug.Log("buttonSixOfAKind");
+            buttonSixOfAKind.SetActive(true);
+            activeButtonCount++;
+        }
+        if (fiveOfAKindList.Count >= 1 && activeButtonCount < 3)
+        {
+            Debug.Log("buttonFiveOfAKind");
+            buttonFiveOfAKind.SetActive(true);
+            activeButtonCount++;
+        }
+        if (fourOfAKindList.Count >= 1 && activeButtonCount < 3)
+        {
+            Debug.Log("buttonFourOfAKind");
+            buttonFourOfAKind.SetActive(true);
+            activeButtonCount++;
+        }
 
         if (six >= 3 && activeButtonCount < 3)
         {
+            Debug.Log("buttonTripleSix");
             buttonTripleSix.SetActive(true);
             activeButtonCount++;
         }
         if (five >= 3 && activeButtonCount < 3)
         {
+            Debug.Log("buttonTripleFive");
             buttonTripleFive.SetActive(true);
             activeButtonCount++;
         }
         if (four >= 3 && activeButtonCount < 3)
         {
+            Debug.Log("buttonTripleFour");
             buttonTripleFour.SetActive(true);
             activeButtonCount++;
         }
         if (three >= 3 && activeButtonCount < 3)
         {
+            Debug.Log("buttonTripleThree");
             buttonTripleThree.SetActive(true);
             activeButtonCount++;
         }
         if (one >= 3 && activeButtonCount < 3)
         {
+            Debug.Log("buttonTripleOnes");
             buttonTripleOnes.SetActive(true);
             activeButtonCount++;
         }
         if (two >= 3 && activeButtonCount < 3)
         {
+            Debug.Log("buttonTripleTwo");
             buttonTripleTwo.SetActive(true);
             activeButtonCount++;
         }
         if (one >= 1 && activeButtonCount < 3)
         {
+            Debug.Log("buttonSingleOne");
             buttonSingleOne.SetActive(true);
             activeButtonCount++;
         }
         if (five >= 1 && activeButtonCount < 3)
         {
+            Debug.Log("buttonSingleFive");
             buttonSingleFive.SetActive(true);
             activeButtonCount++;
         }
@@ -295,7 +372,7 @@ public class TotalDiceHandler : MonoBehaviour
 
 
         if (score > 0 && activeButtonCount == 0) { 
-            Debug.Log("YOURE SCORE THIS ROUND IS " + score);
+            //Debug.Log("YOURE SCORE THIS ROUND IS " + score);
             totalScore += score;
             
             changePlayerController.PotentialPointsUIUpdate(totalScore);//this is adding all the total score to the UI after your done calculating the role
@@ -350,18 +427,18 @@ public class TotalDiceHandler : MonoBehaviour
     public void ScoreReset()
     {
         one = 0;
-        Debug.Log("HERE IS ONE" + one);
+        //Debug.Log("HERE IS ONE" + one);
         two = 0;
-        Debug.Log("HERE IS TWO" + two);
+        //Debug.Log("HERE IS TWO" + two);
         three = 0;
-        Debug.Log("HERE IS THREE" + three);
+        //Debug.Log("HERE IS THREE" + three);
         four = 0;
-        Debug.Log("HERE IS FOUR" + four);
+        //Debug.Log("HERE IS FOUR" + four);
         five = 0;
-        Debug.Log("HERE IS FIVE" + five);
+        //Debug.Log("HERE IS FIVE" + five);
         six = 0;
-        Debug.Log("HERE IS SIX" + six);
-        Debug.Log("YOURE SCORE Reset To  " + 0);
+        //Debug.Log("HERE IS SIX" + six);
+        //Debug.Log("YOURE SCORE Reset To  " + 0);
         score = 0;
         if(totalScore > 100) { 
             KeepScoreAndEndRoundButton.SetActive(true);
@@ -647,6 +724,3 @@ public class TotalDiceHandler : MonoBehaviour
 
 
 }
-//keep rolling button
-
-//total potential score isn’t changing

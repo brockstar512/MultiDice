@@ -136,7 +136,7 @@ public class Dice : MonoBehaviour
 
     void Reset()
     {
-        Debug.Log("reset is played");
+        //Debug.Log("reset is played");
         transform.position = initPosition;//put back to its original popsition
         hasThrown = false;
         hasLanded = false;

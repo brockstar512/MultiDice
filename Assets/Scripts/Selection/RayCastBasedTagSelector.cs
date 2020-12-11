@@ -19,7 +19,7 @@ public class RayCastBasedTagSelector : MonoBehaviour, ISelector
 
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log(hit.transform.name);
+                //Debug.Log(hit.transform.name);
                 hit.transform.parent.gameObject.GetComponent<KeepDice>().ClickMe();
 
             }

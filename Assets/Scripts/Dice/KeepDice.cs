@@ -13,7 +13,7 @@ public class KeepDice : MonoBehaviour
 
     public void ClickMe()
     {
-        Debug.Log("Clicked me is clicked");
+        //Debug.Log("Clicked me is clicked");
         //var only has block scope
         var outlineSelected = GetComponent<Outline>();
         saveDice = !saveDice;

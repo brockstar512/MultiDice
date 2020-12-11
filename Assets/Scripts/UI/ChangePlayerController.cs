@@ -29,8 +29,8 @@ public class ChangePlayerController : MonoBehaviour
     public void DisplayPlayer()
     {
         DisplayScore();
-        Debug.Log(currentPlayerNum);
-        Debug.Log("DISPLAY PLAYER");
+        //Debug.Log(currentPlayerNum);
+        //Debug.Log("DISPLAY PLAYER");
         PlayerData currentPlayer = CurrentGame.data.players[currentPlayerNum];
         currentName.text = currentPlayer.playerName;
         //Debug.Log(currentPlayer.playerName);
@@ -40,7 +40,7 @@ public class ChangePlayerController : MonoBehaviour
     //if next player is not in recursively call this
     public void NextPlayer()
     {
-        Debug.Log("NEXT PLAYER");
+        //Debug.Log("NEXT PLAYER");
         if (currentPlayerNum < CurrentGame.data.players.Count - 1) { currentPlayerNum++; }
         else { currentPlayerNum = 0; }
         DisplayPlayer();
@@ -48,7 +48,7 @@ public class ChangePlayerController : MonoBehaviour
     }
     public void PreviousPlayer()
     {
-        Debug.Log("PREVIOUS PLAYER");
+        //Debug.Log("PREVIOUS PLAYER");
         //if need to check if they are still in play or not
         //maybe make a function that decreases until they find a player that is still in play
         if (currentPlayerNum > 0) { currentPlayerNum -= 1; }
@@ -58,7 +58,7 @@ public class ChangePlayerController : MonoBehaviour
 
     public void DisplayScore()
     {
-        Debug.Log("Display the new score");
+        //Debug.Log("Display the new score");
         PlayerData currentPlayer = CurrentGame.data.players[currentPlayerNum];
         currentScore.text = "Score: " + currentPlayer.totalScore.ToString();
         //
