@@ -47,7 +47,9 @@ public class TotalDiceHandler : MonoBehaviour
     public GameObject buttonTripleTwo;
     public GameObject buttonSingleOne;
     public GameObject buttonSingleFive;
-
+    //might need to change these to a dictionary
+    //lets say you have three two , its going to put the two in the pairs when it reaches 2 twos then again 3 twos.. so it will have two in the pairs twice
+    //im going to change it to equal instead of >= but consider changing to a dictionary
     //weird scoring
     List<string> threePairsList = new List<string>();
     List<string> twoTriplesList = new List<string>();
@@ -67,6 +69,11 @@ public class TotalDiceHandler : MonoBehaviour
         
     }
 
+    void Update()
+    {
+        Debug.Log("ASSESS WITH BUTTONS" + "Six = " + six + " Five = " + five + " Four = " + four + " Three = " + three + " Two = " + two + " One = " + one);
+        Debug.Log("ASSESS WITH BUTTONS" + "threePairsList = " + threePairsList.Count + " twoTriplesList = " + twoTriplesList.Count + " fourOfAKindList = " + fourOfAKindList.Count + " fiveOfAKindList = " + fiveOfAKindList.Count + " sixOfAKindList = " + sixOfAKindList.Count + "  pairForFourOfAKindList = " + pairForFourOfAKindList.Count);
+    }
     public void KeepDiceAndScore()
     {
         foreach (Dice die in totalDice)
@@ -79,7 +86,6 @@ public class TotalDiceHandler : MonoBehaviour
                 
             }
         }
-        ButtonTesting();
         //once this function is done iterating you want to cumulate score
         Score();
         scoreRollButton.SetActive(false);
@@ -89,180 +95,162 @@ public class TotalDiceHandler : MonoBehaviour
 
     private void Scoring(int diceValue)
     {
-        
+        //some reason some of the larger numbers go negative when I press the button. I think it had to do with the lists.
 
         switch (diceValue)
         {
             case 6:
                 six += 1;
-                if (six >= 2)
-                {
-                    threePairsList.Add("six");
-                    pairForFourOfAKindList.Add("six");
-                }
-                if (six >= 3)
-                {
-                    twoTriplesList.Add("six");
-                }
-                if (six >= 4)
-                {
-                    fourOfAKindList.Add("six");
-                }
-                if (six >= 5)
-                {
-                    fiveOfAKindList.Add("six");
-                }
-                if (six >= 6)
-                {
-                    sixOfAKindList.Add("six");
-                }
                 break;
             case 5:
                 five += 1;
-                if (five >= 2)
-                {
-                    threePairsList.Add("five");
-                    pairForFourOfAKindList.Add("five");
-                }
-                if (five >= 3)
-                {
-                    twoTriplesList.Add("five");
-                }
-                if (five >= 4)
-                {
-                    fourOfAKindList.Add("five");
-                }
-                if (five >= 5)
-                {
-                    fiveOfAKindList.Add("five");
-                }
-                if (five >= 6)
-                {
-                    sixOfAKindList.Add("five");
-                }
                 break;
             case 4:
                 four += 1;
-                if (four >= 2)
-                {
-                    threePairsList.Add("four");
-                    pairForFourOfAKindList.Add("four");
-                }
-                if (four >= 3)
-                {
-                    twoTriplesList.Add("four");
-                }
-                if (four >= 4)
-                {
-                    fourOfAKindList.Add("four");
-                }
-                if (four >= 5)
-                {
-                    fiveOfAKindList.Add("four");
-                }
-                if (four >= 6)
-                {
-                    sixOfAKindList.Add("four");
-                }
                 break;
             case 3:
                 three += 1;
-                if (three >= 2)
-                {
-                    threePairsList.Add("three");
-                    pairForFourOfAKindList.Add("three");
-                }
-                if (three >= 3)
-                {
-                    twoTriplesList.Add("three");
-                }
-                if (three >= 4)
-                {
-                    fourOfAKindList.Add("three");
-                }
-                if (three >= 5)
-                {
-                    fiveOfAKindList.Add("three");
-                }
-                if (three >= 6)
-                {
-                    sixOfAKindList.Add("three");
-                }
                 break;
             case 2:
                 two += 1;
-                if (two >= 2)
-                {
-                    Debug.Log("Adding something to the pair");
-                    threePairsList.Add("two");
-                    pairForFourOfAKindList.Add("two");
-                }
-                if (two >= 3)
-                {
-                    twoTriplesList.Add("two");
-                }
-                if (two >= 4)
-                {
-                    fourOfAKindList.Add("two");
-                }
-                if (two >= 5)
-                {
-                    fiveOfAKindList.Add("two");
-                }
-                if (two >= 6)
-                {
-                    sixOfAKindList.Add("two");
-                }
                 break;
             case 1:
                 one += 1;
-                if (one >= 2)
-                {
-                    threePairsList.Add("one");
-                    pairForFourOfAKindList.Add("one");
-                }
-                if (one >= 3)
-                {
-                    twoTriplesList.Add("one");
-                }
-                if (one >= 4)
-                {
-                    fourOfAKindList.Add("one");
-                }
-                if (one >= 5)
-                {
-                    fiveOfAKindList.Add("one");
-                }
-                if (one >= 6)
-                {
-                    sixOfAKindList.Add("one");
-                }
                 break;
             default:
                 Debug.Log("Danger");
                 break;
         }
-        
+        if (six == 2)
+        {
+            threePairsList.Add("six");
+            pairForFourOfAKindList.Add("six");
+        }
+        if (six == 3)
+        {
+            twoTriplesList.Add("six");
+        }
+        if (six == 4)
+        {
+            fourOfAKindList.Add("six");
+        }
+        if (six == 5)
+        {
+            fiveOfAKindList.Add("six");
+        }
+        if (six == 6)
+        {
+            sixOfAKindList.Add("six");
+        }
+        if (five == 2)
+        {
+            threePairsList.Add("five");
+            pairForFourOfAKindList.Add("five");
+        }
+        if (five == 3)
+        {
+            twoTriplesList.Add("five");
+        }
+        if (five == 4)
+        {
+            fourOfAKindList.Add("five");
+        }
+        if (five == 5)
+        {
+            fiveOfAKindList.Add("five");
+        }
+        if (five == 6)
+        {
+            sixOfAKindList.Add("five");
+        }
+        if (four == 2)
+        {
+            threePairsList.Add("four");
+            pairForFourOfAKindList.Add("four");
+        }
+        if (four == 3)
+        {
+            twoTriplesList.Add("four");
+        }
+        if (four == 4)
+        {
+            fourOfAKindList.Add("four");
+        }
+        if (four == 5)
+        {
+            fiveOfAKindList.Add("four");
+        }
+        if (four == 6)
+        {
+            sixOfAKindList.Add("four");
+        }
+        if (three == 2)
+        {
+            threePairsList.Add("three");
+            pairForFourOfAKindList.Add("three");
+        }
+        if (three == 3)
+        {
+            twoTriplesList.Add("three");
+        }
+        if (three == 4)
+        {
+            fourOfAKindList.Add("three");
+        }
+        if (three == 5)
+        {
+            fiveOfAKindList.Add("three");
+        }
+        if (three == 6)
+        {
+            sixOfAKindList.Add("three");
+        }
+        if (two == 2)
+        {
+            Debug.Log("Adding something to the pair");
+            threePairsList.Add("two");
+            pairForFourOfAKindList.Add("two");
+        }
+        if (two == 3)
+        {
+            twoTriplesList.Add("two");
+        }
+        if (two == 4)
+        {
+            fourOfAKindList.Add("two");
+        }
+        if (two == 5)
+        {
+            fiveOfAKindList.Add("two");
+        }
+        if (two == 6)
+        {
+            sixOfAKindList.Add("two");
+        }
+        if (one == 2)
+        {
+            threePairsList.Add("one");
+            pairForFourOfAKindList.Add("one");
+        }
+        if (one == 3)
+        {
+            twoTriplesList.Add("one");
+        }
+        if (one == 4)
+        {
+            fourOfAKindList.Add("one");
+        }
+        if (one == 5)
+        {
+            fiveOfAKindList.Add("one");
+        }
+        if (one == 6)
+        {
+            sixOfAKindList.Add("one");
+        }
+
         print("here are the value selected"+six + five + four + three + two + one);
         
-    }
-
-    private void ButtonTesting()
-    {
-        //if score has the correct numbers
-        //triple 6
-        //triple 5
-        //triple 4
-        //triple 3
-        //triple 3
-        //triple 1
-        //1tosix straght
-        one = 2;
-        two = 2;
-        three = 2;
-        four = 2;
-        five = 2;
-        //six = 2;
     }
 
     public void Score()
@@ -270,36 +258,30 @@ public class TotalDiceHandler : MonoBehaviour
         bool hasScored = false;
         //Debug.Log("RUNNING SCORE");
         print("ASSESS WITH BUTTONS" + "Six = "+ six + " Five = " + five + " Four = " + four + " Three = " + three + " Two = " + two + " One = " + one);
-        //1-six straight
         if(one >= 1 && two >= 1 && three >= 1 && four >= 1 && five >= 1 && six >= 1&& activeButtonCount < 3)
         {
             Debug.Log("buttonTripleSix");
             buttonOneToSixStraight.SetActive(true);
             activeButtonCount++;
         }
-        //TwoTriplets
         if(twoTriplesList.Count >= 2 && activeButtonCount < 3)
         {
             Debug.Log("ButtonTwoTriplets");
             buttonTwoTriplets.SetActive(true);
             activeButtonCount++;
         }
-        //FourOfAkindWithPair
         if (pairForFourOfAKindList.Count >= 1 && fourOfAKindList.Count >= 1 && activeButtonCount < 3)
         {
             Debug.Log("buttonFourOfAkindWithPair");
             buttonFourOfAkindWithPair.SetActive(true);
             activeButtonCount++;
         }
-        //ThreePairs
-        Debug.Log("Here is the pair " + threePairsList.Count);
         if (threePairsList.Count >= 3 && activeButtonCount < 3)
         {
             Debug.Log("buttonThreePairs");
             buttonThreePairs.SetActive(true);
             activeButtonCount++;
         }
-
         if (sixOfAKindList.Count >=1 && activeButtonCount < 3)
         {
             Debug.Log("buttonSixOfAKind");
@@ -318,7 +300,6 @@ public class TotalDiceHandler : MonoBehaviour
             buttonFourOfAKind.SetActive(true);
             activeButtonCount++;
         }
-
         if (six >= 3 && activeButtonCount < 3)
         {
             Debug.Log("buttonTripleSix");
@@ -367,14 +348,8 @@ public class TotalDiceHandler : MonoBehaviour
             buttonSingleFive.SetActive(true);
             activeButtonCount++;
         }
-        //if there are two of the same button?
-
-
-
         if (score > 0 && activeButtonCount == 0) { 
-            //Debug.Log("YOURE SCORE THIS ROUND IS " + score);
             totalScore += score;
-            
             changePlayerController.PotentialPointsUIUpdate(totalScore);//this is adding all the total score to the UI after your done calculating the role
             ScoreReset();
         }
@@ -389,7 +364,6 @@ public class TotalDiceHandler : MonoBehaviour
 
     }
 
-    //CREATE A FUNCTION THAT LETS YOU STOP ROLLING IF YOU WANT TO KEEP YOUR POINTS
     public void GameOver()
     {
             buttonHander.SetActive(false);
@@ -398,6 +372,7 @@ public class TotalDiceHandler : MonoBehaviour
             displayPlayerChanger.NextPlayer();
             score = 0;
             totalScore = 0;
+        ScoreReset();
     }
     public void KeepScoreNextRound()
     {
@@ -426,19 +401,21 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void ScoreReset()
     {
+        Debug.Log("Score reset is running");
+        //reset lists too
+        threePairsList.Clear();
+        twoTriplesList.Clear();
+        fourOfAKindList.Clear();
+        fiveOfAKindList.Clear();
+        sixOfAKindList.Clear();
+        pairForFourOfAKindList.Clear();
+
         one = 0;
-        //Debug.Log("HERE IS ONE" + one);
         two = 0;
-        //Debug.Log("HERE IS TWO" + two);
         three = 0;
-        //Debug.Log("HERE IS THREE" + three);
         four = 0;
-        //Debug.Log("HERE IS FOUR" + four);
         five = 0;
-        //Debug.Log("HERE IS FIVE" + five);
         six = 0;
-        //Debug.Log("HERE IS SIX" + six);
-        //Debug.Log("YOURE SCORE Reset To  " + 0);
         score = 0;
         if(totalScore > 100) { 
             KeepScoreAndEndRoundButton.SetActive(true);
@@ -713,14 +690,5 @@ public class TotalDiceHandler : MonoBehaviour
         }
         threePairsList.Clear();
     }
-    //changePlayerController.PotentialPointsUIUpdate(totalScore);
-    //public void PotentialPointsUIUpdate()
-    //{
-    //    Debug.Log("-- 2 -- TOTAL SCORE IS RUNNING" + totalScore);//**
-    //    if (totalScore == 0) { potentialPoints.text = ""; }
-    //    else { potentialPoints.text = totalScore.ToString(); }
-    //    //this needs to run when the players switch and in game over
-    //}
-
-
+    //I NEED TO RESET EVERY ROLL
 }
