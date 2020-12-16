@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,11 +20,11 @@ public class TotalDiceHandler : MonoBehaviour
     public int six = 0;
 
     //add a game object that shows what score is that round so its [totalscore]+ score
-    public Text potentialPoints;
-    public ChangePlayerController changePlayerController;
+    //public Text potentialPoints;
+    //public ChangePlayerController changePlayerController;
 
-    [SerializeField] GameObject buttonHander;
-    [SerializeField] GameObject scoreRollButton;
+    //[SerializeField] GameObject buttonHander;
+    //[SerializeField] GameObject scoreRollButton;
     [SerializeField] GameObject KeepScoreAndEndRoundButton;
     public GameObject keepRollingButton;
 
@@ -59,24 +60,33 @@ public class TotalDiceHandler : MonoBehaviour
     List<string> sixOfAKindList = new List<string>();
     List<string> pairForFourOfAKindList = new List<string>();
 
+    [Header(".Find GameObjects")]
+    GameObject display;//potential points is 1//4th child
+    //GetComponent<ChangePlayerController>().MyFunction();
+    GameObject scorePlusEndButtons;
+    //1st child
+
 
     public int activeButtonCount = 0;
 
-    public ChangePlayerController displayPlayerChanger;
+    public ChangePlayerController displayPlayerChanger;//this
 
     void Awake()
     {
-        buttonHander.SetActive(false);
-        
+        display = GameObject.Find("Display");
+        scorePlusEndButtons = GameObject.Find("ScorePlusEndButtons");
+        scorePlusEndButtons.SetActive(false);
     }
 
     void Update()
     {
+        //destroy the dice then run a function that runs the dice iterator
         //Debug.Log("ASSESS WITH BUTTONS" + "Six = " + six + " Five = " + five + " Four = " + four + " Three = " + three + " Two = " + two + " One = " + one);
         //Debug.Log("ASSESS WITH BUTTONS" + "threePairsList = " + threePairsList.Count + " twoTriplesList = " + twoTriplesList.Count + " fourOfAKindList = " + fourOfAKindList.Count + " fiveOfAKindList = " + fiveOfAKindList.Count + " sixOfAKindList = " + sixOfAKindList.Count + "  pairForFourOfAKindList = " + pairForFourOfAKindList.Count);
     }
     public void KeepDiceAndScore()
     {
+        Debug.Log("here is the length of total dice " + totalDice.Length);
         foreach (Dice die in totalDice)
         {
             if (die.stay)
@@ -89,9 +99,12 @@ public class TotalDiceHandler : MonoBehaviour
         }
         //once this function is done iterating you want to cumulate score
         Score();
-        scoreRollButton.SetActive(false);
-        buttonHander.SetActive(false);
+        //here
+        scorePlusEndButtons.transform.GetChild(1).gameObject.SetActive(false);
+        //scoreRollButton.SetActive(false);
+        scorePlusEndButtons.SetActive(false);
         ButtonController.somethingIsSelected = false;
+        //Array.Clear(totalDice, 0, totalDice.Length);
     }
 
     private void Scoring(int diceValue)
@@ -374,7 +387,8 @@ public class TotalDiceHandler : MonoBehaviour
         }
         if (score > 0 && activeButtonCount == 0) { 
             totalScore += score;
-            changePlayerController.PotentialPointsUIUpdate(totalScore);//this is adding all the total score to the UI after your done calculating the role
+            //changePlayerController.PotentialPointsUIUpdate(totalScore);//this is adding all the total score to the UI after your done calculating the role
+            display.GetComponent<ChangePlayerController>().PotentialPointsUIUpdate(totalScore);
             ScoreReset();
         }
         else if(score <= 0 && activeButtonCount == 0 && !hasScored)
@@ -390,7 +404,7 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void GameOver()
     {
-            buttonHander.SetActive(false);
+            scorePlusEndButtons.SetActive(false);
             //Debug.Log("GAME OVER FUNCTION YOU LOST");
             displayPlayerChanger.RolledNewScore(-1);
             displayPlayerChanger.NextPlayer();

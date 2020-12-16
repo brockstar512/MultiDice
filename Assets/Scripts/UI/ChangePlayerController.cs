@@ -34,8 +34,8 @@ public class ChangePlayerController : MonoBehaviour
         PlayerData currentPlayer = CurrentGame.data.players[currentPlayerNum];
         currentName.text = currentPlayer.playerName;
         //Debug.Log(currentPlayer.playerName);
-        ReactivateDice();
-        
+        //ReactivateDice();
+
     }
     //if next player is not in recursively call this
     public void NextPlayer()
@@ -44,6 +44,7 @@ public class ChangePlayerController : MonoBehaviour
         if (currentPlayerNum < CurrentGame.data.players.Count - 1) { currentPlayerNum++; }
         else { currentPlayerNum = 0; }
         DisplayPlayer();
+        ReactivateDice();
         PotentialPointsUIUpdate();//this is hiding the UI after you switch players
     }
     public void PreviousPlayer()
@@ -69,7 +70,7 @@ public class ChangePlayerController : MonoBehaviour
     }
 
 
-
+    //this is causing an error
     public void ReactivateDice()
     {
         //i could use the reset in die

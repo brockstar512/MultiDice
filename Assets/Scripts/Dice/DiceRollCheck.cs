@@ -7,7 +7,7 @@ public class DiceRollCheck : MonoBehaviour
     //this script goes on each trigger game object
     bool onGround;
     public int sideValue;
-    
+
 
     void OnTriggerStay(Collider col)
     {

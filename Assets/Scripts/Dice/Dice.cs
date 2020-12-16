@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Dice : MonoBehaviour
 {
-    Rigidbody rb;//will measure the velocity
+    Rigidbody rb;
+
+    //public Rigidbody rb;
 
     bool hasLanded;
     bool hasThrown;
-    //we need access to the dice value on all the children and we do that by creating an array
     
-    public bool stay; //if clicked this will destroy the dice
-    //this is important
+    public bool stay;
+
 
     Vector3 initPosition;//throw location
     [SerializeField] GameObject buttonController;
@@ -86,7 +87,6 @@ public class Dice : MonoBehaviour
         {//error roll
             //errorMessage.SetActive(true);
             RollAgain();
-            //it might be good to add a message so it doesn't look like a glitch
         }
 
 
@@ -107,7 +107,7 @@ public class Dice : MonoBehaviour
         KeepScoreAndEndRoundButton.SetActive(false);
         //this function rolls the dice. if it has not landed and if it has not landed.
         //it make it gives the item gravity and a torque to throw it
-        if (!hasThrown && !hasLanded)//if it has not been thrown and is not landed roll
+        if (!hasThrown && !hasLanded)
         {
             hasThrown = true;
             rb.useGravity= true;//now it will fall
@@ -136,7 +136,7 @@ public class Dice : MonoBehaviour
 
     void Reset()
     {
-        //Debug.Log("reset is played");
+        
         transform.position = initPosition;//put back to its original popsition
         hasThrown = false;
         hasLanded = false;
@@ -160,7 +160,8 @@ public class Dice : MonoBehaviour
         Reset();
         hasThrown = true;
         rb.useGravity= true;//now it will fall
-        rb.AddTorque(Random.Range(0,500),Random.Range(0,500),Random.Range(0,500));// THIS IS THE ACCELEROMETER VARIABLE
+
+        rb.AddTorque(Random.Range(0,500),Random.Range(0,500),Random.Range(0,500));;// THIS IS THE ACCELEROMETER VARIABLE
     }
 
     void SideValueCheck()
