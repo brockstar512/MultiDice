@@ -19,18 +19,14 @@ public class TotalDiceHandler : MonoBehaviour
     public int five = 0;
     public int six = 0;
 
-    //add a game object that shows what score is that round so its [totalscore]+ score
     //public Text potentialPoints;
     //public ChangePlayerController changePlayerController;
 
-    //[SerializeField] GameObject buttonHander;
-    //[SerializeField] GameObject scoreRollButton;
+    [SerializeField] GameObject scoreRollButton;
     [SerializeField] GameObject KeepScoreAndEndRoundButton;
-    public GameObject keepRollingButton;
+    public GameObject keepRollingButton;    
 
-    //keep score and continue// i should get this out of the parent button object...
-    //this should be active when you score point and you don't have any button children available. and total score is above a certain threshold
-    
+
 
     [Header("Score Buttons")]
     public GameObject buttonParent;
@@ -49,10 +45,8 @@ public class TotalDiceHandler : MonoBehaviour
     public GameObject buttonTripleTwo;
     public GameObject buttonSingleOne;
     public GameObject buttonSingleFive;
-    //might need to change these to a dictionary
-    //lets say you have three two , its going to put the two in the pairs when it reaches 2 twos then again 3 twos.. so it will have two in the pairs twice
-    //im going to change it to equal instead of >= but consider changing to a dictionary
-    //weird scoring
+
+
     List<string> threePairsList = new List<string>();
     List<string> twoTriplesList = new List<string>();
     List<string> fourOfAKindList = new List<string>();
@@ -61,10 +55,9 @@ public class TotalDiceHandler : MonoBehaviour
     List<string> pairForFourOfAKindList = new List<string>();
 
     [Header(".Find GameObjects")]
-    GameObject display;//potential points is 1//4th child
-    //GetComponent<ChangePlayerController>().MyFunction();
-    GameObject scorePlusEndButtons;
-    //1st child
+    GameObject display;
+
+
 
 
     public int activeButtonCount = 0;
@@ -74,16 +67,10 @@ public class TotalDiceHandler : MonoBehaviour
     void Awake()
     {
         display = GameObject.Find("Display");
-        scorePlusEndButtons = GameObject.Find("ScorePlusEndButtons");
-        scorePlusEndButtons.SetActive(false);
+        displayPlayerChanger = display.GetComponent<ChangePlayerController>();
+        KeepScoreAndEndRoundButton.SetActive(false);
     }
 
-    void Update()
-    {
-        //destroy the dice then run a function that runs the dice iterator
-        //Debug.Log("ASSESS WITH BUTTONS" + "Six = " + six + " Five = " + five + " Four = " + four + " Three = " + three + " Two = " + two + " One = " + one);
-        //Debug.Log("ASSESS WITH BUTTONS" + "threePairsList = " + threePairsList.Count + " twoTriplesList = " + twoTriplesList.Count + " fourOfAKindList = " + fourOfAKindList.Count + " fiveOfAKindList = " + fiveOfAKindList.Count + " sixOfAKindList = " + sixOfAKindList.Count + "  pairForFourOfAKindList = " + pairForFourOfAKindList.Count);
-    }
     public void KeepDiceAndScore()
     {
         Debug.Log("here is the length of total dice " + totalDice.Length);
@@ -97,14 +84,21 @@ public class TotalDiceHandler : MonoBehaviour
                 Debug.Log(" here is what the dice is registering as  = "+die.diceValue);
             }
         }
-        //once this function is done iterating you want to cumulate score
         Score();
-        //here
-        scorePlusEndButtons.transform.GetChild(1).gameObject.SetActive(false);
-        //scoreRollButton.SetActive(false);
-        scorePlusEndButtons.SetActive(false);
+
+        //scorePlusEndButtons.transform.GetChild(1).gameObject.SetActive(false);
+        scoreRollButton.SetActive(false);
+        //scorePlusEndButtons.SetActive(false);
         ButtonController.somethingIsSelected = false;
-        //Array.Clear(totalDice, 0, totalDice.Length);
+        //**figure out what is the end round button and when is the keep score buttons
+
+        //end round after i roll
+        //if something is selected end round turns off and score is active
+        //once you click score roll, score roll should turn off and when
+        //scoring is done you have end round and keep score button if are are more than X and the
+        //other button is keep rolling
+
+
     }
 
     private void Scoring(int diceValue)
@@ -135,19 +129,7 @@ public class TotalDiceHandler : MonoBehaviour
                 Debug.Log("Danger");
                 break;
         }
-        //Debug.Log("ASSESS WITH BUTTONS" + "Six = " + six + " Five = " + five + " Four = " + four + " Three = " + three + " Two = " + two + " One = " + one);
-
-        //do it this way but also make sure there's a boolean to prevent it from being duplicated
-        //or run a for loop that remove duplicate values
-        //1. use dictionary becuase I want them to be uniqe, but 2 use list because I want to remove them by there odrer so i can subract the number
-        // i and j iteration at the end for each weird button
-        //might move this to scoring
-
-        //**EITHER MAKE THIS A SWITCH BECAUSE SWITCHES ARE LITERAL or move this if to score()
-        //i could have a method at the end of each switch that takes in a number and calculates it
-        //i think the eaqsiest would be do the if statement in the scoreing and run the duplicate function just in case
-        //i dont want a switch because the numbers have to be literal so I can t do >= to and its going to break out
-        //before it get t the lower weird point systen
+        //this is a different function?
         if (six >= 2)
         {
             threePairsList.Add("six");
@@ -160,6 +142,7 @@ public class TotalDiceHandler : MonoBehaviour
         if (six >= 4)
         {
             fourOfAKindList.Add("six");
+            pairForFourOfAKindList.Remove("six");
         }
         if (six >= 5)
         {
@@ -181,6 +164,7 @@ public class TotalDiceHandler : MonoBehaviour
         if (five >= 4)
         {
             fourOfAKindList.Add("five");
+            pairForFourOfAKindList.Remove("five");
         }
         if (five >= 5)
         {
@@ -202,6 +186,7 @@ public class TotalDiceHandler : MonoBehaviour
         if (four >= 4)
         {
             fourOfAKindList.Add("four");
+            pairForFourOfAKindList.Remove("four");
         }
         if (four == 5)
         {
@@ -223,6 +208,7 @@ public class TotalDiceHandler : MonoBehaviour
         if (three >= 4)
         {
             fourOfAKindList.Add("three");
+            pairForFourOfAKindList.Remove("three");
         }
         if (three >= 5)
         {
@@ -244,6 +230,7 @@ public class TotalDiceHandler : MonoBehaviour
         if (two >= 4)
         {
             fourOfAKindList.Add("two");
+            pairForFourOfAKindList.Remove("two");
         }
         if (two >= 5)
         {
@@ -265,6 +252,8 @@ public class TotalDiceHandler : MonoBehaviour
         if (one >= 4)
         {
             fourOfAKindList.Add("one");
+            pairForFourOfAKindList.Remove("one");
+
         }
         if (one >= 5)
         {
@@ -279,6 +268,11 @@ public class TotalDiceHandler : MonoBehaviour
 
         //print("here are the value selected"+six + five + four + three + two + one);
     }
+    //private void WeirdButtonPairing()
+    //{
+    //run this function when you subract the buttons
+    //it might leave the subract weird button function redundant but 
+    //}
 
     public void Score()
     {
@@ -307,6 +301,8 @@ public class TotalDiceHandler : MonoBehaviour
             buttonTwoTriplets.SetActive(true);
             activeButtonCount++;
         }
+        //figure out how to handle this... if you have four of a kind you will have the same number as a pair too
+        //what if where its sorting four of a kind list ut renices us as a pair from the list
         if (pairForFourOfAKindList.Count >= 1 && fourOfAKindList.Count >= 1 && activeButtonCount < 3)
         {
             //Debug.Log("buttonFourOfAkindWithPair");
@@ -397,18 +393,18 @@ public class TotalDiceHandler : MonoBehaviour
             Debug.Log("GAME OVER");
             GameOver();
             //be sure to make sure to make a function that will skip the player if he is out
-            //also be sure that if player selects a die that will not generate point that is re awakens the die
         }
 
     }
 
     public void GameOver()
-    {
-            scorePlusEndButtons.SetActive(false);
-            //Debug.Log("GAME OVER FUNCTION YOU LOST");
-            displayPlayerChanger.RolledNewScore(-1);
-            displayPlayerChanger.NextPlayer();
-            score = 0;
+    {//working on here right now
+            KeepScoreAndEndRoundButton.SetActive(false);
+        displayPlayerChanger.RolledNewScore(-1);
+        //display.GetComponent<ChangePlayerController>().RolledNewScore(-1);
+        displayPlayerChanger.NextPlayer();
+        //display.GetComponent<ChangePlayerController>().NextPlayer();
+        score = 0;
             totalScore = 0;
         ScoreReset();
     }
@@ -514,6 +510,8 @@ public class TotalDiceHandler : MonoBehaviour
         twoTriplesList.Clear();
 
     }
+    //i need to make a function that removes the corresponding numbers out of the lower lists
+    //maybe clear the buttons and run the function that figures out the lists again in a seperate function
     public void SubtractSixOfAKind()
     {
         switch(sixOfAKindList[0])
@@ -630,6 +628,8 @@ public class TotalDiceHandler : MonoBehaviour
         {
             case "six":
                 six -= 4;
+                //threePairsList.Remove(six);
+                //i could do this but its more effective to do it the other way. where I run the button function agauin
                 break;
             case "five":
                 five -= 4;
@@ -729,6 +729,25 @@ public class TotalDiceHandler : MonoBehaviour
         threePairsList.Clear();
     }
 
+    public void AWeirdButtonWasPressed( string valueToTakeOut)
+    {
+        foreach(string dieValue in threePairsList)
+        {
+            if(dieValue == valueToTakeOut) { threePairsList.Remove(valueToTakeOut); }
+            //seems like I could just remove() method
+        }
+        //threePairsList
+        //twoTriplesList
+        //fourOfAKindList
+        //fiveOfAKindList
+        //sixOfAKindList
+        //pairForFourOfAKindList
+        //
+        //when five of a kind is pressed i need to take out that same number out of the pair and four of a kind
+    }
 
-    //I NEED TO RESET EVERY ROLL
+   public void NextPlayer()
+    {
+        //display
+    }
 }

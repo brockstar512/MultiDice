@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ChangePlayerController : MonoBehaviour
 {
     [Header("Dice and point reset")]
+    public GameObject buttonAndDicePrefab;
+    public GameObject diceParent;
     public int currentPlayerNum;
     //public float scoreRound;
     //public float totalScore;
@@ -73,12 +75,25 @@ public class ChangePlayerController : MonoBehaviour
     //this is causing an error
     public void ReactivateDice()
     {
+        //delete whats in gameSpace
+        Destroy(diceParent.transform.GetChild(0).gameObject);
+        //GameObject currentDice = (GameObject)Instantiate(buttonAndDicePrefab);
+        GameObject currentDiceGroup = Instantiate(buttonAndDicePrefab, transform.position, Quaternion.identity, diceParent.transform) as GameObject;
+        //GameObject currentDiceGroup = Instantiate(buttonAndDicePrefab) as GameObject;
+        //currentDiceGroup.gameObject.transform.position = new Vector3(0, 0, 0);
+        //currentDiceGroup.transform.SetParent(diceParent.transform);
+        //currentDiceGroup.transform.localRotation = Quaternion.identity;
+         
+        //currentDice.transform.parent = gameObject.transform;
+
+        //Instantiate(Object original, Vector3 position, Quaternion rotation, Transform parent);
+
         //i could use the reset in die
-        foreach (Dice die in totalDice)
-        {
-            //reset the location too
-            die.ResetForNewPlayer();
-        }
+        //foreach (Dice die in totalDice)
+        //{
+        //    //reset the location too
+        //    die.ResetForNewPlayer();
+        //}
     }
 
     public void RolledNewScore(int newPoints)

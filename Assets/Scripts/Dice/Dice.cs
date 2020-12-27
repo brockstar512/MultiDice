@@ -12,11 +12,11 @@ public class Dice : MonoBehaviour
     bool hasThrown;
     
     public bool stay;
+    
 
-
-    Vector3 initPosition;//throw location
+    [SerializeField] Vector3 initPosition;//throw location
     [SerializeField] GameObject buttonController;
-    [SerializeField] GameObject errorMessage;
+    //[SerializeField] GameObject errorMessage;
 
 
     private float timePressed;
@@ -36,14 +36,15 @@ public class Dice : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         initPosition = transform.position;
+        
         rb.useGravity= false;//this will not have gravity at the start so it won't automatically fall but it will have kinetamic so it wont slide around  
         rb.isKinematic = true;
-        errorMessage.SetActive(false);
+        //errorMessage.SetActive(false);//this was active
 
         //trying to get rid of the button handler in the beginning until the buttons land
         buttonController.SetActive(false);
-
-
+        //might need to find this on awake
+        //**this should be hte end round and keep score bttons
 
     }
 
