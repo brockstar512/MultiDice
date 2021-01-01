@@ -20,6 +20,7 @@ public class ButtonScoreList : MonoBehaviour
         DeactivateButtons();//deactivates all buttons
         totalDiceHandler.one--;
         totalDiceHandler.activeButtonCount = 0;//zeroes out which buttons are active
+        totalDiceHandler.diceLeft--;
         totalDiceHandler.Score();//rerencer the buttons
     }
     //
@@ -32,6 +33,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.SubtractTwoTriples();
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.score += 2500;
+        totalDiceHandler.diceLeft-=6;
         totalDiceHandler.Score();
 
     }
@@ -48,6 +50,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.six--;
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.score += 1500;
+        totalDiceHandler.diceLeft -= 6;
         totalDiceHandler.Score();
     }
     //3
@@ -58,6 +61,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.SubtractFourOfAKindListWithPair();
         totalDiceHandler.score += 1500;
+        totalDiceHandler.diceLeft -= 6;
         totalDiceHandler.Score();
     }
     //4
@@ -68,6 +72,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.SubtractThreePairs();
         totalDiceHandler.score += 1500;
+        totalDiceHandler.diceLeft -= 6;
         totalDiceHandler.Score();
     }
     //5
@@ -78,6 +83,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.SubtractSixOfAKind();
         totalDiceHandler.score += 3000;
+        totalDiceHandler.diceLeft -= 6;
         totalDiceHandler.Score();
     }
     //6
@@ -89,6 +95,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.SubtractFiveOfAKind();
         totalDiceHandler.score += 2000;
+        totalDiceHandler.diceLeft -= 5;
         totalDiceHandler.Score();
     }
     //7
@@ -99,6 +106,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.SubtractFourOfAKind();
         totalDiceHandler.score += 1000;
+        totalDiceHandler.diceLeft -= 4;
         totalDiceHandler.Score();
     }
     //8
@@ -109,6 +117,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.six-=3;
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.score += 600;
+        totalDiceHandler.diceLeft -= 3;
         totalDiceHandler.Score();
     }
     //9
@@ -119,6 +128,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.five-=3;
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.score += 500;
+        totalDiceHandler.diceLeft -= 3;
         totalDiceHandler.Score();
     }
     //10
@@ -129,6 +139,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.four-=3;
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.score += 400;
+        totalDiceHandler.diceLeft -= 3;
         totalDiceHandler.Score();
     }
     //11
@@ -139,6 +150,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.three-=3;
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.score += 300;
+        totalDiceHandler.diceLeft -= 3;
         totalDiceHandler.Score();
     }
     //12
@@ -149,6 +161,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.one-=3;
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.score += 300;
+        totalDiceHandler.diceLeft -= 3;
         totalDiceHandler.Score();
     }
     //13
@@ -159,6 +172,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.two-=3;
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.score += 200;
+        totalDiceHandler.diceLeft -= 3;
         totalDiceHandler.Score();
     }
     //14
@@ -169,6 +183,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.one--;
         totalDiceHandler.activeButtonCount = 0;
         totalDiceHandler.score += 100;
+        totalDiceHandler.diceLeft -= 1;
         totalDiceHandler.Score();
     }
     //15
@@ -179,6 +194,7 @@ public class ButtonScoreList : MonoBehaviour
         totalDiceHandler.five--;
         totalDiceHandler.activeButtonCount = 0;//zeroes out which buttons are active
         totalDiceHandler.score += 50;
+        totalDiceHandler.diceLeft -= 1;
         totalDiceHandler.Score();//rerencer the buttons
     }
 

@@ -5,20 +5,11 @@ using UnityEngine;
 public class ButtonController : MonoBehaviour
 {
 
-    //static bool that checkif if any of the dice switch it on
     public static bool somethingIsSelected = false;
 
     [SerializeField] GameObject scoreButton;
     [SerializeField] GameObject endRoundButton;
-    //public GameObject KeepScoreAndEndRoundButton;
 
-
-    void Awake()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (somethingIsSelected)
@@ -26,14 +17,12 @@ public class ButtonController : MonoBehaviour
             //Debug.Log("ON");
             scoreButton.SetActive(true);
             endRoundButton.SetActive(false);
-            //KeepScoreAndEndRoundButton.SetActive(false);
         }
         else
         {
             //Debug.Log("OFF");
             endRoundButton.SetActive(true);
             scoreButton.SetActive(false);
-            //KeepScoreAndEndRoundButton.SetActive(false);
         }
     }
 }

@@ -631,6 +631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d563a564808bc4ad98c5940db002f296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilt: {x: 0, y: 0, z: 0}
+  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -2847,6 +2849,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d563a564808bc4ad98c5940db002f296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilt: {x: 0, y: 0, z: 0}
+  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -4052,7 +4056,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3709907928139061230}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.0245972, y: 0.21221161, z: 1.3917878}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5450,9 +5454,13 @@ MonoBehaviour:
   four: 0
   five: 0
   six: 0
+  diceLeft: 0
+  endRoundButton: {fileID: 5826688169621759115}
   scoreRollButton: {fileID: 9157112005197976072}
   KeepScoreAndEndRoundButton: {fileID: 3165583251313010801}
   keepRollingButton: {fileID: 1937334002205457931}
+  diceSingle: {fileID: 8839136392646210184, guid: e7f68692d4fcf4c49a3954568b53fb3f,
+    type: 3}
   buttonParent: {fileID: 5169956679234444320}
   buttonTwoTriplets: {fileID: 1956557364745701785}
   buttonOneToSixStraight: {fileID: 7351801431071818335}
@@ -6876,6 +6884,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d563a564808bc4ad98c5940db002f296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilt: {x: 0, y: 0, z: 0}
+  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -7102,6 +7112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d563a564808bc4ad98c5940db002f296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilt: {x: 0, y: 0, z: 0}
+  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -7627,6 +7639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d563a564808bc4ad98c5940db002f296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilt: {x: 0, y: 0, z: 0}
+  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -8768,6 +8782,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d563a564808bc4ad98c5940db002f296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilt: {x: 0, y: 0, z: 0}
+  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -9452,6 +9468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d563a564808bc4ad98c5940db002f296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilt: {x: 0, y: 0, z: 0}
+  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}

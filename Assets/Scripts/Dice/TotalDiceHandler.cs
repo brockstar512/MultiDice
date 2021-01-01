@@ -7,9 +7,18 @@ using System.Linq;
 
 public class TotalDiceHandler : MonoBehaviour
 {
+    //things to do
+    //-what to do if they choose a die that does not count for anything... if they have more than one instantiate a new die
+    //-delete a player fro the player list in the beginning... this might be a later thing
+    //-allowing the phone to roll the dice with the gyroscope
+    //-figure out how to determines who wins
+    //-figure out how to subtract score for people who farkle three times in a row
+    //-figure out messageing system
+
     public int totalScore;
     List<int> diceSelected = new List<int>();
     public Dice[] totalDice;
+    //public List<Dice> totalDice2;
     static public bool roundOver = false;
     public int score = 0;
     public int one = 0;
@@ -18,14 +27,18 @@ public class TotalDiceHandler : MonoBehaviour
     public int four = 0;
     public int five = 0;
     public int six = 0;
+    public int diceLeft = 0;//this is for false selection
+
+
 
     //public Text potentialPoints;
     //public ChangePlayerController changePlayerController;
-
+    public GameObject endRoundButton;
     [SerializeField] GameObject scoreRollButton;
     [SerializeField] GameObject KeepScoreAndEndRoundButton;
-    public GameObject keepRollingButton;    
+    public GameObject keepRollingButton;
 
+    public GameObject diceSingle;
 
 
     [Header("Score Buttons")]
@@ -73,7 +86,6 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void KeepDiceAndScore()
     {
-        Debug.Log("here is the length of total dice " + totalDice.Length);
         foreach (Dice die in totalDice)
         {
             if (die.stay)
@@ -82,29 +94,17 @@ public class TotalDiceHandler : MonoBehaviour
                 //stops scoring dice that haven't veen selected this round
                 die.stay = false;
                 Debug.Log(" here is what the dice is registering as  = "+die.diceValue);
+                diceLeft++;
             }
         }
         Score();
-
-        //scorePlusEndButtons.transform.GetChild(1).gameObject.SetActive(false);
         scoreRollButton.SetActive(false);
-        //scorePlusEndButtons.SetActive(false);
         ButtonController.somethingIsSelected = false;
-        //**figure out what is the end round button and when is the keep score buttons
-
-        //end round after i roll
-        //if something is selected end round turns off and score is active
-        //once you click score roll, score roll should turn off and when
-        //scoring is done you have end round and keep score button if are are more than X and the
-        //other button is keep rolling
-
-
+        endRoundButton.transform.parent.gameObject.SetActive(false);
     }
 
     private void Scoring(int diceValue)
     {
-        //some reason some of the larger numbers go negative when I press the button. I think it had to do with the lists.
-
         switch (diceValue)
         {
             case 6:
@@ -129,7 +129,6 @@ public class TotalDiceHandler : MonoBehaviour
                 Debug.Log("Danger");
                 break;
         }
-        //this is a different function?
         if (six >= 2)
         {
             threePairsList.Add("six");
@@ -263,28 +262,18 @@ public class TotalDiceHandler : MonoBehaviour
         {
             sixOfAKindList.Add("one");
         }
-        //***********************************
-        //
-
-        //print("here are the value selected"+six + five + four + three + two + one);
     }
-    //private void WeirdButtonPairing()
-    //{
-    //run this function when you subract the buttons
-    //it might leave the subract weird button function redundant but 
-    //}
+
 
     public void Score()
     {
-        //i dont want a switch because the numbers have to be literal so I can t do >= to and its going to break out
-        //before it get t the lower weird point systen
+        //need to check for of a if with a pair... pair might be read as whats in four of a kind
         threePairsList = threePairsList.Distinct().ToList();
         twoTriplesList = twoTriplesList.Distinct().ToList();
         fourOfAKindList = fourOfAKindList.Distinct().ToList();
         fiveOfAKindList = fiveOfAKindList.Distinct().ToList();
         sixOfAKindList = sixOfAKindList.Distinct().ToList();
         pairForFourOfAKindList = pairForFourOfAKindList.Distinct().ToList();
-
 
         bool hasScored = false;
         //Debug.Log("RUNNING SCORE");
@@ -297,12 +286,9 @@ public class TotalDiceHandler : MonoBehaviour
         }
         if(twoTriplesList.Count >= 2 && activeButtonCount < 3)
         {
-            //Debug.Log("ButtonTwoTriplets");
             buttonTwoTriplets.SetActive(true);
             activeButtonCount++;
         }
-        //figure out how to handle this... if you have four of a kind you will have the same number as a pair too
-        //what if where its sorting four of a kind list ut renices us as a pair from the list
         if (pairForFourOfAKindList.Count >= 1 && fourOfAKindList.Count >= 1 && activeButtonCount < 3)
         {
             //Debug.Log("buttonFourOfAkindWithPair");
@@ -383,8 +369,16 @@ public class TotalDiceHandler : MonoBehaviour
         }
         if (score > 0 && activeButtonCount == 0) { 
             totalScore += score;
-            //changePlayerController.PotentialPointsUIUpdate(totalScore);//this is adding all the total score to the UI after your done calculating the role
             display.GetComponent<ChangePlayerController>().PotentialPointsUIUpdate(totalScore);
+            Debug.Log("bring back the dice that did not account for anything");
+            if (diceLeft > 0 && score > 0)
+            {
+                addSingleDice(diceLeft);
+                //this instantiated dice needs to be added to the array
+                //can i return something in singleDice that i can add to an array too
+                //totalDice.Add(addSingleDice(diceLeft));
+                diceLeft = 0;
+            }
             ScoreReset();
         }
         else if(score <= 0 && activeButtonCount == 0 && !hasScored)
@@ -392,20 +386,17 @@ public class TotalDiceHandler : MonoBehaviour
             
             Debug.Log("GAME OVER");
             GameOver();
-            //be sure to make sure to make a function that will skip the player if he is out
         }
 
     }
 
     public void GameOver()
-    {//working on here right now
-            KeepScoreAndEndRoundButton.SetActive(false);
+    {
+        KeepScoreAndEndRoundButton.SetActive(false);
         displayPlayerChanger.RolledNewScore(-1);
-        //display.GetComponent<ChangePlayerController>().RolledNewScore(-1);
         displayPlayerChanger.NextPlayer();
-        //display.GetComponent<ChangePlayerController>().NextPlayer();
         score = 0;
-            totalScore = 0;
+        totalScore = 0;
         ScoreReset();
     }
     public void KeepScoreNextRound()
@@ -413,9 +404,8 @@ public class TotalDiceHandler : MonoBehaviour
         //if you have enough point good! Otherwise game over for you
         if (totalScore > 100){
             //should be 499
-            //add a variable that shows how the numbers are going to add if they keep going next to display score have a + total score that is this total score
             displayPlayerChanger.RolledNewScore(totalScore);
-            totalScore = 0;//this will reset total score fo the next player
+            totalScore = 0;
             displayPlayerChanger.NextPlayer();
             KeepScoreAndEndRoundButton.SetActive(false);
             keepRollingButton.SetActive(false);
@@ -426,12 +416,30 @@ public class TotalDiceHandler : MonoBehaviour
             GameOver();
         }
     }
-    
+
+    public void addSingleDice( int dicePutBack)
+    {
+        while(dicePutBack > 0)
+        { 
+            GameObject newDie = Instantiate(diceSingle, transform.position, Quaternion.identity, this.gameObject.transform) as GameObject;
+            //totalDice.Add(newDie.transform.GetChild(0).GetComponent<Dice>());//add instantiated dice to array..whenever i destroy the dice i also need to remove it from the array
+            //i need to change the array to a list
+            dicePutBack--;
+        }
+    }
+
     public void KeepRolling()
     {
         KeepScoreAndEndRoundButton.SetActive(false);
         keepRollingButton.SetActive(false);
+        if(this.gameObject.transform.childCount == 0)
+        {
+            Debug.Log("Reactivate dice");
+            display.GetComponent<ChangePlayerController>().ReactivateDice();
+        }
     }
+
+    
 
     public void ScoreReset()
     {
@@ -510,8 +518,6 @@ public class TotalDiceHandler : MonoBehaviour
         twoTriplesList.Clear();
 
     }
-    //i need to make a function that removes the corresponding numbers out of the lower lists
-    //maybe clear the buttons and run the function that figures out the lists again in a seperate function
     public void SubtractSixOfAKind()
     {
         switch(sixOfAKindList[0])
@@ -727,27 +733,5 @@ public class TotalDiceHandler : MonoBehaviour
                 break;
         }
         threePairsList.Clear();
-    }
-
-    public void AWeirdButtonWasPressed( string valueToTakeOut)
-    {
-        foreach(string dieValue in threePairsList)
-        {
-            if(dieValue == valueToTakeOut) { threePairsList.Remove(valueToTakeOut); }
-            //seems like I could just remove() method
-        }
-        //threePairsList
-        //twoTriplesList
-        //fourOfAKindList
-        //fiveOfAKindList
-        //sixOfAKindList
-        //pairForFourOfAKindList
-        //
-        //when five of a kind is pressed i need to take out that same number out of the pair and four of a kind
-    }
-
-   public void NextPlayer()
-    {
-        //display
     }
 }

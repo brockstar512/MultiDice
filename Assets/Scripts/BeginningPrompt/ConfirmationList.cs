@@ -22,7 +22,7 @@ public class ConfirmationList : MonoBehaviour
         }
     }
 
-
+    //if i want to delete the player i can get child index by  int index = transform.GetSiblingIndex();
     public void ReRender()
     {
         DeleteList();
