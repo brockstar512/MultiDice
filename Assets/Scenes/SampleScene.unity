@@ -4782,6 +4782,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 52953666}
     m_Modifications:
+    - target: {fileID: 411851600349421427, guid: 54f85e09d6f154f7d8ce5a72e22ce41c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 709199081}
+    - target: {fileID: 411851600349421427, guid: 54f85e09d6f154f7d8ce5a72e22ce41c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 709199081}
+    - target: {fileID: 411851600349421427, guid: 54f85e09d6f154f7d8ce5a72e22ce41c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 709199081}
+    - target: {fileID: 411851600349421427, guid: 54f85e09d6f154f7d8ce5a72e22ce41c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 709199081}
+    - target: {fileID: 411851600349421427, guid: 54f85e09d6f154f7d8ce5a72e22ce41c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_Target
+      value: 
+      objectReference: {fileID: 709199081}
+    - target: {fileID: 411851600349421427, guid: 54f85e09d6f154f7d8ce5a72e22ce41c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
+      value: KeepDiceAndScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 411851600349421427, guid: 54f85e09d6f154f7d8ce5a72e22ce41c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: KeepDiceAndScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 411851600349421427, guid: 54f85e09d6f154f7d8ce5a72e22ce41c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: KeepDiceAndScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 411851600349421427, guid: 54f85e09d6f154f7d8ce5a72e22ce41c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: KeepDiceAndScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 411851600349421427, guid: 54f85e09d6f154f7d8ce5a72e22ce41c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: KeepDiceAndScore
+      objectReference: {fileID: 0}
     - target: {fileID: 1026205158089857118, guid: 54f85e09d6f154f7d8ce5a72e22ce41c,
         type: 3}
       propertyPath: displayPlayerChanger

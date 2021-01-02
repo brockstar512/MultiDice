@@ -17,8 +17,8 @@ public class TotalDiceHandler : MonoBehaviour
 
     public int totalScore;
     List<int> diceSelected = new List<int>();
-    public Dice[] totalDice;
-    //public List<Dice> totalDice2;
+    //public Dice[] totalDice;
+    public List<Dice> totalDice2;
     static public bool roundOver = false;
     public int score = 0;
     public int one = 0;
@@ -83,10 +83,15 @@ public class TotalDiceHandler : MonoBehaviour
         displayPlayerChanger = display.GetComponent<ChangePlayerController>();
         KeepScoreAndEndRoundButton.SetActive(false);
     }
+    void Update()
+    {
+        Debug.Log(totalDice2.Count);
+    }
 
     public void KeepDiceAndScore()
     {
-        foreach (Dice die in totalDice)
+        //foreach (Dice die in totalDice)
+        foreach (Dice die in totalDice2)
         {
             if (die.stay)
             {
@@ -380,6 +385,7 @@ public class TotalDiceHandler : MonoBehaviour
                 diceLeft = 0;
             }
             ScoreReset();
+            //ClearEmptyArraySlots();
         }
         else if(score <= 0 && activeButtonCount == 0 && !hasScored)
         {
@@ -422,9 +428,20 @@ public class TotalDiceHandler : MonoBehaviour
         while(dicePutBack > 0)
         { 
             GameObject newDie = Instantiate(diceSingle, transform.position, Quaternion.identity, this.gameObject.transform) as GameObject;
-            //totalDice.Add(newDie.transform.GetChild(0).GetComponent<Dice>());//add instantiated dice to array..whenever i destroy the dice i also need to remove it from the array
+            totalDice2.Add(newDie.transform.GetChild(0).GetComponent<Dice>());//add instantiated dice to array..whenever i destroy the dice i also need to remove it from the array
             //i need to change the array to a list
             dicePutBack--;
+        }
+    }
+
+    public void InformDiceRoundOver()
+    {
+        foreach( Dice die in totalDice2)
+        {
+            if(die != null)
+            {
+                die.roundOver();
+            }
         }
     }
 
@@ -439,7 +456,20 @@ public class TotalDiceHandler : MonoBehaviour
         }
     }
 
-    
+    //private void ClearEmptyArraySlots()
+    //{
+    //    for(int i = 0; i < totalDice2.Count; i++)
+    //    {
+    //        Debug.Log("here is i    "+ i+"  here is whats at i  " + totalDice2[i]);
+    //        if(totalDice2[i]== null) { totalDice2.RemoveAt(i); }
+    //        totalDice2.Remove(null);
+    //    }
+    //    for(int i = totalDice2.Count - 1; i > -1; i--)
+    //{
+    //   if (totalDice2[i] == null)
+    //      totalDice2.RemoveAt(i);
+    //}
+    //}
 
     public void ScoreReset()
     {

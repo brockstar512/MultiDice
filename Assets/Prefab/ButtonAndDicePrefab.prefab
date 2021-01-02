@@ -632,7 +632,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilt: {x: 0, y: 0, z: 0}
-  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -2850,7 +2849,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilt: {x: 0, y: 0, z: 0}
-  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -5439,7 +5437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalScore: 0
-  totalDice:
+  totalDice2:
   - {fileID: 1026205156103097087}
   - {fileID: 1026205156458116622}
   - {fileID: 1026205157008145048}
@@ -6885,7 +6883,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilt: {x: 0, y: 0, z: 0}
-  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -7113,7 +7110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilt: {x: 0, y: 0, z: 0}
-  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -7640,7 +7636,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilt: {x: 0, y: 0, z: 0}
-  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -8783,7 +8778,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilt: {x: 0, y: 0, z: 0}
-  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -9469,7 +9463,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilt: {x: 0, y: 0, z: 0}
-  isNotThrown: 1
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -10304,74 +10297,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1026205156103097087}
-        m_MethodName: roundOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1026205156458116622}
-        m_MethodName: roundOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1026205157008145048}
-        m_MethodName: roundOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1026205156511525038}
-        m_MethodName: roundOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1026205156755432802}
-        m_MethodName: roundOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1026205156823595459}
-        m_MethodName: roundOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1026205157668226281}
-        m_MethodName: roundOver
+      - m_Target: {fileID: 1026205158089857118}
+        m_MethodName: InformDiceRoundOver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

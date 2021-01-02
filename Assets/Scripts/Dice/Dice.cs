@@ -15,7 +15,7 @@ public class Dice : MonoBehaviour
     bool hasThrown;
     
     public bool stay;
-    
+    private TotalDiceHandler totalDiceHandler;
 
     [SerializeField] Vector3 initPosition;//throw location
     [SerializeField] GameObject buttonController;
@@ -48,14 +48,11 @@ public class Dice : MonoBehaviour
         }
 
         buttonController.SetActive(false);//this is null in instantiated die..this was active
+        totalDiceHandler = this.gameObject.transform.parent.gameObject.transform.parent.GetComponent<TotalDiceHandler>();
 
-        
+
     }
-    //void Awake()
-    //{
-    //    buttonController = GameObject.Find("ScorePlusEndButtons");
 
-    //}
 
     void Update()
     {
@@ -117,7 +114,7 @@ public class Dice : MonoBehaviour
 
         }
     }
-
+    //this is not added to the button...i could iterate through the list and if its not null select round over
     public void roundOver()
     {
         if (hasThrown && hasLanded && !stay)
@@ -127,7 +124,9 @@ public class Dice : MonoBehaviour
         else if (hasThrown && hasLanded && stay)
         {
             this.gameObject.SetActive(false);
+            //totalDiceHandler.totalDice2.RemoveAt(this.gameObject.transform.parent.gameObject.transform.GetSiblingIndex());
             Destroy(this.gameObject.transform.parent.gameObject);
+            //Debug.Log("this is sibling index         " + this.gameObject.transform.parent.gameObject.transform.GetSiblingIndex());
         }
     }
 
