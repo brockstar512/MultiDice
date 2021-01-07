@@ -31,6 +31,7 @@ public class PlayerData
     public bool isInPlay;
     public List<int> roundScore;
     public int totalScore;
+    public int farkleCount;
 
     //this is called a constructor it gives the class pre defined values
     //if you make the constructor have variables in the () you have to pass them in aas arguments when you create an instance of it
@@ -39,6 +40,7 @@ public class PlayerData
         isInPlay = true;
         totalScore = 0;
         roundScore = new List<int>();
+        farkleCount = 0;
     }
 
 }

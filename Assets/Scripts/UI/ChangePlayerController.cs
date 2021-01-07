@@ -15,7 +15,6 @@ public class ChangePlayerController : MonoBehaviour
     public Text potentialPoints;
 
     [Header("Dice and point reset")]
-    public Dice[] totalDice;
     public TotalDiceHandler totalDiceHandler;
 
     void Start()
@@ -76,5 +75,27 @@ public class ChangePlayerController : MonoBehaviour
     {
         if (potentialIncomingPoints == 0) { potentialPoints.text = ""; }
         else { potentialPoints.text = potentialIncomingPoints.ToString(); }
+    }
+
+    public void FarkledCounter(int didFarkle)
+    {
+        //if you pass in 1 which is yes he farkled increase farkle count
+        //otherwise pass in 0 he didnt
+        if(didFarkle > 0)
+        {
+            CurrentGame.data.players[currentPlayerNum].farkleCount++;
+            if(CurrentGame.data.players[currentPlayerNum].farkleCount >= 3)
+            {
+                Debug.Log("player farkled");
+                CurrentGame.data.players[currentPlayerNum].farkleCount = 0;
+                RolledNewScore(-1000);
+                
+            }
+            else {
+                Debug.Log("Thin ice");
+                RolledNewScore(0);
+            }
+        }
+        else { CurrentGame.data.players[currentPlayerNum].farkleCount = 0; }//they rolled something pointworthy
     }
 }

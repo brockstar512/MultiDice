@@ -8,12 +8,15 @@ using System.Linq;
 public class TotalDiceHandler : MonoBehaviour
 {
     //things to do
-    //-what to do if they choose a die that does not count for anything... if they have more than one instantiate a new die
-    //-delete a player fro the player list in the beginning... this might be a later thing
+    //-hide dice while the buttons are scoring during and show when they are done if roller has less than 500. otherwise hide the dice until they click keep rolling or keep dice next turn
+    //^ShowDice... this confuses the triggers. I could delete them then instantite the same amount of die when I click what to do.
     //-allowing the phone to roll the dice with the gyroscope
     //-figure out how to determines who wins
     //-figure out how to subtract score for people who farkle three times in a row
     //-figure out messageing system
+
+    public GameInit gameInit;
+    public DiceLocationConfig diceLocationConfig = new DiceLocationConfig();//3 declare
 
     public int totalScore;
     List<int> diceSelected = new List<int>();
@@ -28,6 +31,7 @@ public class TotalDiceHandler : MonoBehaviour
     public int five = 0;
     public int six = 0;
     public int diceLeft = 0;//this is for false selection
+    private int diceToContinue;
 
 
 
@@ -75,21 +79,25 @@ public class TotalDiceHandler : MonoBehaviour
 
     public int activeButtonCount = 0;
 
-    public ChangePlayerController displayPlayerChanger;//this
+    public ChangePlayerController displayPlayerChanger;
 
     void Awake()
     {
         display = GameObject.Find("Display");
         displayPlayerChanger = display.GetComponent<ChangePlayerController>();
         KeepScoreAndEndRoundButton.SetActive(false);
+        gameInit = this.gameObject.transform.parent.GetComponent<GameInit>();
+
     }
-    void Update()
-    {
-        Debug.Log(totalDice2.Count);
-    }
+    //void Update()
+    //{
+    //    //this.gameObject.transform.ChildCount;
+    //    Debug.Log("HERE IS THE CHILD COUNT "+ this.gameObject.transform.childCount);
+    //}
 
     public void KeepDiceAndScore()
     {
+        Debug.Log("         " + diceLocationConfig.diePosition[0]);
         //foreach (Dice die in totalDice)
         foreach (Dice die in totalDice2)
         {
@@ -272,6 +280,8 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void Score()
     {
+        ShowDice(false);
+        diceToContinue = this.gameObject.transform.childCount;
         //need to check for of a if with a pair... pair might be read as whats in four of a kind
         threePairsList = threePairsList.Distinct().ToList();
         twoTriplesList = twoTriplesList.Distinct().ToList();
@@ -384,6 +394,11 @@ public class TotalDiceHandler : MonoBehaviour
                 //totalDice.Add(addSingleDice(diceLeft));
                 diceLeft = 0;
             }
+            if (score <= 100)
+            {//show dice is the other buttons that has the continue options are not going to be called
+             // ShowDice(true);
+                addSingleDice(diceToContinue);
+}
             ScoreReset();
             //ClearEmptyArraySlots();
         }
@@ -394,12 +409,14 @@ public class TotalDiceHandler : MonoBehaviour
             GameOver();
         }
 
+
     }
 
     public void GameOver()
     {
         KeepScoreAndEndRoundButton.SetActive(false);
-        displayPlayerChanger.RolledNewScore(-1);
+        //displayPlayerChanger.RolledNewScore(-1);
+        displayPlayerChanger.FarkledCounter(1);
         displayPlayerChanger.NextPlayer();
         score = 0;
         totalScore = 0;
@@ -411,6 +428,7 @@ public class TotalDiceHandler : MonoBehaviour
         if (totalScore > 100){
             //should be 499
             displayPlayerChanger.RolledNewScore(totalScore);
+            displayPlayerChanger.FarkledCounter(0);
             totalScore = 0;
             displayPlayerChanger.NextPlayer();
             KeepScoreAndEndRoundButton.SetActive(false);
@@ -419,13 +437,17 @@ public class TotalDiceHandler : MonoBehaviour
         else{
             KeepScoreAndEndRoundButton.SetActive(false);
             keepRollingButton.SetActive(false);
+            
             GameOver();
         }
     }
 
+    //figure out how not to instantiate right on top of eachother
     public void addSingleDice( int dicePutBack)
     {
-        while(dicePutBack > 0)
+        int childIndex = this.gameObject.transform.childCount -1;
+        //GameInit.diceLocationConfig.diePosition[childIndex];//5 utilize it
+        while (dicePutBack > 0)
         { 
             GameObject newDie = Instantiate(diceSingle, transform.position, Quaternion.identity, this.gameObject.transform) as GameObject;
             totalDice2.Add(newDie.transform.GetChild(0).GetComponent<Dice>());//add instantiated dice to array..whenever i destroy the dice i also need to remove it from the array
@@ -449,10 +471,21 @@ public class TotalDiceHandler : MonoBehaviour
     {
         KeepScoreAndEndRoundButton.SetActive(false);
         keepRollingButton.SetActive(false);
-        if(this.gameObject.transform.childCount == 0)
+        
+        if (this.gameObject.transform.childCount == 0)
         {
             Debug.Log("Reactivate dice");
             display.GetComponent<ChangePlayerController>().ReactivateDice();
+        }
+        else { addSingleDice(diceToContinue); }
+    }
+    //sometimes triggers are miss remembering.commenting this out to see if it is it
+    //pass false when we don't want to show it... pass it tru when we do 
+    private void ShowDice(bool show)
+    {
+        for (int i = 0; i < this.gameObject.transform.childCount; i++)
+        {
+            this.gameObject.transform.GetChild(i).gameObject.SetActive(show);
         }
     }
 
@@ -464,6 +497,7 @@ public class TotalDiceHandler : MonoBehaviour
     //        if(totalDice2[i]== null) { totalDice2.RemoveAt(i); }
     //        totalDice2.Remove(null);
     //    }
+    //something about for each not working
     //    for(int i = totalDice2.Count - 1; i > -1; i--)
     //{
     //   if (totalDice2[i] == null)
