@@ -166,6 +166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonAndDicePrefab: {fileID: 3709907928139061230, guid: 54f85e09d6f154f7d8ce5a72e22ce41c,
     type: 3}
+  singleDice: {fileID: 8839136392646210184, guid: e7f68692d4fcf4c49a3954568b53fb3f,
+    type: 3}
 --- !u!1 &118196949
 GameObject:
   m_ObjectHideFlags: 0

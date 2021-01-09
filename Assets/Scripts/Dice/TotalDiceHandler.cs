@@ -89,11 +89,16 @@ public class TotalDiceHandler : MonoBehaviour
         gameInit = this.gameObject.transform.parent.GetComponent<GameInit>();
 
     }
-    //void Update()
-    //{
-    //    //this.gameObject.transform.ChildCount;
-    //    Debug.Log("HERE IS THE CHILD COUNT "+ this.gameObject.transform.childCount);
-    //}
+    void Update()
+    {
+        //Debug.Log(+this.gameObject.transform.childCount);
+        //Debug.Log(+totalDice2.Count);
+        //Debug.Log(this.gameObject.transform.childCount -1);
+
+        //this.gameObject.transform.ChildCount;
+        //Debug.Log("HERE IS THE CHILD COUNT " + this.gameObject.transform.childCount);
+        //Debug.Log(diceToContinue);
+    }
 
     public void KeepDiceAndScore()
     {
@@ -280,8 +285,11 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void Score()
     {
-        ShowDice(false);
+        Debug.Log("Dice - go away");
         diceToContinue = this.gameObject.transform.childCount;
+        Debug.Log("**** BRING BACK  done... dont need to delete them here just hode them - its okay to delete the dice I have this count. the single dice issave they will instante on there own... i think"+ diceToContinue);
+        ShowDice(false);
+
         //need to check for of a if with a pair... pair might be read as whats in four of a kind
         threePairsList = threePairsList.Distinct().ToList();
         twoTriplesList = twoTriplesList.Distinct().ToList();
@@ -387,18 +395,33 @@ public class TotalDiceHandler : MonoBehaviour
             display.GetComponent<ChangePlayerController>().PotentialPointsUIUpdate(totalScore);
             Debug.Log("bring back the dice that did not account for anything");
             if (diceLeft > 0 && score > 0)
-            {
-                addSingleDice(diceLeft);
+            {//if you have a dice you need to bring back
+                //i think its running ore than once
+                //addSingleDice(diceLeft,true);
                 //this instantiated dice needs to be added to the array
                 //can i return something in singleDice that i can add to an array too
                 //totalDice.Add(addSingleDice(diceLeft));
-                diceLeft = 0;
+                //diceLeft = 0;
             }
+            int childIndex = this.gameObject.transform.childCount;
+
             if (score <= 100)
-            {//show dice is the other buttons that has the continue options are not going to be called
-             // ShowDice(true);
+            {
+                //show dice is the other buttons that has the continue options are not going to be called
+
+                DestroyExistingDice();
+                Debug.Log("testing Dice - come back < 100 " + diceToContinue); 
                 addSingleDice(diceToContinue);
-}
+                if(diceLeft > 0 && score > 0){
+                addSingleDice(diceLeft,true, childIndex);
+                diceLeft = 0;
+                }
+                //Debug.Log(diceToContinue);
+                //**try adding these here...
+                //->addSingleDice(diceLeft);
+                //->diceLeft = 0;
+
+            }
             ScoreReset();
             //ClearEmptyArraySlots();
         }
@@ -442,16 +465,32 @@ public class TotalDiceHandler : MonoBehaviour
         }
     }
 
-    //figure out how not to instantiate right on top of eachother
-    public void addSingleDice( int dicePutBack)
+    public void addSingleDice( int dicePutBack, bool leftOver = false, int index = 0)
     {
-        int childIndex = this.gameObject.transform.childCount -1;
-        //GameInit.diceLocationConfig.diePosition[childIndex];//5 utilize it
+        Debug.Log("testing add single function " + dicePutBack + "  "+ leftOver+"   "+(6-(this.gameObject.transform.childCount)) ); 
         while (dicePutBack > 0)
         { 
-            GameObject newDie = Instantiate(diceSingle, transform.position, Quaternion.identity, this.gameObject.transform) as GameObject;
+            int childIndex = this.gameObject.transform.childCount -1;
+        //    Debug.Log("testing "+childIndex + "-----" + diceLocationConfig.diePosition[childIndex]);
+            //erroring right here /\
+            GameObject newDie;
+            if(!leftOver){
+                 newDie = Instantiate(diceSingle, diceLocationConfig.diePosition[dicePutBack -1], Quaternion.identity) as GameObject;
+                newDie.transform.SetParent(transform, false);
+            }
+            else{
+                    newDie = Instantiate(diceSingle, diceLocationConfig.diePosition[index + dicePutBack], Quaternion.identity) as GameObject;
+                    newDie.transform.SetParent(transform, false);
+                 Debug.Log("aaaaa   " + index+" "+ dicePutBack);
+            }
+
+            
             totalDice2.Add(newDie.transform.GetChild(0).GetComponent<Dice>());//add instantiated dice to array..whenever i destroy the dice i also need to remove it from the array
-            //i need to change the array to a list
+            
+            //newDie.transform.position = new Vector3(diceLocationConfig.diePosition[childIndex].x, diceLocationConfig.diePosition[childIndex].y, diceLocationConfig.diePosition[childIndex].z);
+            Debug.Log("testing dice put back "+ newDie.transform.GetSiblingIndex());
+            Debug.Log("testing dice put back "+ childIndex);//this should go 0, 1,2,3,4,5... its going 5,6,7,8
+            Debug.Log("testing dice put back "+ dicePutBack);//put back ... this is working swimginly...
             dicePutBack--;
         }
     }
@@ -467,17 +506,32 @@ public class TotalDiceHandler : MonoBehaviour
         }
     }
 
+    public void DestroyExistingDice()
+    {
+       for(int i = 0; i < this.gameObject.transform.childCount;i++){
+           Destroy(this.gameObject.transform.GetChild(i).gameObject);
+       }
+    }
+
     public void KeepRolling()
     {
         KeepScoreAndEndRoundButton.SetActive(false);
         keepRollingButton.SetActive(false);
-        
         if (this.gameObject.transform.childCount == 0)
         {
             Debug.Log("Reactivate dice");
             display.GetComponent<ChangePlayerController>().ReactivateDice();
+            //
         }
-        else { addSingleDice(diceToContinue); }
+        else { 
+            DestroyExistingDice();
+            Debug.Log("testing inside keep rolling button more dice to roll-- " + diceToContinue);
+            addSingleDice(diceToContinue);
+            if(diceLeft > 0){
+                addSingleDice(diceLeft,true);
+                diceLeft = 0;
+                } 
+            }
     }
     //sometimes triggers are miss remembering.commenting this out to see if it is it
     //pass false when we don't want to show it... pass it tru when we do 
@@ -497,12 +551,6 @@ public class TotalDiceHandler : MonoBehaviour
     //        if(totalDice2[i]== null) { totalDice2.RemoveAt(i); }
     //        totalDice2.Remove(null);
     //    }
-    //something about for each not working
-    //    for(int i = totalDice2.Count - 1; i > -1; i--)
-    //{
-    //   if (totalDice2[i] == null)
-    //      totalDice2.RemoveAt(i);
-    //}
     //}
 
     public void ScoreReset()

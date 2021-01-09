@@ -8,6 +8,7 @@ public class GameInit : MonoBehaviour
     private GameObject totalDiceGroup;
     //public static DiceLocationConfig diceLocationConfig;//3 declare
     public DiceLocationConfig diceLocationConfig = new DiceLocationConfig();//3 declare
+    public GameObject singleDice;
 
 
     //serialize position of the die
@@ -15,14 +16,22 @@ public class GameInit : MonoBehaviour
     //that way all of the dice will have the same position everytime and anytime I need to instantiate 1 die takes its sibling index and get that vector3 postion
     void Awake()
     {
-        GameObject currentDiceGroup = Instantiate(buttonAndDicePrefab, transform.position, Quaternion.identity, this.gameObject.transform) as GameObject;
-        currentDiceGroup.transform.SetSiblingIndex(0);
+       GameObject currentDiceGroup = Instantiate(buttonAndDicePrefab, transform.position, Quaternion.identity, this.gameObject.transform) as GameObject;
+       currentDiceGroup.transform.SetSiblingIndex(0);
+
         //if(this.gameObject.transform.childCount > 1) ConfigurDiceLocations();
        // totalDiceGroup = this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
-                totalDiceGroup = this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
+                //totalDiceGroup = this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
         //        totalDiceGroup = this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
         //Debug.Log("_-----__" + totalDiceGroup.name);
-        //ConfigurDiceLocations();
+        ConfigurDiceLocations();
+
+
+        //---------- testing purposes...
+        //GameObject die = Instantiate(singleDice, diceLocationConfig.diePosition[4], Quaternion.identity) as GameObject;
+        //transform.SetSiblingIndex(0);
+        //die.transform.SetParent(transform, false);
+
     }
 
     private void ConfigurDiceLocations()
@@ -43,6 +52,8 @@ public class GameInit : MonoBehaviour
         diceLocationConfig.diePosition[3] = new Vector3(1.89f,0f, 1.61f);
         diceLocationConfig.diePosition[4] = new Vector3(0.34f,0, -0.13f);
         diceLocationConfig.diePosition[5] = new Vector3(0.34f,0,1.35f);
-        Debug.Log("------ " + diceLocationConfig.diePosition[0]);
+        //Debug.Log("------ " + diceLocationConfig.diePosition[0]);
     }
 }
+//instantiate the dice properly
+//then work on making the vector 3 static

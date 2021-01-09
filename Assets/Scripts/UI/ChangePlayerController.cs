@@ -71,6 +71,10 @@ public class ChangePlayerController : MonoBehaviour
         
     }
 
+    public void CarryScoreForNewDice(int newPoints)
+    {
+        //currentPlayer.totalScore += newPoints;
+    }
     public void PotentialPointsUIUpdate(int potentialIncomingPoints = 0)
     {
         if (potentialIncomingPoints == 0) { potentialPoints.text = ""; }
