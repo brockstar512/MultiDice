@@ -13,6 +13,7 @@ public class ChangePlayerController : MonoBehaviour
     public Text currentName;
     public Text currentScore;
     public Text potentialPoints;
+    public int pointToCarryover = 0;
 
     [Header("Dice and point reset")]
     public TotalDiceHandler totalDiceHandler;
@@ -71,13 +72,26 @@ public class ChangePlayerController : MonoBehaviour
         
     }
 
-    public void CarryScoreForNewDice(int newPoints)
+    public void CarryScoreForNewDice(int carryOver)
     {
+        pointToCarryover = carryOver;
+        //before i instantiate for new dice I can pass the points to this function that holds it. and passes the new points to potential incoming?
+        //my issue right now is that the potential incoming points are 0 when the whole patch of dice are coming in rather than the agregated score being stores in total dice handler
         //currentPlayer.totalScore += newPoints;
+        //i can invoke a function and give it points
+
+        //PotentialPointsUIUpdate(newPoints);
     }
+    
     public void PotentialPointsUIUpdate(int potentialIncomingPoints = 0)
     {
+        //i think this runs everytime a score is passed through. the default is 0. so when the player switches it resets to 0. every time you score you pass it points
+        Debug.Log("Potential running");
         if (potentialIncomingPoints == 0) { potentialPoints.text = ""; }
+        else if(pointToCarryover != 0) {
+            (potentialIncomingPoints += pointToCarryover).ToString();
+            pointToCarryover = 0;
+                }
         else { potentialPoints.text = potentialIncomingPoints.ToString(); }
     }
 
