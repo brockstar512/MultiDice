@@ -15,12 +15,12 @@ public class DiceLocationConfig//1
     public DiceLocationConfig()
     {
         diePosition = new Vector3[6];
-        diePosition[0] = new Vector3(3.34f, 0f, 0f);
-        diePosition[1] = new Vector3(5.03f, 0f, 0f);
-        diePosition[2] = new Vector3(3.53f, 0, 1.61f);
-        diePosition[3] = new Vector3(1.89f, 0f, 1.61f);
-        diePosition[4] = new Vector3(0.34f, 0, -0.13f);
-        diePosition[5] = new Vector3(0.34f, 0, 1.35f);
+        //diePosition[0] = new Vector3(3.34f, 0f, 0f);
+        //diePosition[1] = new Vector3(5.03f, 0f, 0f);
+        //diePosition[2] = new Vector3(3.53f, 0, 1.61f);
+        //diePosition[3] = new Vector3(1.89f, 0f, 1.61f);
+        //diePosition[4] = new Vector3(0.34f, 0, -0.13f);
+        //diePosition[5] = new Vector3(0.34f, 0, 1.35f);
     }
 
     //{//2

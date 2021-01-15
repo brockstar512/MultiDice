@@ -15,7 +15,7 @@ public class TotalDiceHandler : MonoBehaviour
     //-figure out messageing system
 
     public GameInit gameInit;
-    public DiceLocationConfig diceLocationConfig = new DiceLocationConfig();//3 declare
+    //public DiceLocationConfig diceLocationConfig = new DiceLocationConfig();//3 declare
 
     public int totalScore;
     List<int> diceSelected = new List<int>();
@@ -91,7 +91,7 @@ public class TotalDiceHandler : MonoBehaviour
     }
     public void KeepDiceAndScore()
     {
-        Debug.Log("         " + diceLocationConfig.diePosition[0]);
+        Debug.Log("         " + GameInit.diceLocationConfig.diePosition[0]);
         //foreach (Dice die in totalDice)
         foreach (Dice die in totalDice2)
         {
@@ -459,11 +459,11 @@ public class TotalDiceHandler : MonoBehaviour
             //erroring right here /\
             GameObject newDie;
             if(!leftOver){
-                 newDie = Instantiate(diceSingle, diceLocationConfig.diePosition[dicePutBack -1], Quaternion.identity) as GameObject;
+                 newDie = Instantiate(diceSingle, GameInit.diceLocationConfig.diePosition[dicePutBack -1], Quaternion.identity) as GameObject;
                 newDie.transform.SetParent(transform, false);
             }
             else{
-                    newDie = Instantiate(diceSingle, diceLocationConfig.diePosition[index + dicePutBack], Quaternion.identity) as GameObject;
+                    newDie = Instantiate(diceSingle, GameInit.diceLocationConfig.diePosition[index + dicePutBack], Quaternion.identity) as GameObject;
                     newDie.transform.SetParent(transform, false);
                  
             }
