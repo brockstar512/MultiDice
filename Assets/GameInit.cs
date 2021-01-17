@@ -16,12 +16,12 @@ public class GameInit : MonoBehaviour
         //i dont want to reference this prefab. i want to reference something else maybe even button anddiceprefab then the total dice in that
         //Debug.Log(currentDiceGroup.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.localPosition.x);
         //Debug.Log(totalDiceGroup.transform.GetChild(0).gameObject.name);
-        //Debug.Log(diceLocationConfig.diePosition[0]);
-        //Debug.Log(diceLocationConfig.diePosition[1]);
-        //Debug.Log(diceLocationConfig.diePosition[2]);
-        //Debug.Log(diceLocationConfig.diePosition[3]);
-        //Debug.Log(diceLocationConfig.diePosition[4]);
-        //Debug.Log(diceLocationConfig.diePosition[5]);
+        //Debug.Log("1->"+diceLocationConfig.diePosition[0]);
+        //Debug.Log("2->" + diceLocationConfig.diePosition[1]);
+        //Debug.Log("3->" + diceLocationConfig.diePosition[2]);
+        //Debug.Log("4->" + diceLocationConfig.diePosition[3]);
+        //Debug.Log("5->" + diceLocationConfig.diePosition[4]);
+        //Debug.Log("6->" + diceLocationConfig.diePosition[5]);
     }
     //serialize position of the die
     //instantiate all of the die and get get there position
@@ -65,7 +65,8 @@ public class GameInit : MonoBehaviour
         //    totalDiceGroup.transform.GetChild(5).gameObject.transform.position);
         //DiceLocationConfig diceLocationConfig = new DiceLocationConfig();
         //diceLocationConfig.diePosition[0] = new Vector3(totalDiceGroup.transform.GetChild(0).gameObject.transform.position.x, totalDiceGroup.transform.GetChild(0).gameObject.transform.position.y, totalDiceGroup.transform.GetChild(0).gameObject.transform.position.z);
-        diceLocationConfig.diePosition[0] = new Vector3(currentDiceGroup.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.localPosition.x, currentDiceGroup.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.localPosition.y, currentDiceGroup.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.localPosition.z);
+        //diceLocationConfig.diePosition[0] = new Vector3(currentDiceGroup.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.localPosition.x, currentDiceGroup.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.localPosition.y, currentDiceGroup.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.localPosition.z);
+        diceLocationConfig.diePosition[0] = new Vector3(firstDice.transform.localPosition.x, firstDice.transform.localPosition.y, firstDice.transform.localPosition.z);
         diceLocationConfig.diePosition[1] = new Vector3(secondDice.transform.localPosition.x, secondDice.transform.localPosition.y, secondDice.transform.localPosition.z);
         diceLocationConfig.diePosition[2] = new Vector3(thirdDice.transform.localPosition.x, thirdDice.transform.localPosition.y, thirdDice.transform.localPosition.z);
         diceLocationConfig.diePosition[3] = new Vector3(fourthDice.transform.localPosition.x, fourthDice.transform.localPosition.y, fourthDice.transform.localPosition.z);

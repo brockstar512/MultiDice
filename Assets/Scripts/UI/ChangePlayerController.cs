@@ -34,6 +34,7 @@ public class ChangePlayerController : MonoBehaviour
     //if next player is not in recursively call this
     public void NextPlayer()
     {
+        pointToCarryover = 0;
         if (currentPlayerNum < CurrentGame.data.players.Count - 1) { currentPlayerNum++; }
         else { currentPlayerNum = 0; }
         DisplayPlayer();
@@ -74,7 +75,7 @@ public class ChangePlayerController : MonoBehaviour
 
     public void CarryScoreForNewDice(int carryOver)
     {
-        pointToCarryover = carryOver;
+        pointToCarryover += carryOver;
         //before i instantiate for new dice I can pass the points to this function that holds it. and passes the new points to potential incoming?
         //my issue right now is that the potential incoming points are 0 when the whole patch of dice are coming in rather than the agregated score being stores in total dice handler
         //currentPlayer.totalScore += newPoints;
@@ -90,7 +91,7 @@ public class ChangePlayerController : MonoBehaviour
         if (potentialIncomingPoints == 0) { potentialPoints.text = ""; }
         else if(pointToCarryover != 0) {
             (potentialIncomingPoints += pointToCarryover).ToString();
-            pointToCarryover = 0;
+            //pointToCarryover = 0;
                 }
         else { potentialPoints.text = potentialIncomingPoints.ToString(); }
     }

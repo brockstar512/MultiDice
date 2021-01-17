@@ -392,18 +392,17 @@ public class TotalDiceHandler : MonoBehaviour
             if (score <= 100 && totalScore <= 100)
             {
                 //show dice is the other buttons that has the continue options are not going to be called
-
+                
                 DestroyExistingDice();
-                Debug.Log("testing Dice - come back < 100 " + diceToContinue); 
+                Debug.Log("testing Dice - come back < 100 " + diceToContinue);
+                Debug.Log("bring back before addsingleDice is called  " + diceLeft + "    " + diceToContinue + "    " + childIndex);//1    4    4 when i choose one that counts and one that needs to be put back
+                //i might need to put bring back into a different function
                 addSingleDice(diceToContinue);//this is a little late.. maybe total score is less than 100... i think this runs faulty when the score is 100 but the total score is more
                 if(diceLeft > 0 && score > 0){
                 addSingleDice(diceLeft,true, childIndex);
                 diceLeft = 0;
                 }
-                //Debug.Log(diceToContinue);
-                //**try adding these here...
-                //->addSingleDice(diceLeft);
-                //->diceLeft = 0;
+
 
             }
             ScoreReset();
@@ -452,24 +451,32 @@ public class TotalDiceHandler : MonoBehaviour
     public void addSingleDice( int dicePutBack, bool leftOver = false, int index = 0)
     {
         Debug.Log("hiding not");
-        Debug.Log("testing add single function " + dicePutBack + "  "+ leftOver+"   "+(6-(this.gameObject.transform.childCount)) ); 
+        Debug.Log("bring back testing add single function " + dicePutBack + "  "+ leftOver+"   "+ index); 
         while (dicePutBack > 0)
         { 
             int childIndex = this.gameObject.transform.childCount -1;
             //erroring right here /\
             GameObject newDie;
             if(!leftOver){
+                Debug.Log("bring back - 1 -> " + (dicePutBack - 1));
                  newDie = Instantiate(diceSingle, GameInit.diceLocationConfig.diePosition[dicePutBack -1], Quaternion.identity) as GameObject;
                 newDie.transform.SetParent(transform, false);
             }
             else{
-                    newDie = Instantiate(diceSingle, GameInit.diceLocationConfig.diePosition[index + dicePutBack], Quaternion.identity) as GameObject;
-                    newDie.transform.SetParent(transform, false);
+                Debug.Log("bring back - 2 A -> " +(index + dicePutBack));
+                Debug.Log("bring back - 2 B -> " + (dicePutBack - 1));
+                Debug.Log("bring back - 2 C -> " + (this.gameObject.transform.childCount));
+                Debug.Log("bring back - 2 D -> " + (7 - dicePutBack));
+                //[index + dicePutBack]
+                //newDie = Instantiate(diceSingle, GameInit.diceLocationConfig.diePosition[totalDice2.Count], Quaternion.identity) as GameObject;
+                newDie = Instantiate(diceSingle, GameInit.diceLocationConfig.diePosition[6 - dicePutBack], Quaternion.identity) as GameObject;
+                newDie.transform.SetParent(transform, false);
                  
             }
             totalDice2.Add(newDie.transform.GetChild(0).GetComponent<Dice>());
             dicePutBack--;
         }
+        
     }
 
     public void InformDiceRoundOver()
@@ -497,7 +504,7 @@ public class TotalDiceHandler : MonoBehaviour
         if (this.gameObject.transform.childCount == 0)
         {
             Debug.Log("Reactivate dice");
-            display.GetComponent<ChangePlayerController>().pointToCarryover = totalScore;//? i think this will do it
+            display.GetComponent<ChangePlayerController>().CarryScoreForNewDice(totalScore);//? i think this will do it
             display.GetComponent<ChangePlayerController>().ReactivateDice();
             //give variable to display that is carryOverPoints... that equals to 0. you are passing over points.
             //everytime you add points you make it zero so you only add it once to the over all points
@@ -516,7 +523,6 @@ public class TotalDiceHandler : MonoBehaviour
 
     private void ShowDice(bool show)
     {
-        Debug.Log("Hiding dice");
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
         {
             this.gameObject.transform.GetChild(i).gameObject.SetActive(show);
