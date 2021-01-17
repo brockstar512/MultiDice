@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-//this is going to have game data that has a list of the players
-//and keeps track of the round number *could change this. round total
-//and what the bet is
+
 public class GameData
 {
     public List<PlayerData> players;
     public int roundTotal;
     public int numberOfPlayers;
     public string bet;
-    //could also include start date
     public System.DateTime start_time;
 
-    //this is what new is creating
+    
     public GameData()
     {
         //each game creates new game data , each player input creates new player data

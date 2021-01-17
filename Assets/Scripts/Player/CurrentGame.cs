@@ -6,23 +6,17 @@ using UnityEngine.UI;
 public class CurrentGame : MonoBehaviour
 {
     public string theName;
-    public GameObject inputField; //
-    public GameObject namePrompt; //
-    public InputField textOfInput; 
-
-
+    public GameObject inputField;
+    public GameObject namePrompt;
+    public InputField textOfInput;
 
     public PlayerData player;
-    //public PlayerData[] playersArray;
 
-    //public string[] playersArray;
     public List<PlayerData> totalPlayers;
 
-    //public GameData data;
     [SerializeField] public static GameData data;
 
 
-    //public GameObject promptListParent;
 
     void Awake()
     {
@@ -35,20 +29,12 @@ public class CurrentGame : MonoBehaviour
 
     public void StoreName()
     {
-
         theName = inputField.GetComponent<Text>().text;
-
         //Debug.Log("HERE IS NAME" + theName);
         player = new PlayerData();
-
         player.playerName = theName;
         data.players.Add(player);
-
         textOfInput.text = "";
-
     }
-
-
-
 }
 
