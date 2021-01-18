@@ -396,6 +396,7 @@ public class TotalDiceHandler : MonoBehaviour
         totalScore = 0;
         ScoreReset();
     }
+
     public void KeepScoreNextRound()
     {
         //if you have enough point good! Otherwise game over for you

@@ -32,15 +32,14 @@ public class Dice : MonoBehaviour
 
     public GameObject KeepScoreAndEndRoundButton;
 
-    //bool touchBegan = false;
-    //bool touchEnded = false;
+ 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         initPosition = transform.position;
         
         rb.useGravity= false;//this will not have gravity at the start so it won't automatically fall but it will have kinetamic so it wont slide around  
-        //rb.isKinematic = true;
+        //rb.isKinematic = true;//the problem is if it is kinematic it can be effexted by force or torque
         //errorMessage.SetActive(false);//this was active
         if(buttonController == null) {
             buttonController = this.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.GetChild(3).gameObject;
@@ -144,7 +143,6 @@ public class Dice : MonoBehaviour
 
     public void ResetForNewPlayer()
     {
-        //make sure the die is not selection anymore and make sure there is 7
         this.transform.parent.gameObject.SetActive(true);
         this.gameObject.SetActive(true);
         this.gameObject.transform.parent.GetComponent<KeepDice>().ForceOutlineOff();

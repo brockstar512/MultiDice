@@ -13,7 +13,7 @@ public class ChangePlayerController : MonoBehaviour
     public Text currentName;
     public Text currentScore;
     public Text potentialPoints;
-    public int pointToCarryover = 0;
+    private int pointsToCarryOver = 0;
 
     [Header("Dice and point reset")]
     public TotalDiceHandler totalDiceHandler;
@@ -31,10 +31,9 @@ public class ChangePlayerController : MonoBehaviour
         PlayerData currentPlayer = CurrentGame.data.players[currentPlayerNum];
         currentName.text = currentPlayer.playerName;
     }
-    //if next player is not in recursively call this
     public void NextPlayer()
     {
-        pointToCarryover = 0;
+        pointsToCarryOver = 0;
         if (currentPlayerNum < CurrentGame.data.players.Count - 1) { currentPlayerNum++; }
         else { currentPlayerNum = 0; }
         DisplayPlayer();
@@ -67,6 +66,7 @@ public class ChangePlayerController : MonoBehaviour
 
     public void RolledNewScore(int newPoints)
     {
+        newPoints += pointsToCarryOver;
         PlayerData currentPlayer = CurrentGame.data.players[currentPlayerNum];
         currentPlayer.totalScore += newPoints;
         currentPlayer.roundScore.Add(newPoints);
@@ -75,12 +75,8 @@ public class ChangePlayerController : MonoBehaviour
 
     public void CarryScoreForNewDice(int carryOver)
     {
-        pointToCarryover += carryOver;
-        //before i instantiate for new dice I can pass the points to this function that holds it. and passes the new points to potential incoming?
-        //my issue right now is that the potential incoming points are 0 when the whole patch of dice are coming in rather than the agregated score being stores in total dice handler
-        //currentPlayer.totalScore += newPoints;
-        //i can invoke a function and give it points
-
+        pointsToCarryOver += carryOver;
+   
         //PotentialPointsUIUpdate(newPoints);
     }
     
@@ -88,12 +84,13 @@ public class ChangePlayerController : MonoBehaviour
     {
         //i think this runs everytime a score is passed through. the default is 0. so when the player switches it resets to 0. every time you score you pass it points
         Debug.Log("Potential running");
-        if (potentialIncomingPoints == 0) { potentialPoints.text = ""; }
-        else if(pointToCarryover != 0) {
-            (potentialIncomingPoints += pointToCarryover).ToString();
-            //pointToCarryover = 0;
-                }
-        else { potentialPoints.text = potentialIncomingPoints.ToString(); }
+        //everytime theres a new dice potential points is 0...
+        //if threre are now carry over points or current points display nothing
+        //otherwise show potential points plus carry over points
+        //everytime you switch players reset pointToCarryOver
+        if (potentialIncomingPoints == 0 && pointsToCarryOver == 0) { potentialPoints.text = ""; }
+                
+        else { potentialPoints.text = (potentialIncomingPoints+= pointsToCarryOver).ToString(); }
     }
 
     public void FarkledCounter(int didFarkle)
