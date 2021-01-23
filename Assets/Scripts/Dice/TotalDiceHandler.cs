@@ -19,7 +19,7 @@ public class TotalDiceHandler : MonoBehaviour
     public int totalScore;
     List<int> diceSelected = new List<int>();
     //public Dice[] totalDice;
-    public List<Dice> totalDice2;
+    public List<Dice> totalDice;
     static public bool roundOver = false;
     public int score = 0;
     public int one = 0;
@@ -90,7 +90,7 @@ public class TotalDiceHandler : MonoBehaviour
     }
     public void KeepDiceAndScore()
     {
-        foreach (Dice die in totalDice2)
+        foreach (Dice die in totalDice)
         {
             if (die.stay)
             {
@@ -433,7 +433,7 @@ public class TotalDiceHandler : MonoBehaviour
                 newDie.transform.SetParent(transform, false);
                  
             }
-            totalDice2.Add(newDie.transform.GetChild(0).GetComponent<Dice>());
+            totalDice.Add(newDie.transform.GetChild(0).GetComponent<Dice>());
             dicePutBack--;
         }
         
@@ -441,7 +441,7 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void InformDiceRoundOver()
     {
-        foreach( Dice die in totalDice2)
+        foreach( Dice die in totalDice)
         {
             if(die != null)
             {

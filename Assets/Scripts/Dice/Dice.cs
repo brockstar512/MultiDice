@@ -193,7 +193,7 @@ public class Dice : MonoBehaviour
         initialPosition = Input.acceleration;
         initialPosition = Quaternion.Euler(90, 0, 0) * initialPosition;
 
-        if (initialPosition.sqrMagnitude > 1) initialPosition.Normalize();
+        if (initialPosition.sqrMagnitude > 1) initialPosition.Normalize();//**not sure if this is needed?
 
         //private Vector3 initialPosition;
         //private Vector3 finalPosition;
@@ -206,7 +206,7 @@ public class Dice : MonoBehaviour
         finalPosition = Input.acceleration;
         finalPosition = Quaternion.Euler(90, 0, 0) * finalPosition;
 
-        if (finalPosition.sqrMagnitude > 1) finalPosition.Normalize();
+        if (finalPosition.sqrMagnitude > 1) finalPosition.Normalize();//**not sure if this is needed?
 
         timeUpPressed = Time.time;
         pressedDifference = timeUpPressed - timePressed;
