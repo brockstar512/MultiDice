@@ -65,7 +65,7 @@ public class Dice : MonoBehaviour
         if (tilt.sqrMagnitude > 1)
             tilt.Normalize();
 
-        //Debug.Log(tilt);
+        //Debug.Log(finalPosition.z - initialPosition.z);
         //Debug.Log(tilt);
 
         if (Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Began)
@@ -115,34 +115,23 @@ public class Dice : MonoBehaviour
             //{
             Vector3 tilt = Input.acceleration;
             tilt = Quaternion.Euler(90, 0, 0) * tilt;
-            //if (tilt.sqrMagnitude > 1)
-            //    tilt.Normalize();
 
-         
-            //float rollForce = (200 - (pressedDifference * 100));
-            float rollForce = (finalPosition.z - initialPosition.z / pressedDifference);
-            //Debug.Log(finalPosition.z - initialPosition.z + " " +" "+ pressedDifference +"  "+ ((initialPosition.z - initialPosition.z)* pressedDifference* pressedDifference));
-            Debug.Log("here is what I think i'll multiply it by "+ Mathf.Abs(finalPosition.z - initialPosition.z) + " " +" "+ pressedDifference +"  "+ ((finalPosition.z - initialPosition.z)* pressedDifference* pressedDifference) + "     just multiplying time difference ->  "+ Mathf.Abs((finalPosition.z - initialPosition.z) * pressedDifference )*100);
-            //float rollForce = (200 - (pressedDifference * 100));
-            //if (rollForce < 0) rollForce = 1;
-            //else { rollForce *= (finalPosition.y - initialPosition.y); }
-            //rollForce = Mathf.Abs(rollForce);
-            //rollForce *= 2;
+            float rollForce = Mathf.Abs((finalPosition.z - initialPosition.z) / pressedDifference * pressedDifference) * 100;
 
-            rollForce = Mathf.Abs((finalPosition.z - initialPosition.z) / pressedDifference * pressedDifference) * 100;
+            if (finalPosition.z - initialPosition.z < 0) {
+                rollForce += 25f;
+                tilt.x *= Random.Range(20,100);
+                tilt.y *= Random.Range(20, 100);
+                tilt.z *= Random.Range(20, 100);
+            }
+            else{ rollForce += 50f; }
 
-            //}
-            //tilt = new Vector3(Random.Range(0, 500),Random.Range(0, 500),Random.Range(0, 500));
-            //I could do transform.down too
-            rb.AddForce(transform.forward * (rollForce+50), ForceMode.Impulse);//divide it by the pressedDifference
-            //rb.AddForce(transform.forward * 200, ForceMode.Impulse);
-            //rb.AddTorque(Random.Range(0,500), Random.Range(0,500), Random.Range(0,500));// give its random torque so its not falling straight down
-            rb.AddTorque(tilt.x * Random.Range(0, 350), tilt.y * Random.Range(0, 350), tilt.z * Random.Range(0, 350));// give its random torque so its not falling straight down
-
-            //force is just multiplied by the difference of how long you pressed your phone and 500
+            Debug.Log("roll force ->     "+rollForce);
+            rb.AddForce(transform.forward * (rollForce),ForceMode.Impulse);
+            rb.AddTorque(tilt.x * Random.Range(100, 500), tilt.y * Random.Range(100, 500), tilt.z * Random.Range(100, 500));
         }
     }
-    //this is not added to the button...i could iterate through the list and if its not null select round over
+
     public void roundOver()
     {
         if (hasThrown && hasLanded && !stay)
@@ -152,9 +141,7 @@ public class Dice : MonoBehaviour
         else if (hasThrown && hasLanded && stay)
         {
             this.gameObject.SetActive(false);
-            //totalDiceHandler.totalDice2.RemoveAt(this.gameObject.transform.parent.gameObject.transform.GetSiblingIndex());
             Destroy(this.gameObject.transform.parent.gameObject);
-            //Debug.Log("this is sibling index         " + this.gameObject.transform.parent.gameObject.transform.GetSiblingIndex());
         }
     }
 
@@ -222,9 +209,7 @@ public class Dice : MonoBehaviour
         if (finalPosition.sqrMagnitude > 1) finalPosition.Normalize();
 
         timeUpPressed = Time.time;
-        Debug.Log(timePressed + "-----" + timeUpPressed);
         pressedDifference = timeUpPressed - timePressed;
-        Debug.Log("time difference in pressed       " + pressedDifference);
     }
 
 }
