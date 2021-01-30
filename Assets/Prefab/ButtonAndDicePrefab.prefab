@@ -528,6 +528,7 @@ MonoBehaviour:
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
+  mobileDevice: 0
   diceValue: 0
   diceRollCheck:
   - {fileID: 2516650093775369254}
@@ -2531,6 +2532,7 @@ MonoBehaviour:
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
+  mobileDevice: 0
   diceValue: 0
   diceRollCheck:
   - {fileID: 8218491012229437789}
@@ -4730,7 +4732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameInit: {fileID: 0}
   totalScore: 0
-  totalDice2:
+  totalDice:
   - {fileID: 1026205156103097087}
   - {fileID: 1026205156458116622}
   - {fileID: 1026205157008145048}
@@ -6178,6 +6180,7 @@ MonoBehaviour:
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
+  mobileDevice: 0
   diceValue: 0
   diceRollCheck:
   - {fileID: 330276743970914691}
@@ -6769,6 +6772,7 @@ MonoBehaviour:
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
+  mobileDevice: 0
   diceValue: 0
   diceRollCheck:
   - {fileID: 8768378546154867659}
@@ -7911,6 +7915,7 @@ MonoBehaviour:
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
+  mobileDevice: 0
   diceValue: 0
   diceRollCheck:
   - {fileID: 7228385984000838608}
@@ -8596,6 +8601,7 @@ MonoBehaviour:
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
+  mobileDevice: 0
   diceValue: 0
   diceRollCheck:
   - {fileID: 952716220147107298}

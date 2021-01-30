@@ -94,6 +94,7 @@ public class TotalDiceHandler : MonoBehaviour
         {
             if (die.stay)
             {
+                Debug.Log("Checking stay - " + die.stay + "    " + die.diceValue); ;
                 Scoring(die.diceValue);
                 die.stay = false;
                 diceLeft++;
@@ -404,6 +405,7 @@ public class TotalDiceHandler : MonoBehaviour
             //should be 499
             displayPlayerChanger.RolledNewScore(totalScore);
             displayPlayerChanger.FarkledCounter(0);
+            if ((displayPlayerChanger.FinalScoreCheck + totalScore) >= 200) displayPlayerChanger.LastRound = true;
             totalScore = 0;
             displayPlayerChanger.NextPlayer();
             KeepScoreAndEndRoundButton.SetActive(false);

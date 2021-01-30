@@ -5,6 +5,7 @@ using UnityEngine.UI;
 //was display
 public class ChangePlayerController : MonoBehaviour
 {
+
     [Header("Dice and point reset")]
     public GameObject buttonAndDicePrefab;
     public GameObject diceParent;
@@ -18,15 +19,33 @@ public class ChangePlayerController : MonoBehaviour
     [Header("Dice and point reset")]
     public TotalDiceHandler totalDiceHandler;
 
+    [Header("Final Round")]
+    private int playerCountDown;
     private bool lastRound = false;
-    private bool playerCountDown = false;
+    public bool LastRound
+    {
+        get
+        {
+            return lastRound;
+        }
+        set
+        {
+            lastRound = value;
+        }
+    }
+    private int finalScoreCheck;
+    public int FinalScoreCheck
+    {
+        get { return finalScoreCheck; }
+        set { finalScoreCheck = value; }
+    }
 
     void Start()
     {
         currentPlayerNum = 0;
         DisplayPlayer();
+        playerCountDown = CurrentGame.data.players.Count;
     }
-
 
     public void DisplayPlayer()
     {
@@ -42,6 +61,7 @@ public class ChangePlayerController : MonoBehaviour
         DisplayPlayer();
         ReactivateDice();
         PotentialPointsUIUpdate();//this is hiding the UI after you switch players
+        if (lastRound) GameFinished();
     }
     public void PreviousPlayer()
     {
@@ -57,6 +77,7 @@ public class ChangePlayerController : MonoBehaviour
     {
         PlayerData currentPlayer = CurrentGame.data.players[currentPlayerNum];
         currentScore.text = "Score: " + currentPlayer.totalScore.ToString();
+        finalScoreCheck = currentPlayer.totalScore;
     }
 
 
@@ -118,11 +139,22 @@ public class ChangePlayerController : MonoBehaviour
         else { CurrentGame.data.players[currentPlayerNum].farkleCount = 0; }//they rolled something pointworthy
     }
 
-    private void GameFinished(int playerCount)
+    private int GetPlayerScore()
     {
-        //int countDown = playerCount;
-        //if()
-        Debug.Log("GAME IS FINISHED");
-        //CurrentGame.data.players.Count
+        PlayerData currentPlayer = CurrentGame.data.players[currentPlayerNum];
+        //return currentPlayer.totalScore;
+        return 11;
+    }
+
+
+    private void GameFinished()
+    {
+        playerCountDown--;
+
+
+        if (playerCountDown <= 0)
+        {
+            Debug.Log("GAME IS FINISHED");
+        }
     }
 }
