@@ -119,7 +119,8 @@ public class Dice : MonoBehaviour
             float rollForce = Mathf.Abs((finalPosition.z - initialPosition.z) / pressedDifference * pressedDifference) * 100;
 
             if (finalPosition.z - initialPosition.z < 0) {
-                rollForce += 25f;
+                //rollForce += 25f;
+                rollForce += 10f;
                 tilt.x *= Random.Range(20,100);
                 tilt.y *= Random.Range(20, 100);
                 tilt.z *= Random.Range(20, 100);

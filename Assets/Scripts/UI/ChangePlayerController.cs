@@ -18,6 +18,9 @@ public class ChangePlayerController : MonoBehaviour
     [Header("Dice and point reset")]
     public TotalDiceHandler totalDiceHandler;
 
+    private bool lastRound = false;
+    private bool playerCountDown = false;
+
     void Start()
     {
         currentPlayerNum = 0;
@@ -113,5 +116,13 @@ public class ChangePlayerController : MonoBehaviour
             }
         }
         else { CurrentGame.data.players[currentPlayerNum].farkleCount = 0; }//they rolled something pointworthy
+    }
+
+    private void GameFinished(int playerCount)
+    {
+        //int countDown = playerCount;
+        //if()
+        Debug.Log("GAME IS FINISHED");
+        //CurrentGame.data.players.Count
     }
 }
