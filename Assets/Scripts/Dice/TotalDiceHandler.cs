@@ -8,11 +8,9 @@ using System.Linq;
 public class TotalDiceHandler : MonoBehaviour
 {
     //things to do
-    //-allowing the phone to roll the dice with the gyroscope
     //-figure out how to determines who wins
     //-figure out messageing system
     //-fix pairs and four of a kind and make sure the buttons rerender when clicked for the more complex buttons
-    //-points need to carry over when you roll all your dice and roll again
 
     public GameInit gameInit;
 
@@ -87,6 +85,11 @@ public class TotalDiceHandler : MonoBehaviour
         gameInit = this.gameObject.transform.parent.GetComponent<GameInit>();
         
 
+    }
+
+    void Update()
+    {
+        Debug.Log("diceLeft "+ diceLeft);
     }
     public void KeepDiceAndScore()
     {
@@ -362,12 +365,18 @@ public class TotalDiceHandler : MonoBehaviour
             totalScore += score;
             display.GetComponent<ChangePlayerController>().PotentialPointsUIUpdate(totalScore);
             
-
-            if (score <= 100 && totalScore <= 100)
-            {                
+            //************
+            if (score <= 50 && totalScore <= 50)
+            {             //i think thi is for miss counted/selected
+                //this top one adds the dice that are left
                 DestroyExistingDice();
                 addSingleDice(diceToContinue);
-                if(diceLeft > 0 && score > 0){
+                Debug.Log("dice to continue");
+
+                //if you misclicked a dice and have a score
+                if (diceLeft > 0 && score > 0){
+                    Debug.Log("you have dice left");
+                    //if you have scored and youve wrongly selected a dice
                 addSingleDice(diceLeft,true);
                 diceLeft = 0;
                 }
@@ -400,12 +409,13 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void KeepScoreNextRound()
     {
+        //this is the function that runs when you click the button
         //if you have enough point good! Otherwise game over for you
-        if (totalScore > 100){
+        if (totalScore > 500){
             //should be 499
             displayPlayerChanger.RolledNewScore(totalScore);
             displayPlayerChanger.FarkledCounter(0);
-            if ((displayPlayerChanger.FinalScoreCheck + totalScore) >= 200) displayPlayerChanger.LastRound = true;
+            if ((displayPlayerChanger.FinalScoreCheck + totalScore) >= 1500) displayPlayerChanger.LastRound = true;
             totalScore = 0;
             displayPlayerChanger.NextPlayer();
             KeepScoreAndEndRoundButton.SetActive(false);
@@ -461,10 +471,11 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void KeepRolling()
     {
+        //This is the funtion that runs on the keep rolling button
         KeepScoreAndEndRoundButton.SetActive(false);
         keepRollingButton.SetActive(false);
         if (this.gameObject.transform.childCount == 0)
-        {
+        {//this is not running
             display.GetComponent<ChangePlayerController>().CarryScoreForNewDice(totalScore);//? i think this will do it
             display.GetComponent<ChangePlayerController>().ReactivateDice();
             //give variable to display that is carryOverPoints... that equals to 0. you are passing over points.
@@ -517,10 +528,23 @@ public class TotalDiceHandler : MonoBehaviour
         five = 0;
         six = 0;
         score = 0;
-        if(totalScore > 100) { 
+        //total score is not potential score we want potential score
+        if(totalScore >= 500) {
+            //if they have reached the score threshold give them the option to continue rolling or not
             KeepScoreAndEndRoundButton.SetActive(true);
             keepRollingButton.SetActive(true);
         }
+        else if(this.gameObject.transform.childCount == 0)
+        {
+            //if they have not reached the pont threshhold but there are not more dice left reactive the dice
+            display.GetComponent<ChangePlayerController>().ReactivateDice();
+        }
+        //******* this is not bringing back the imsclicked dice
+        //else if(totalScore >= 50)
+        //{
+        //    KeepRolling();
+        //}
+        
     }
 
     public void SubtractTwoTriples()

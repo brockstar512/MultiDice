@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 //was display
 public class ChangePlayerController : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class ChangePlayerController : MonoBehaviour
     public TotalDiceHandler totalDiceHandler;
 
     [Header("Final Round")]
+    public GameObject endGamePanelPrefab;
     private int playerCountDown;
     private bool lastRound = false;
     public bool LastRound
@@ -155,6 +157,11 @@ public class ChangePlayerController : MonoBehaviour
         if (playerCountDown <= 0)
         {
             Debug.Log("GAME IS FINISHED");
+            GameObject player = Instantiate(endGamePanelPrefab, transform.position, Quaternion.identity, this.gameObject.transform);
+            player.SetActive(true);
+            //SceneManager.LoadScene("GameFinished");
+            //maybe I should add last gameobject that shows game results
+
         }
     }
 }
