@@ -15,6 +15,15 @@ public class ChangePlayerController : MonoBehaviour
     public Text currentName;
     public Text currentScore;
     public Text potentialPoints;
+
+    public int PointsToCarryOver
+    {
+        get
+        {
+            return pointsToCarryOver;
+        }
+    }
+
     private int pointsToCarryOver = 0;
 
     [Header("Dice and point reset")]

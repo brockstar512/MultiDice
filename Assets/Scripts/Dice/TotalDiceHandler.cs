@@ -8,9 +8,11 @@ using System.Linq;
 public class TotalDiceHandler : MonoBehaviour
 {
     //things to do
+    //-allowing the phone to roll the dice with the gyroscope
     //-figure out how to determines who wins
     //-figure out messageing system
     //-fix pairs and four of a kind and make sure the buttons rerender when clicked for the more complex buttons
+    //-points need to carry over when you roll all your dice and roll again
 
     public GameInit gameInit;
 
@@ -28,7 +30,12 @@ public class TotalDiceHandler : MonoBehaviour
     public int six = 0;
     public int diceLeft = 0;//this is for false selection
     private int diceToContinue;
+    private int potentialPoints;
 
+    
+    //score is that roll
+    //total score is that set
+    //potential points is that round after you finish a complete set
 
 
     //public Text potentialPoints;
@@ -83,13 +90,8 @@ public class TotalDiceHandler : MonoBehaviour
         displayPlayerChanger = display.GetComponent<ChangePlayerController>();
         KeepScoreAndEndRoundButton.SetActive(false);
         gameInit = this.gameObject.transform.parent.GetComponent<GameInit>();
-        
+        potentialPoints = displayPlayerChanger.PointsToCarryOver;
 
-    }
-
-    void Update()
-    {
-        Debug.Log("diceLeft "+ diceLeft);
     }
     public void KeepDiceAndScore()
     {
@@ -285,13 +287,13 @@ public class TotalDiceHandler : MonoBehaviour
         pairForFourOfAKindList = pairForFourOfAKindList.Distinct().ToList();
 
         bool hasScored = false;
-        print("ASSESS WITH BUTTONS" + "Six = "+ six + " Five = " + five + " Four = " + four + " Three = " + three + " Two = " + two + " One = " + one);
-        if(one >= 1 && two >= 1 && three >= 1 && four >= 1 && five >= 1 && six >= 1&& activeButtonCount < 3)
+        print("ASSESS WITH BUTTONS" + "Six = " + six + " Five = " + five + " Four = " + four + " Three = " + three + " Two = " + two + " One = " + one);
+        if (one >= 1 && two >= 1 && three >= 1 && four >= 1 && five >= 1 && six >= 1 && activeButtonCount < 3)
         {
             buttonOneToSixStraight.SetActive(true);
             activeButtonCount++;
         }
-        if(twoTriplesList.Count >= 2 && activeButtonCount < 3)
+        if (twoTriplesList.Count >= 2 && activeButtonCount < 3)
         {
             buttonTwoTriplets.SetActive(true);
             activeButtonCount++;
@@ -306,7 +308,7 @@ public class TotalDiceHandler : MonoBehaviour
             buttonThreePairs.SetActive(true);
             activeButtonCount++;
         }
-        if (sixOfAKindList.Count >=1 && activeButtonCount < 3)
+        if (sixOfAKindList.Count >= 1 && activeButtonCount < 3)
         {
             buttonSixOfAKind.SetActive(true);
             activeButtonCount++;
@@ -361,24 +363,20 @@ public class TotalDiceHandler : MonoBehaviour
             buttonSingleFive.SetActive(true);
             activeButtonCount++;
         }
-        if (score > 0 && activeButtonCount == 0) { 
+        if (score > 0 && activeButtonCount == 0)
+        {
             totalScore += score;
             display.GetComponent<ChangePlayerController>().PotentialPointsUIUpdate(totalScore);
-            
-            //************
-            if (score <= 50 && totalScore <= 50)
-            {             //i think thi is for miss counted/selected
-                //this top one adds the dice that are left
+
+
+            if (score <= 500 && totalScore <= 500)
+            {
                 DestroyExistingDice();
                 addSingleDice(diceToContinue);
-                Debug.Log("dice to continue");
-
-                //if you misclicked a dice and have a score
-                if (diceLeft > 0 && score > 0){
-                    Debug.Log("you have dice left");
-                    //if you have scored and youve wrongly selected a dice
-                addSingleDice(diceLeft,true);
-                diceLeft = 0;
+                if (diceLeft > 0 && score > 0)
+                {
+                    addSingleDice(diceLeft, true);
+                    diceLeft = 0;
                 }
 
 
@@ -386,9 +384,9 @@ public class TotalDiceHandler : MonoBehaviour
             ScoreReset();
             //ClearEmptyArraySlots();
         }
-        else if(score <= 0 && activeButtonCount == 0 && !hasScored)
+        else if (score <= 0 && activeButtonCount == 0 && !hasScored)
         {
-            
+
             Debug.Log("GAME OVER");
             GameOver();
         }
@@ -409,53 +407,56 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void KeepScoreNextRound()
     {
-        //this is the function that runs when you click the button
         //if you have enough point good! Otherwise game over for you
-        if (totalScore > 500){
+        if (totalScore > 500)
+        {
             //should be 499
             displayPlayerChanger.RolledNewScore(totalScore);
             displayPlayerChanger.FarkledCounter(0);
-            if ((displayPlayerChanger.FinalScoreCheck + totalScore) >= 1500) displayPlayerChanger.LastRound = true;
+            if ((displayPlayerChanger.FinalScoreCheck + totalScore) >= 200) displayPlayerChanger.LastRound = true;
             totalScore = 0;
             displayPlayerChanger.NextPlayer();
             KeepScoreAndEndRoundButton.SetActive(false);
             keepRollingButton.SetActive(false);
         }
-        else{
+        else
+        {
             KeepScoreAndEndRoundButton.SetActive(false);
             keepRollingButton.SetActive(false);
-            
+
             GameOver();
         }
     }
 
-    public void addSingleDice( int dicePutBack, bool leftOver = false)
+    public void addSingleDice(int dicePutBack, bool leftOver = false)
     {
 
         while (dicePutBack > 0)
-        { 
+        {
             GameObject newDie;
-            if(!leftOver){
-                 newDie = Instantiate(diceSingle, GameInit.diceLocationConfig.diePosition[dicePutBack -1], Quaternion.identity) as GameObject;
+            if (!leftOver)
+            {
+                newDie = Instantiate(diceSingle, GameInit.diceLocationConfig.diePosition[dicePutBack - 1], Quaternion.identity) as GameObject;
                 newDie.transform.SetParent(transform, false);
             }
-            else{
+            else
+            {
 
                 newDie = Instantiate(diceSingle, GameInit.diceLocationConfig.diePosition[6 - dicePutBack], Quaternion.identity) as GameObject;
                 newDie.transform.SetParent(transform, false);
-                 
+
             }
             totalDice.Add(newDie.transform.GetChild(0).GetComponent<Dice>());
             dicePutBack--;
         }
-        
+
     }
 
     public void InformDiceRoundOver()
     {
-        foreach( Dice die in totalDice)
+        foreach (Dice die in totalDice)
         {
-            if(die != null)
+            if (die != null)
             {
                 die.roundOver();
             }
@@ -464,32 +465,34 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void DestroyExistingDice()
     {
-       for(int i = 0; i < this.gameObject.transform.childCount;i++){
-           Destroy(this.gameObject.transform.GetChild(i).gameObject);
-       }
+        for (int i = 0; i < this.gameObject.transform.childCount; i++)
+        {
+            Destroy(this.gameObject.transform.GetChild(i).gameObject);
+        }
     }
 
     public void KeepRolling()
     {
-        //This is the funtion that runs on the keep rolling button
         KeepScoreAndEndRoundButton.SetActive(false);
         keepRollingButton.SetActive(false);
         if (this.gameObject.transform.childCount == 0)
-        {//this is not running
+        {
             display.GetComponent<ChangePlayerController>().CarryScoreForNewDice(totalScore);//? i think this will do it
             display.GetComponent<ChangePlayerController>().ReactivateDice();
             //give variable to display that is carryOverPoints... that equals to 0. you are passing over points.
             //everytime you add points you make it zero so you only add it once to the over all points
             //
         }
-        else { 
+        else
+        {
             DestroyExistingDice();
             addSingleDice(diceToContinue);
-            if(diceLeft > 0){
-                addSingleDice(diceLeft,true);
+            if (diceLeft > 0)
+            {
+                addSingleDice(diceLeft, true);
                 diceLeft = 0;
-                } 
             }
+        }
     }
 
     private void ShowDice(bool show)
@@ -528,23 +531,12 @@ public class TotalDiceHandler : MonoBehaviour
         five = 0;
         six = 0;
         score = 0;
-        //total score is not potential score we want potential score
-        if(totalScore >= 500) {
-            //if they have reached the score threshold give them the option to continue rolling or not
+        //this 
+        if (totalScore >=500 || potentialPoints >=500)
+        {
             KeepScoreAndEndRoundButton.SetActive(true);
             keepRollingButton.SetActive(true);
         }
-        else if(this.gameObject.transform.childCount == 0)
-        {
-            //if they have not reached the pont threshhold but there are not more dice left reactive the dice
-            display.GetComponent<ChangePlayerController>().ReactivateDice();
-        }
-        //******* this is not bringing back the imsclicked dice
-        //else if(totalScore >= 50)
-        //{
-        //    KeepRolling();
-        //}
-        
     }
 
     public void SubtractTwoTriples()
@@ -602,7 +594,7 @@ public class TotalDiceHandler : MonoBehaviour
     }
     public void SubtractSixOfAKind()
     {
-        switch(sixOfAKindList[0])
+        switch (sixOfAKindList[0])
         {
             case "six":
                 six -= 6;
