@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class EndGamePrompt : MonoBehaviour
 {
@@ -14,6 +15,12 @@ void Awake()
     {
         bet.GetComponent<Text>().text = "Bet: " + CurrentGame.data.bet;
         //CurrentGame.data.players[currentPlayerNum]
+
+        //List<PlayerData> sortedPlayers = CurrentGame.data.players.OrderByDescending(player => player.totalScore).ToList();
+        CurrentGame.data.players = CurrentGame.data.players.OrderByDescending(player => player.totalScore).ToList();
+        GameData completeGame = new GameData(CurrentGame.data);
+        //test to see if copy works
+
         PopulatePlayerList();
     }
 

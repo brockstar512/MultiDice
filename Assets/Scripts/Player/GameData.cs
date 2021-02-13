@@ -21,6 +21,12 @@ public class GameData
 
     }
 
+    public GameData(GameData copy)
+    {
+        this.players = new List<PlayerData>(copy.players);
+        this.start_time = copy.start_time;
+    }
+
 }
 public class PlayerData
 {
