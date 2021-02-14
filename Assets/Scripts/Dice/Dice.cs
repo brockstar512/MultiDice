@@ -30,6 +30,9 @@ public class Dice : MonoBehaviour
     private Vector3 initialPosition;
     private Vector3 finalPosition;
 
+    private float countDownTimer = 1f;
+    private bool isThumbDown;
+
 
     public int diceValue;
     public DiceRollCheck[] diceRollCheck;
@@ -63,25 +66,43 @@ public class Dice : MonoBehaviour
     {
         if (mobileDevice)
         {
+            //swiper
+            //ticker
+            //3. flick your wrist
+
+            //3. what it is now
             Vector3 tilt = Input.acceleration;
             tilt = Quaternion.Euler(90, 0, 0) * tilt;
             if (tilt.sqrMagnitude > 1)
                 tilt.Normalize();
 
             if (Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Began)
-        {
-            TouchBegan();
+            {
+                TouchBegan();
+                isThumbDown = true;
+                //time for pressing down... countdown from 5
 
+            }
+            if ((Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Ended))
+            {
+                isThumbDown = false;
+                TouchEnded();
+            }
+            if(isThumbDown)
+            {
+                countDownTimer-= Time.deltaTime;
+                if (countDownTimer <= 0)
+                {
+                    TouchEnded();
+                    RollDice();
+                    countDownTimer = 1f;
+                }
+            }
+
+            //3. what it is now - end
         }
 
-            if (Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Ended)
-        {
-
-            TouchEnded();
-        }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Ended)//*****
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Ended))//*****
         {
             RollDice();
         }
@@ -114,8 +135,8 @@ public class Dice : MonoBehaviour
         {
             hasThrown = true;
             rb.useGravity= true;
-            //if (isNotThrown)
-            //{
+         
+            //3.
             if (mobileDevice)
             {
                 Vector3 tilt = Input.acceleration;
@@ -137,6 +158,7 @@ public class Dice : MonoBehaviour
                 rb.AddForce(transform.forward * (rollForce), ForceMode.Impulse);
                 rb.AddTorque(tilt.x * Random.Range(100, 500), tilt.y * Random.Range(100, 500), tilt.z * Random.Range(100, 500));
             }
+            //3.
             else
             { 
                 rb.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));// give its random torque so its not falling straight down
@@ -204,7 +226,7 @@ public class Dice : MonoBehaviour
 
     public void TouchBegan()
     {
-        timePressed = Time.time;
+        timePressed = Time.deltaTime;
         initialPosition = Input.acceleration;
         initialPosition = Quaternion.Euler(90, 0, 0) * initialPosition;
 
@@ -214,17 +236,22 @@ public class Dice : MonoBehaviour
         //private Vector3 finalPosition;
 
         Debug.Log(timePressed - timeUpPressed);
+   
     }
 
     public void TouchEnded()
     {
+        isThumbDown = false;
         finalPosition = Input.acceleration;
         finalPosition = Quaternion.Euler(90, 0, 0) * finalPosition;
 
         if (finalPosition.sqrMagnitude > 1) finalPosition.Normalize();//**not sure if this is needed?
 
-        timeUpPressed = Time.time;
+        timeUpPressed = Time.deltaTime;
         pressedDifference = timeUpPressed - timePressed;
     }
+
+
+
 
 }
