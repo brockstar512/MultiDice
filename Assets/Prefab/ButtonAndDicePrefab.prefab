@@ -490,7 +490,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269144957582446762}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -538,6 +538,8 @@ MonoBehaviour:
   - {fileID: 3479196150055920926}
   - {fileID: 3593011174017096122}
   KeepScoreAndEndRoundButton: {fileID: 3165583251313010801}
+  throwForceInXandY: 1
+  throwForceInZ: 50
 --- !u!114 &4674251061009203209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2494,7 +2496,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2506822716963726814}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -2542,6 +2544,8 @@ MonoBehaviour:
   - {fileID: 8939525649948942890}
   - {fileID: 1780732372201206121}
   KeepScoreAndEndRoundButton: {fileID: 3165583251313010801}
+  throwForceInXandY: 1
+  throwForceInZ: 50
 --- !u!114 &2098159969078596837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6142,7 +6146,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6126160608822280780}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -6190,6 +6194,8 @@ MonoBehaviour:
   - {fileID: 2398641886967562317}
   - {fileID: 4250797470144586734}
   KeepScoreAndEndRoundButton: {fileID: 3165583251313010801}
+  throwForceInXandY: 1
+  throwForceInZ: 50
 --- !u!114 &8420275580684127204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6734,7 +6740,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7329908192067711734}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -6782,6 +6788,8 @@ MonoBehaviour:
   - {fileID: 7764940461766946295}
   - {fileID: 6776049345587594433}
   KeepScoreAndEndRoundButton: {fileID: 3165583251313010801}
+  throwForceInXandY: 1
+  throwForceInZ: 50
 --- !u!114 &3114735719534021179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7877,7 +7885,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7729371831071454178}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -7925,6 +7933,8 @@ MonoBehaviour:
   - {fileID: 5160884723628794407}
   - {fileID: 2611460658471526116}
   KeepScoreAndEndRoundButton: {fileID: 3165583251313010801}
+  throwForceInXandY: 1
+  throwForceInZ: 50
 --- !u!114 &5353206460634577604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8563,7 +8573,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8023342193050460544}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -8611,6 +8621,8 @@ MonoBehaviour:
   - {fileID: 1222425351856497240}
   - {fileID: 8156614117803808686}
   KeepScoreAndEndRoundButton: {fileID: 3165583251313010801}
+  throwForceInXandY: 1
+  throwForceInZ: 50
 --- !u!114 &4200109639535672896
 MonoBehaviour:
   m_ObjectHideFlags: 0
