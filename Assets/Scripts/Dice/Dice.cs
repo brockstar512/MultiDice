@@ -86,8 +86,8 @@ public class Dice : MonoBehaviour
             //3. flick your wrist
 
             //3. what it is now
-
-            if (tapRoll)
+            //ChangePlayerController.currentPlayerRollSettings
+            if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Tap)
             {
                 Vector3 tilt = Input.acceleration;
                 tilt = Quaternion.Euler(90, 0, 0) * tilt;
@@ -118,7 +118,7 @@ public class Dice : MonoBehaviour
                 }
             }
 
-            if (flickRoll)
+            if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Swipe)
             {
                 rb.isKinematic = false;
                 //touch the screen
@@ -152,7 +152,7 @@ public class Dice : MonoBehaviour
 
 
         }
-        if (!mobileDevice || tapRoll)
+        if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Computer || ChangePlayerController.currentPlayerRollSettings == RollSetting.Tap)
         {
             if ((Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Ended))//*****
             {
@@ -190,10 +190,9 @@ public class Dice : MonoBehaviour
             rb.useGravity= true;
          
             
-            if (mobileDevice)
-            {
+            
 
-                if (tapRoll)
+                if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Tap)
                 {
                     Vector3 tilt = Input.acceleration;
                     tilt = Quaternion.Euler(90, 0, 0) * tilt;
@@ -214,7 +213,7 @@ public class Dice : MonoBehaviour
                     rb.AddForce(transform.forward * (rollForce), ForceMode.Impulse);
                     rb.AddTorque(tilt.x * Random.Range(100, 500), tilt.y * Random.Range(100, 500), tilt.z * Random.Range(100, 500));
                 }
-                else if (flickRoll)
+                else if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Swipe)
                 {
                     
                     //throwForceInZ *= 10;
@@ -236,18 +235,15 @@ public class Dice : MonoBehaviour
                     //direction
                     rb.AddTorque(Random.Range(100, 500),Random.Range(100, 500),Random.Range(100, 500));
 
+                    //10 mass on roll
+                    //1 mass on tap
                 }
+                else if(ChangePlayerController.currentPlayerRollSettings == RollSetting.Computer)
+                {
+                    //computer roll
+                    rb.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));// give its random torque so its not falling straight down
 
-            }
-            //10 mass on roll
-            //1 mass on tap
-
-            else
-            {
-                //computer roll
-                rb.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));// give its random torque so its not falling straight down
-
-            }
+                }
         }
     }
 
