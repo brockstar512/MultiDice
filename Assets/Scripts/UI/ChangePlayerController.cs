@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ChangePlayerController : MonoBehaviour
 {
 
+
     [Header("Dice and point reset")]
     public GameObject buttonAndDicePrefab;
     public GameObject diceParent;
@@ -28,6 +29,16 @@ public class ChangePlayerController : MonoBehaviour
 
     [Header("Dice and point reset")]
     public TotalDiceHandler totalDiceHandler;
+
+    //Settings For Player
+    public static RollSetting currentPlayerRollSettings;
+    public PlayerData GetCurrentPlayer
+    {
+        get
+        {
+            return CurrentGame.data.players[currentPlayerNum];
+        }
+    }
 
     [Header("Final Round")]
     public GameObject endGamePanelPrefab;
@@ -63,6 +74,8 @@ public class ChangePlayerController : MonoBehaviour
         DisplayScore();
         PlayerData currentPlayer = CurrentGame.data.players[currentPlayerNum];
         currentName.text = currentPlayer.playerName;
+        currentPlayerRollSettings = currentPlayer.rollSetting;
+
     }
     public void NextPlayer()
     {

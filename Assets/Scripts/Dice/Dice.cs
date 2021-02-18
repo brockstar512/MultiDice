@@ -49,6 +49,7 @@ public class Dice : MonoBehaviour
     float touchTimeStart, touchTimeFinish, timeInterval; //to calculate swipe time to control throw force
     [SerializeField] float throwForceInXandY = 1f;
     [SerializeField] float throwForceInZ = 50f;
+    [SerializeField] float mass = 10f;
 
 
 
@@ -56,7 +57,11 @@ public class Dice : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         initPosition = transform.position;
-        
+
+        //rb = GetComponent<Rigidbody>();
+        //rb.mass = mass;
+
+
         rb.useGravity= false;
         if(!mobileDevice) rb.isKinematic = true;
         //rb.isKinematic = true;//the problem is if it is kinematic it can be effexted by force or torque
@@ -222,7 +227,12 @@ public class Dice : MonoBehaviour
                     //absolute value of 900 - z force
                     //add force to dice rb in 3D space depending on swipe time, direction, and throw force
                     //-direction.y * throwForceInXandY
-                    rb.AddForce(-direction.x * throwForceInXandY, 1, 600-(throwForceInZ / timeInterval));
+                    float zPower = 600 - (throwForceInZ / timeInterval);
+                    if(zPower <= 0)
+                    {
+                        zPower = 100f;
+                    }
+                    rb.AddForce(-direction.x * throwForceInXandY, 1, zPower);
                     //direction
                     rb.AddTorque(Random.Range(100, 500),Random.Range(100, 500),Random.Range(100, 500));
 

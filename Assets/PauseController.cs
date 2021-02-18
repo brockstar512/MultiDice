@@ -10,21 +10,25 @@ public class PauseController : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject rulesPanel;
 
-
+    public static bool gameIsPaused = false;
 
     void OnEnable()
     {
         buttons.SetActive(true);
+        gameIsPaused = true;
     }
 
     public void Pause()
     {
         this.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void Resume()
     {
+        Time.timeScale = 1f;
         this.gameObject.SetActive(false);
+        gameIsPaused = false;
     }
 
     public void Settings()
