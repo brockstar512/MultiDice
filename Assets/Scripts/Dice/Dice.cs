@@ -24,6 +24,12 @@ public class Dice : MonoBehaviour
     //[SerializeField] GameObject errorMessage;
     [SerializeField] bool mobileDevice = true;
 
+    [Header("Shake Roll")]
+    Vector3 shakePower;
+    const float counterStart = .5f;
+    private float theCounter;
+    private float rollTimedOut = 2f;
+
 
 
     [Header("Tap Roll")]
@@ -58,12 +64,12 @@ public class Dice : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         initPosition = transform.position;
 
-        //rb = GetComponent<Rigidbody>();
         //rb.mass = mass;
 
 
+
         rb.useGravity= false;
-        if(!mobileDevice) rb.isKinematic = true;
+        if(ChangePlayerController.currentPlayerRollSettings == RollSetting.Computer) rb.isKinematic = true;
         //rb.isKinematic = true;//the problem is if it is kinematic it can be effexted by force or torque
         //errorMessage.SetActive(false);//this was active
         if (buttonController == null) {
@@ -79,46 +85,102 @@ public class Dice : MonoBehaviour
 
     void Update()
     {
-        if (mobileDevice)
+
+        //ChangePlayerController.currentPlayerRollSettings
+        if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Shake)
         {
-            //swiper
-            //ticker
-            //3. flick your wrist
-
-            //3. what it is now
-            //ChangePlayerController.currentPlayerRollSettings
-            if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Tap)
+            if (Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Began)
             {
-                Vector3 tilt = Input.acceleration;
-                tilt = Quaternion.Euler(90, 0, 0) * tilt;
-                if (tilt.sqrMagnitude > 1)
-                    tilt.Normalize();
+                
+                isThumbDown = true;
+                //when you put your thumb down the big counter equals the private
+                theCounter = counterStart;
+                shakePower = new Vector3(0,0,0);
+                rollTimedOut = 2f;
 
-                if (Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Began)
-                {
-                    TouchBegan();
-                    isThumbDown = true;
-                    //time for pressing down... countdown from 5
-
-                }
-                if ((Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Ended))
-                {
-                    isThumbDown = false;
-                    TouchEnded();
-                }
-                if (isThumbDown)
-                {
-                    countDownTimer -= Time.deltaTime;
-                    if (countDownTimer <= 0)
-                    {
-                        TouchEnded();
-                        RollDice();
-                        countDownTimer = 1f;
-                    }
-                }
             }
 
-            if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Swipe)
+            if((Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Ended) || rollTimedOut <=0f)
+            {
+                isThumbDown = false;
+                RollDice();
+            }
+            if (isThumbDown)
+            {
+                rollTimedOut-= Time.deltaTime;
+                //if your thumb is down...
+                if (Mathf.Abs(Input.acceleration.x) <= 0.3f)
+                {
+                    //fine...sometimes weird when you change the plan but when you chake its fine on the new plane
+                    //Debug.Log("ACCELERATION HAS STOPPED     "+ Input.acceleration.x);
+                    //if you are not accelerating
+                    //start the counter
+                    theCounter -= Time.deltaTime;
+                }
+                else
+                {
+                    //fine...sometimes weird when you change the plan but when you chake its fine on the new plane
+                    //Debug.Log("theCounter RESET");
+                    //Debug.Log(Input.acceleration.x);
+                    //if you do have acceleration add it ot the shake power
+                    //and reset counter
+                    shakePower += Input.acceleration;
+                    theCounter = counterStart;
+                }
+                if(theCounter <= 0)
+                {
+                    //fine
+                    //Debug.Log("ZERO AND DECREASING" + shakePower.x);
+                    //if the counter has reached 0 subtract your
+                    //shake power by 10 every seconds
+                    shakePower.x = Mathf.Abs(shakePower.x) - 20;
+                    if (shakePower.x <= 0)
+                    {
+                        shakePower.x = 15f;
+                    }
+                    shakePower.z = Mathf.Abs(shakePower.z) - 20;
+                    if (shakePower.z <= 0)
+                    {
+                        shakePower.z = 15f;
+                    }
+                    Debug.Log("ZERO AND DECREASING" + shakePower.x);
+                    Debug.Log("ZERO AND DECREASING" + shakePower.z);
+                }
+            }
+        }
+
+        if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Tap)
+                {
+                    Vector3 tilt = Input.acceleration;
+                    tilt = Quaternion.Euler(90, 0, 0) * tilt;
+                    if (tilt.sqrMagnitude > 1)
+                    tilt.Normalize();
+
+                    if (Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Began)
+                    {
+                        TouchBegan();
+                        isThumbDown = true;
+                        //time for pressing down... countdown from 5
+
+                    }
+                    if ((Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Ended))
+                    {
+                        isThumbDown = false;
+                        TouchEnded();
+                    }
+                    if (isThumbDown)
+                    {
+                        countDownTimer -= Time.deltaTime;
+                        if (countDownTimer <= 0)
+                        {
+                            TouchEnded();
+                            RollDice();
+                            countDownTimer = 1f;
+                        }
+                    }
+                }
+
+        if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Swipe)
             {
                 rb.isKinematic = false;
                 //touch the screen
@@ -150,8 +212,6 @@ public class Dice : MonoBehaviour
 
             }
 
-
-        }
         if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Computer || ChangePlayerController.currentPlayerRollSettings == RollSetting.Tap)
         {
             if ((Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Ended))//*****
@@ -189,10 +249,7 @@ public class Dice : MonoBehaviour
             hasThrown = true;
             rb.useGravity= true;
          
-            
-            
-
-                if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Tap)
+            if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Tap)
                 {
                     Vector3 tilt = Input.acceleration;
                     tilt = Quaternion.Euler(90, 0, 0) * tilt;
@@ -213,16 +270,16 @@ public class Dice : MonoBehaviour
                     rb.AddForce(transform.forward * (rollForce), ForceMode.Impulse);
                     rb.AddTorque(tilt.x * Random.Range(100, 500), tilt.y * Random.Range(100, 500), tilt.z * Random.Range(100, 500));
                 }
-                else if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Swipe)
+            else if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Swipe)
                 {
                     
                     //throwForceInZ *= 10;
-                    Debug.Log("z-> "+throwForceInZ);
-                    Debug.Log("x and y-> " + throwForceInXandY);
-                    Debug.Log("direction-> " + direction);
-                    Debug.Log("timeInterval-> " + timeInterval);
-                    Debug.Log("z FORCE -> " + (throwForceInZ / timeInterval));
-                    Debug.Log("Official Force being applied -> " + (600-(throwForceInZ / timeInterval)));
+                    //Debug.Log("z-> "+throwForceInZ);
+                    //Debug.Log("x and y-> " + throwForceInXandY);
+                    //Debug.Log("direction-> " + direction);
+                    //Debug.Log("timeInterval-> " + timeInterval);
+                    //Debug.Log("z FORCE -> " + (throwForceInZ / timeInterval));
+                    //Debug.Log("Official Force being applied -> " + (600-(throwForceInZ / timeInterval)));
                     //absolute value of 900 - z force
                     //add force to dice rb in 3D space depending on swipe time, direction, and throw force
                     //-direction.y * throwForceInXandY
@@ -238,12 +295,20 @@ public class Dice : MonoBehaviour
                     //10 mass on roll
                     //1 mass on tap
                 }
-                else if(ChangePlayerController.currentPlayerRollSettings == RollSetting.Computer)
-                {
-                    //computer roll
-                    rb.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));// give its random torque so its not falling straight down
-
-                }
+            else if(ChangePlayerController.currentPlayerRollSettings == RollSetting.Computer)
+            {
+                //computer roll
+                rb.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));// give its random torque so its not falling straight down
+            }
+            else if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Shake)
+            {
+                //throwing it in the z direction is the distance and force
+                //x is to the right or left. - is left + is right
+                //x could be the speed
+                //-Mathf.Abs(shakePower.x) * 5..... x = direction of is it thrown to the left or right?
+                rb.AddForce(0, 1, Mathf.Abs(shakePower.z*10));
+                rb.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
+            }
         }
     }
 

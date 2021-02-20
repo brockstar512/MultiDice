@@ -77,6 +77,7 @@ public class SettingsMenu : MonoBehaviour
         {
             case 0:
                 changePlayerController.GetCurrentPlayer.rollSetting = RollSetting.Swipe;
+                //ChangePlayerController.currentPlayerRollSettings = RollSetting.Swipe;
                 break;
             case 1:
                 changePlayerController.GetCurrentPlayer.rollSetting = RollSetting.Shake;
