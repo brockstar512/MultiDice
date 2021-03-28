@@ -23,7 +23,6 @@ public class Dice : MonoBehaviour
     [SerializeField] GameObject buttonController;
     //[SerializeField] GameObject errorMessage;
     [SerializeField] bool mobileDevice = true;
-    public ChangePlayerController changePlayerController;
 
     [Header("Shake Roll")]
     Vector3 shakePower;
@@ -67,7 +66,7 @@ public class Dice : MonoBehaviour
 
         //rb.mass = mass;
 
-
+        
 
         rb.useGravity= false;
         if(ChangePlayerController.currentPlayerRollSettings == RollSetting.Computer) rb.isKinematic = true;
@@ -86,9 +85,11 @@ public class Dice : MonoBehaviour
 
     void Update()
     {
-        // Debug.Log(ChangePlayerController.currentPlayerRollSettings);
+        // Debug.Log(changePlayerController.GetCurrentPlayer.rollSetting);//currentPlayerRollSettings
+        Debug.Log(ChangePlayerController.currentPlayerRollSettings);
 
-        //ChangePlayerController.currentPlayerRollSettings
+        //its because its a static var
+        //not sure where ChangePlayerController is being reference or why its here
         if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Shake)
         {
             if (Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Began)

@@ -86,26 +86,33 @@ public class SettingsMenu : MonoBehaviour
                 Debug.Log("Setting 0");
                 changePlayerController.GetCurrentPlayer.rollSetting = RollSetting.Swipe;
                 lastSettingSelected = (int)RollSetting.Swipe;
-                //ChangePlayerController.currentPlayerRollSettings = RollSetting.Swipe;
+                ChangePlayerController.currentPlayerRollSettings = RollSetting.Swipe;
                 break;
             case 1:
                 Debug.Log("Setting 1");
+                //this is to change the class players setting
                 changePlayerController.GetCurrentPlayer.rollSetting = RollSetting.Shake;
                 lastSettingSelected = (int)RollSetting.Shake;
+                //this is for the current round
+                ChangePlayerController.currentPlayerRollSettings = RollSetting.Shake;
+
                 break;
             case 2:
                 Debug.Log("Setting 2");
                 changePlayerController.GetCurrentPlayer.rollSetting = RollSetting.Tap;
                 lastSettingSelected = (int)RollSetting.Tap;
+                ChangePlayerController.currentPlayerRollSettings = RollSetting.Tap;
                 break;
             case 3:
                 Debug.Log("Setting 3");
                 changePlayerController.GetCurrentPlayer.rollSetting = RollSetting.Computer;
                 lastSettingSelected = (int)RollSetting.Computer;
+                ChangePlayerController.currentPlayerRollSettings = RollSetting.Computer;
                 break;
             default:
                 Debug.Log("No Toggle Selected");
                 toggleGroup[lastSettingSelected].isOn = true;
+                ChangePlayerController.currentPlayerRollSettings = (RollSetting)lastSettingSelected;
                 break;
 
         }
