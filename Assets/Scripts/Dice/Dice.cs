@@ -23,6 +23,7 @@ public class Dice : MonoBehaviour
     [SerializeField] GameObject buttonController;
     //[SerializeField] GameObject errorMessage;
     [SerializeField] bool mobileDevice = true;
+    public ChangePlayerController changePlayerController;
 
     [Header("Shake Roll")]
     Vector3 shakePower;
@@ -85,6 +86,7 @@ public class Dice : MonoBehaviour
 
     void Update()
     {
+        // Debug.Log(ChangePlayerController.currentPlayerRollSettings);
 
         //ChangePlayerController.currentPlayerRollSettings
         if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Shake)

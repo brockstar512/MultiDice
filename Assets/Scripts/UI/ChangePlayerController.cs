@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class ChangePlayerController : MonoBehaviour
 {
 
-
+    public AudioManager audioManager;
     [Header("Dice and point reset")]
     public GameObject buttonAndDicePrefab;
     public GameObject diceParent;
@@ -68,7 +68,9 @@ public class ChangePlayerController : MonoBehaviour
         DisplayPlayer();
         playerCountDown = CurrentGame.data.players.Count;
     }
-
+    // void Update(){
+    //     Debug.Log(CurrentGame.data.players[currentPlayerNum].rollSetting);//this part works
+    // }
     public void DisplayPlayer()
     {
         DisplayScore();
@@ -79,6 +81,7 @@ public class ChangePlayerController : MonoBehaviour
     }
     public void NextPlayer()
     {
+        audioManager.Play("Next Turn");
         pointsToCarryOver = 0;
         if (currentPlayerNum < CurrentGame.data.players.Count - 1) { currentPlayerNum++; }
         else { currentPlayerNum = 0; }

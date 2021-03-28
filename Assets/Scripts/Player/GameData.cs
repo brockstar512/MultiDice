@@ -45,7 +45,6 @@ public class PlayerData
         totalScore = 0;
         roundScore = new List<int>();
         farkleCount = 0;
-        rollSetting = RollSetting.Swipe;
     }
 
 }
