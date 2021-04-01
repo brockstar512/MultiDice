@@ -5951,7 +5951,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1452725943}
-  - component: {fileID: 1452725944}
   - component: {fileID: 1452725945}
   m_Layer: 0
   m_Name: AudioManager
@@ -5974,102 +5973,6 @@ Transform:
   m_Father: {fileID: 963194228}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1452725944
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452725942}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 493f53684dc7f4e81b59fd22e66c668a, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &1452725945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6087,26 +5990,71 @@ MonoBehaviour:
     name: Confirm
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 67e6aca1103ba40f2981d40b2288f57b, type: 3}
     name: Minus
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 7f6c12b8dd9264b76b3be552dc5241f7, type: 3}
     name: Plus
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: a103e459495f64438b355c635200528e, type: 3}
+  - clip: {fileID: 8300000, guid: c4136f137440b45acbe2c249965b513a, type: 3}
     name: Dice Landing
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: a02a730ce426d4c86bf683a0081658ea, type: 3}
+  - clip: {fileID: 8300000, guid: a103e459495f64438b355c635200528e, type: 3}
     name: Next Turn
     volume: 1
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  music:
+  - clip: {fileID: 8300000, guid: 50c91552f9fe24dbd8b20614981b8523, type: 3}
+    name: 1
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3c7e6f9c96365415db814468f64732df, type: 3}
+    name: 2
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 493f53684dc7f4e81b59fd22e66c668a, type: 3}
+    name: 3
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 4bbb827eaaa2b4187997035bc1a141ec, type: 3}
+    name: 4
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: fa03f3cdd215646c094fc3c368f5ed29, type: 3}
+    name: 5
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  musicSlider: {fileID: 1656290344}
+  soundSlider: {fileID: 1862936428}
+  currentMusic:
+    clip: {fileID: 0}
+    name: 
+    volume: 0
+    pitch: 0
+    loop: 0
     source: {fileID: 0}
 --- !u!1 &1453535809
 GameObject:
@@ -7041,7 +6989,7 @@ GameObject:
   - component: {fileID: 1656290343}
   - component: {fileID: 1656290344}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Music Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7115,13 +7063,13 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetMusicVolume
-        m_Mode: 0
+      - m_Target: {fileID: 1452725945}
+        m_MethodName: UpdateMusic
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8197,7 +8145,7 @@ GameObject:
   - component: {fileID: 1862936427}
   - component: {fileID: 1862936428}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Sound Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8268,10 +8216,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 2061459045}
   m_HandleRect: {fileID: 1443222222}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.1
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -8422,6 +8370,7 @@ MonoBehaviour:
   playerController: {fileID: 875302429}
   namePrompt: {fileID: 1423444926724160858}
   playerList: {fileID: 620040116}
+  audioManager: {fileID: 1452725945}
   confirmationPanel: {fileID: 429218739}
   mostRecentName: 
   promptExists: 0

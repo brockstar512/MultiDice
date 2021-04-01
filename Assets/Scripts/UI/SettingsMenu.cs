@@ -93,7 +93,7 @@ public class SettingsMenu : MonoBehaviour
                 //this is to change the class players setting
                 changePlayerController.GetCurrentPlayer.rollSetting = RollSetting.Shake;
                 lastSettingSelected = (int)RollSetting.Shake;
-                //this is for the current round
+                //this is for the current round...otherwise the get current roll setting only runs when you run display player
                 ChangePlayerController.currentPlayerRollSettings = RollSetting.Shake;
 
                 break;
