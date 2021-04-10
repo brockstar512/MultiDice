@@ -11,6 +11,7 @@ public class GameData
     public int numberOfPlayers;
     public string bet;
     public System.DateTime start_time;
+    public string url;
 
     
     public GameData()
