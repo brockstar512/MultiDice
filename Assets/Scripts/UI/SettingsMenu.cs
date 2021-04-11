@@ -17,6 +17,10 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] Toggle[] toggleGroup;
     [SerializeField] ChangePlayerController changePlayerController;
     private int lastSettingSelected;
+    
+    private float volume;
+    //private float volume;
+
 
 
 
@@ -62,6 +66,7 @@ public class SettingsMenu : MonoBehaviour
         public void SetMusicVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
+        //settings volume
     }
 
     public void SetEffectsVolume(float volume)
