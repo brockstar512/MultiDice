@@ -6015,8 +6015,8 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: a103e459495f64438b355c635200528e, type: 3}
-    name: Next Turn
+  - clip: {fileID: 8300000, guid: 6a12042fdb19c4f06ba28650d2c1afc3, type: 3}
+    name: sample
     volume: 1
     pitch: 1
     loop: 0
@@ -6055,8 +6055,8 @@ MonoBehaviour:
   musicSlider: {fileID: 1656290344}
   soundSlider: {fileID: 1862936428}
   currentMusic:
-    clip: {fileID: 8300000, guid: 6a12042fdb19c4f06ba28650d2c1afc3, type: 3}
-    name: sample
+    clip: {fileID: 0}
+    name: 
     volume: 0
     pitch: 0
     loop: 0
