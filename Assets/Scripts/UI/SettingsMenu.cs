@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public AudioMixer audioMixer;
+    //public AudioMixer audioMixer;//i might not be using this check is i need it
     //public AudioManager AudioManager;
     //loop through all the sounds and make the sound and pitch equal what the range in the bar is
 
@@ -27,6 +27,8 @@ public class SettingsMenu : MonoBehaviour
 
     void OnEnable()
     {
+        //does this run right when the game begins? is that how the roll setting is chosen...
+        //no its either whenever the toggle is on when you begin to play or it is made befroe that
         Debug.Log(changePlayerController.GetCurrentPlayer.rollSetting);
         //GetActiveRollSetting();
         switch (changePlayerController.GetCurrentPlayer.rollSetting)
@@ -63,16 +65,16 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
-        public void SetMusicVolume(float volume)
-    {
-        audioMixer.SetFloat("volume", volume);
-        //settings volume
-    }
+    //public void SetMusicVolume(float volume)
+    //{
+    //    audioMixer.SetFloat("volume", volume);
+    //    //settings volume
+    //}
 
-    public void SetEffectsVolume(float volume)
-    {
+    //public void SetEffectsVolume(float volume)
+    //{
 
-    }
+    //}
 
     public void GetActiveRollSetting()
     {
@@ -123,9 +125,13 @@ public class SettingsMenu : MonoBehaviour
         }
 
     }
+    //do not need this function unless its in game
     void OnDisable()
     {
+        
         GetActiveRollSetting();
+        //dont worry above saving the roll to the json but what i do want to make sure is that the default roll is loaded from the json
+        
     }
 
 }

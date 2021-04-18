@@ -35,6 +35,10 @@ public class CurrentGame : MonoBehaviour
         player.playerName = theName;
         data.players.Add(player);
         textOfInput.text = "";
+        //give the player the default roll setting
+        player.rollSetting = LoadItems.data.mRollSetting;
+        Debug.Log("PLAYERS STARTING ROLL SETTING - " + player.rollSetting);
+
     }
 }
 

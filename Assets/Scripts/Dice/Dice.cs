@@ -86,7 +86,8 @@ public class Dice : MonoBehaviour
     void Update()
     {
         // Debug.Log(changePlayerController.GetCurrentPlayer.rollSetting);//currentPlayerRollSettings
-        Debug.Log(ChangePlayerController.currentPlayerRollSettings);
+        //Debug.Log(ChangePlayerController.currentPlayerRollSettings);
+        //Debug.Log(LoadItems.data.mRollSetting);
 
         //its because its a static var
         //not sure where ChangePlayerController is being reference or why its here

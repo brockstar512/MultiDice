@@ -18,9 +18,9 @@ public class Settings
     {
         mRollSetting = RollSetting.Computer;
         mMusicVolume = .5f;
-        mSoundVolume = .5f;
+        mSoundVolume = .2f;
     }
-
+                        //delegate so i can get ride of default?
     public Settings (Settings setting)
     {
         mRollSetting = setting.mRollSetting;
@@ -33,7 +33,10 @@ public class Settings
         SaveSystem.SaveSettings(this);
     }
 
-    public void RetrievePlayer()
+    ///<summary>
+    //documentation for this function goes here
+    ///</summary>
+    public void RetrieveSettings()
     {
         Settings data = SaveSystem.LoadSettings();
         mRollSetting = data.mRollSetting;
@@ -49,6 +52,9 @@ public class Settings
 public class GameHistory
 {
     public List<GameData> games;
+    //load 
+    //save
+    
 }
 
 public static class SaveSystem
@@ -82,6 +88,7 @@ public static class SaveSystem
             Debug.LogError("File does not exists in " + path);
             //return default settings?
             Settings data = new Settings();
+            data.mRollSetting = RollSetting.Computer;//hopefully this makes a default of what i want to start as default
             SaveSettings(data);
             //return null;
             return data;

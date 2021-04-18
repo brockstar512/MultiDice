@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{C6BAABB8-82C8-897D-2BB5-EE3C940B7C45}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Audio/AudioManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/GameSaveManager.cs" Line="31" Column="17" />
+      <File FileName="Assets/Scripts/Dice/Dice.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Dice/DiceLocationConfig.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Dice/DiceRollCheck.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Dice/GameInit.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Dice/KeepDice.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Dice/TotalDiceHandler.cs" Line="3" Column="1" />
+      <File FileName="Assets/Scripts/Player/CurrentGame.cs" Line="39" Column="1" />
+      <File FileName="Assets/Scripts/Player/GameData.cs" Line="20" Column="16" />
+      <File FileName="Assets/Scripts/UI/ChangePlayerController.cs" Line="77" Column="47" />
+      <File FileName="Assets/Scripts/Audio/AudioManager.cs" Line="76" Column="12" />
+      <File FileName="Assets/Scripts/LoadItems.cs" Line="84" Column="1" />
+      <File FileName="Assets/Scripts/UI/SettingsMenu.cs" Line="10" Column="33" />
+      <File FileName="Assets/Scripts/UI/PauseController.cs" Line="27" Column="9" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="705574bc-107c-4436-8b70-52a3ea386fcf" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

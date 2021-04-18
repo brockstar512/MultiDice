@@ -33,6 +33,10 @@ public class PauseController : MonoBehaviour
         Time.timeScale = 1f;
         this.gameObject.SetActive(false);
         gameIsPaused = false;
+        //save the settings here
+        //audio
+        //dont worry about saving roll here... save it in the home settings
+        //
 
     }
 
