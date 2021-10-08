@@ -1,0 +1,1 @@
+Tinder swipe needs incoming card as a prefab to instantiate a new card after you swipe. If you import tinder swipe and it is not working import incoming card as well. Other assets include 3 scripts used. swipeEffct goes on the card that is in the front, second card goes on the game object card in the back, and instantiate card goes on their parent.
