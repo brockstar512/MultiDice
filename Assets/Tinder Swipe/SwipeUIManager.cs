@@ -5,7 +5,9 @@ using TMPro;
 
 public class SwipeUIManager : MonoBehaviour
 {
-    public TextMeshProUGUI inputFieldTextPlaceholder;
+    private GameObject inputFieldParent;
+    private TextMeshProUGUI inputFieldTextPlaceholder;
+    private TextMeshProUGUI inputFieldTextInput;
     private GameObject _nameContainer;
     public GameObject existingPlayersTemplate;
 
@@ -13,24 +15,39 @@ public class SwipeUIManager : MonoBehaviour
     
     void Start()
     {
+        this.inputFieldParent = this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+        int childCount = inputFieldParent.transform.childCount;
+        this.inputFieldTextPlaceholder = inputFieldParent.transform.GetChild(childCount-2).GetComponent<TextMeshProUGUI>();
+        this.inputFieldTextInput = inputFieldParent.transform.GetChild(childCount-1).GetComponent<TextMeshProUGUI>();
         
-        _nameContainer = this.gameObject.transform.GetChild(1).transform.gameObject.transform.GetChild(0).gameObject;
-        
-        PopulatePlayerList();
-        int _playerNumber = _nameContainer.transform.childCount;
-        inputFieldTextPlaceholder.text = "Player "+ _playerNumber.ToString();
+        int playerIndex = GameManager.data.players.Count - 1;
+        Debug.Log("HOW MANY ARE IN THE LIST "+GameManager.data.players.Count);
+        this.inputFieldTextPlaceholder.text = GameManager.data.players[playerIndex].playerName;
+        int i = 0;
+        foreach(PlayerData name in GameManager.data.players){
+            Debug.Log("PlayerName === "+i+"       "+name.playerName);
+            i++;
+        }
     }
 
-    void PopulatePlayerList()
+    public void AddPlayer()
     {
-        for(int i =0; i < 15;i++)
-        {
-            GameObject player =  Instantiate(existingPlayersTemplate);
-            player.transform.SetParent(_nameContainer.transform);
+        Debug.Log(inputFieldTextInput.text);
+                Debug.Log(GameManager.data.players.Count);
 
-            player.SetActive(true);
+        if(inputFieldTextInput.text == "")
+            GameManager.data.AddPlayer(inputFieldTextPlaceholder.text);
+        else
+            GameManager.data.AddPlayer(inputFieldTextInput.text);
 
-        }
+    }
+    public void DeletePlayer()
+    {
+        int playerIndex = GameManager.data.players.Count - 1;
+        //GameManager.data.players.RemoveAt(playerIndex);
+        GameManager.data.DeletePlayer(playerIndex);
+
+
     }
 
 }

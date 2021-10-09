@@ -36,6 +36,7 @@ public class SecondCard : MonoBehaviour
     void CardMovedFront()
     {
         gameObject.AddComponent<SwipeEffect>();
+        gameObject.AddComponent<SwipeUIManager>();
         Destroy(this);
     }
 }

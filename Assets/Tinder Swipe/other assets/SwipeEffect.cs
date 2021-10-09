@@ -64,12 +64,18 @@ public class SwipeEffect : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDrag
             if (transform.localPosition.x > _initialPosition.x)
             {
                 _swipeLeft = false;
+
+                //add player
+                this.GetComponent<SwipeUIManager>().AddPlayer();
                 
             }
             else
             {
                 //swipe left
                 _swipeLeft = true;
+
+                //delete player
+                this.GetComponent<SwipeUIManager>().DeletePlayer();
             }
             //invoke the action subscribed to this event
             cardMoved?.Invoke();
