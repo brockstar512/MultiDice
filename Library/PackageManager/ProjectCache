@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637695792580000000
+      ticks: 637696025910000000
     m_Hash: 3514944958
   m_LockFileStatus:
     m_FilePath: /Users/marshallbrock/Documents/unity projects/3d/farkle/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637695792590000000
+      ticks: 637696025930000000
     m_Hash: 3518015605
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -2626,8 +2626,18 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 0.1.5-preview
+        - 0.1.6-preview
+        - 0.1.9-preview
+        - 1.0.0
+        - 1.0.5
         - 1.0.6
         compatible:
+        - 0.1.5-preview
+        - 0.1.6-preview
+        - 0.1.9-preview
+        - 1.0.0
+        - 1.0.5
         - 1.0.6
         verified: 1.0.6
       dependencies: []
@@ -2648,7 +2658,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637429759280000000
       documentationUrl: 
       hasRepository: 1
       repository:
