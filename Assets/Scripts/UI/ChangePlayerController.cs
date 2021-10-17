@@ -112,7 +112,11 @@ public class ChangePlayerController : MonoBehaviour
     public void ReactivateDice()
     {
         Destroy(diceParent.transform.GetChild(0).gameObject);
-        GameObject currentDiceGroup = Instantiate(buttonAndDicePrefab, transform.position, Quaternion.identity, diceParent.transform) as GameObject;
+        //GameObject currentDiceGroup = Instantiate(buttonAndDicePrefab, transform.position, Quaternion.identity, diceParent.transform);
+        GameObject currentDiceGroup = Instantiate(buttonAndDicePrefab, diceParent.transform);
+
+        Debug.Log("NEW Dice Group:"+ currentDiceGroup.transform.position);
+        Debug.Log("NEW Dice Group:" + currentDiceGroup.transform.localPosition);
     }
 
     public void RolledNewScore(int newPoints)

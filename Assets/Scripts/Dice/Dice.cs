@@ -72,9 +72,18 @@ public class Dice : MonoBehaviour
         if(ChangePlayerController.currentPlayerRollSettings == RollSetting.Computer) rb.isKinematic = true;
         //rb.isKinematic = true;//the problem is if it is kinematic it can be effexted by force or torque
         //errorMessage.SetActive(false);//this was active
+
         if (buttonController == null) {
-            buttonController = this.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.GetChild(3).gameObject;
-            KeepScoreAndEndRoundButton = this.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.GetChild(2).gameObject.transform.GetChild(0).gameObject;
+
+            //pcube = this. 1 = dice 2 = total dice 3 = button and dice prefab
+            //destination -> ScorePlusEndButtons
+            //this          1                       2                               3                       
+            buttonController = this.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject.transform.GetChild(1).gameObject;
+
+            //pcube = this. 1 = dice 2 = total dice 3 = button and dice prefab 1 = UI 0 =turn buttons 0 = KeepScoreAndEndRound
+            //destination -> KeepScoreAndEndRound
+            //                          this                        1                           2                           3                               UI                              turn        KeepScoreAndEndRound
+            KeepScoreAndEndRoundButton = this.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).GetChild(0).gameObject;
         }
 
         buttonController.SetActive(false);

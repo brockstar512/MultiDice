@@ -86,7 +86,10 @@ public class TotalDiceHandler : MonoBehaviour
 
     void Awake()
     {
-        display = GameObject.Find("Display");
+        //
+        display = this.transform.parent.transform.parent.transform.parent.transform.parent.transform.GetChild(3).gameObject.transform.GetChild(1).gameObject;
+        display.SetActive(true);
+        //.GameObject.Find("UI").transform.GetChild(1).gameObject;
         displayPlayerChanger = display.GetComponent<ChangePlayerController>();
         KeepScoreAndEndRoundButton.SetActive(false);
         gameInit = this.gameObject.transform.parent.GetComponent<GameInit>();
@@ -436,14 +439,14 @@ public class TotalDiceHandler : MonoBehaviour
             GameObject newDie;
             if (!leftOver)
             {
-                newDie = Instantiate(diceSingle, GameInit.diceLocationConfig.diePosition[dicePutBack - 1], Quaternion.identity) as GameObject;
-                newDie.transform.SetParent(transform, false);
+                newDie = Instantiate(diceSingle, GameInit.diceLocationConfig.diePosition[dicePutBack - 1], Quaternion.identity);
+                newDie.transform.SetParent(transform);
             }
             else
             {
 
-                newDie = Instantiate(diceSingle, GameInit.diceLocationConfig.diePosition[6 - dicePutBack], Quaternion.identity) as GameObject;
-                newDie.transform.SetParent(transform, false);
+                newDie = Instantiate(diceSingle, GameInit.diceLocationConfig.diePosition[6 - dicePutBack], Quaternion.identity);
+                newDie.transform.SetParent(transform);
 
             }
             totalDice.Add(newDie.transform.GetChild(0).GetComponent<Dice>());

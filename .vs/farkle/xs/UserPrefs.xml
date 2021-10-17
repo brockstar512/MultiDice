@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{DEFA4E72-797B-B446-F0BB-714299EC90A1}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Dice/TotalDiceHandler.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Dice/TotalDiceHandler.cs" Line="105" Column="1" />
+      <File FileName="Assets/Scripts/Dice/Dice.cs" Line="85" Column="221" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="83c3c9a4-d949-4d17-99dc-07ed0da884dd" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

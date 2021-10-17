@@ -12,6 +12,7 @@ public class GameInit : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log("GAME INIT -> " + this.gameObject.name);
        currentDiceGroup = Instantiate(buttonAndDicePrefab, transform.position, Quaternion.identity, this.gameObject.transform) as GameObject;
        currentDiceGroup.transform.SetSiblingIndex(0);
         ConfigurDiceLocations();
@@ -20,21 +21,29 @@ public class GameInit : MonoBehaviour
 
     private void ConfigurDiceLocations()
     {
-        var firstDice = currentDiceGroup.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
-        var secondDice= currentDiceGroup.transform.GetChild(1).gameObject.transform.GetChild(1).gameObject;
-        var thirdDice= currentDiceGroup.transform.GetChild(1).gameObject.transform.GetChild(2).gameObject;
-        var fourthDice= currentDiceGroup.transform.GetChild(1).gameObject.transform.GetChild(3).gameObject;
-        var fifthDice= currentDiceGroup.transform.GetChild(1).gameObject.transform.GetChild(4).gameObject;
-        var sixthDice= currentDiceGroup.transform.GetChild(1).gameObject.transform.GetChild(5).gameObject;
+        //
+        var firstDice = currentDiceGroup.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+        var secondDice= currentDiceGroup.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
+        var thirdDice= currentDiceGroup.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject;
+        var fourthDice= currentDiceGroup.transform.GetChild(0).gameObject.transform.GetChild(3).gameObject;
+        var fifthDice= currentDiceGroup.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject;
+        var sixthDice= currentDiceGroup.transform.GetChild(0).gameObject.transform.GetChild(5).gameObject;
 
-
+        //Debug.Log();
         //4 create it
-        diceLocationConfig.diePosition[0] = new Vector3(firstDice.transform.localPosition.x, firstDice.transform.localPosition.y, firstDice.transform.localPosition.z);
-        diceLocationConfig.diePosition[1] = new Vector3(secondDice.transform.localPosition.x, secondDice.transform.localPosition.y, secondDice.transform.localPosition.z);
-        diceLocationConfig.diePosition[2] = new Vector3(thirdDice.transform.localPosition.x, thirdDice.transform.localPosition.y, thirdDice.transform.localPosition.z);
-        diceLocationConfig.diePosition[3] = new Vector3(fourthDice.transform.localPosition.x, fourthDice.transform.localPosition.y, fourthDice.transform.localPosition.z);
-        diceLocationConfig.diePosition[4] = new Vector3(fifthDice.transform.localPosition.x, fifthDice.transform.localPosition.y, fifthDice.transform.localPosition.z);
-        diceLocationConfig.diePosition[5] = new Vector3(sixthDice.transform.localPosition.x, sixthDice.transform.localPosition.y, sixthDice.transform.localPosition.z);
+        diceLocationConfig.diePosition[0] = new Vector3(firstDice.transform.position.x, firstDice.transform.position.y, firstDice.transform.position.z);
+        diceLocationConfig.diePosition[1] = new Vector3(secondDice.transform.position.x, secondDice.transform.position.y, secondDice.transform.position.z);
+        diceLocationConfig.diePosition[2] = new Vector3(thirdDice.transform.position.x, thirdDice.transform.position.y, thirdDice.transform.position.z);
+        diceLocationConfig.diePosition[3] = new Vector3(fourthDice.transform.position.x, fourthDice.transform.position.y, fourthDice.transform.position.z);
+        diceLocationConfig.diePosition[4] = new Vector3(fifthDice.transform.position.x, fifthDice.transform.position.y, fifthDice.transform.position.z);
+        diceLocationConfig.diePosition[5] = new Vector3(sixthDice.transform.position.x, sixthDice.transform.position.y, sixthDice.transform.position.z);
+        //Debug.Log(diceLocationConfig.diePosition[0].x);
+        //Debug.Log(diceLocationConfig.diePosition[0].y);
+        //Debug.Log(diceLocationConfig.diePosition[0].z);
+        Debug.Log("LP:"+fifthDice.transform.localPosition);
+        Debug.Log("P:" + fifthDice.transform.position);
+
+
     }
 }
 //me trying to create the locaions through a constructor
