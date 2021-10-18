@@ -7,9 +7,8 @@ public class Dice : MonoBehaviour
     Rigidbody rb;
 
     public Vector3 tilt;
-    //public Vector3 nudge = (10,10,10);
-    //public bool isNotThrown = true;
-    //public Rigidbody rb;
+
+    public DiceSelectionManager diceSelectionManager;
 
     private float speed = 10.0f;//*
 
@@ -65,8 +64,8 @@ public class Dice : MonoBehaviour
         initPosition = transform.position;
 
         //rb.mass = mass;
-
-        
+        //dice                //total dice      //button and dice prefab        //UI
+        diceSelectionManager = this.transform.parent.transform.parent.transform.parent.gameObject.transform.GetChild(1).transform.GetChild(3).gameObject.GetComponent<DiceSelectionManager>();
 
         rb.useGravity= false;
         if(ChangePlayerController.currentPlayerRollSettings == RollSetting.Computer) rb.isKinematic = true;
@@ -236,6 +235,8 @@ public class Dice : MonoBehaviour
 
         if (rb.IsSleeping() && !hasLanded && hasThrown)
         {
+            
+            //has landed....
             hasLanded = true;
             SideValueCheck();
             //rb.useGravity = false; //we dont need gravity of its laying down
@@ -375,7 +376,9 @@ public class Dice : MonoBehaviour
             if(side.OnGround())
             {
                 diceValue = side.sideValue;
+                diceSelectionManager.ProvideDiceAsOption(diceValue);
                 //Debug.Log("Checking dice value - " + diceValue);
+                //Debug.Log("DICE HAS LANDED: " + diceValue);
 
             }
         }

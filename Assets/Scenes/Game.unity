@@ -1810,7 +1810,7 @@ GameObject:
   - component: {fileID: 429218743}
   - component: {fileID: 429218744}
   m_Layer: 5
-  m_Name: Complete List - not dont but this is going away
+  m_Name: Complete List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8592,7 +8592,7 @@ GameObject:
   - component: {fileID: 1904276248}
   - component: {fileID: 1904276249}
   m_Layer: 5
-  m_Name: Beginning Prompts - done forthe most part
+  m_Name: Beginning Prompts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

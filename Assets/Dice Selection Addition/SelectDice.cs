@@ -11,13 +11,31 @@ public class SelectDice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         for(int i = 0; i < this.gameObject.transform.childCount;i++){
             int randomNum = UnityEngine.Random.Range(0,6);//dice you that was rolled will populate a sprite with that number
             GameObject child = this.gameObject.transform.GetChild(i).gameObject;
             child.transform.GetComponent<Image>().sprite= diceSprites[randomNum];
         }
+        */
         
     }
+
+    public void ActivateAvailableDice(int diceNumber)
+    {
+        Debug.Log("BUTTON MANAGER HAS: " + diceNumber);
+        for (int i = 0; i < this.gameObject.transform.childCount; i++)
+        {
+            //if the sprite is a default sprite change it otherwise continue
+            if(this.gameObject.transform.GetChild(i).gameObject.GetComponent<Image>().sprite == diceSprites[0])
+            {
+                this.gameObject.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = diceSprites[diceNumber];
+                return;
+            }
+        }
+
+    }
+
     public void KeepDice()
     {
             for(int i = 0; i < this.gameObject.transform.childCount;i++){
