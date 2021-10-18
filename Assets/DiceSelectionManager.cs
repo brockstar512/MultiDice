@@ -10,10 +10,12 @@ public class DiceSelectionManager : MonoBehaviour
 
 
 
-
+    //prives the roller number to the toggles images
     public void ProvideDiceAsOption(int diceRoll)
     {
         //Debug.Log("Handing off dice value");
         diceButtonParent.GetComponent<SelectDice>().ActivateAvailableDice(diceRoll);
     }
+
+
 }

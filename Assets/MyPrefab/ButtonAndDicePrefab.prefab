@@ -534,6 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilt: {x: 0, y: 0, z: 0}
+  diceSelectionManager: {fileID: 0}
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -2593,6 +2594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilt: {x: 0, y: 0, z: 0}
+  diceSelectionManager: {fileID: 0}
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -6412,6 +6414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilt: {x: 0, y: 0, z: 0}
+  diceSelectionManager: {fileID: 0}
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -7015,6 +7018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilt: {x: 0, y: 0, z: 0}
+  diceSelectionManager: {fileID: 0}
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -8179,6 +8183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilt: {x: 0, y: 0, z: 0}
+  diceSelectionManager: {fileID: 0}
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -8880,6 +8885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilt: {x: 0, y: 0, z: 0}
+  diceSelectionManager: {fileID: 0}
   stay: 0
   initPosition: {x: 0, y: 0, z: 0}
   buttonController: {fileID: 5571059794581476395}
@@ -9952,6 +9958,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Select Dice Prompt
       objectReference: {fileID: 0}
+    - target: {fileID: 2977840078544972165, guid: c3d6978a43fb24058978e7b348a5b725,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977840079857834319, guid: c3d6978a43fb24058978e7b348a5b725,
+        type: 3}
+      propertyPath: totalDiceHandler
+      value: 
+      objectReference: {fileID: 1026205158089857118}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3d6978a43fb24058978e7b348a5b725, type: 3}
 --- !u!1 &1430200452592296191 stripped

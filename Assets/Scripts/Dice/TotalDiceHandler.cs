@@ -16,6 +16,8 @@ public class TotalDiceHandler : MonoBehaviour
 
     public GameInit gameInit;
 
+    public bool readDict = false;
+
     public int totalScore;
     List<int> diceSelected = new List<int>();
     //public Dice[] totalDice;
@@ -46,6 +48,10 @@ public class TotalDiceHandler : MonoBehaviour
     public GameObject keepRollingButton;
 
     public GameObject diceSingle;
+
+    public Dictionary<int, int> diceKeeperDict = new Dictionary<int, int>();
+    //public List<int> serializeListOfKeys = new List<int>();
+    //public List<int> serializeListOfValues = new List<int>();
 
 
     [Header("Score Buttons")]
@@ -96,8 +102,39 @@ public class TotalDiceHandler : MonoBehaviour
         potentialPoints = displayPlayerChanger.PointsToCarryOver;
 
     }
+    public void ScoreTimePlaceholder()
+    {
+        Debug.Log("SCORE YOUR DICTIONARY");
+    }
+    public void KeepDiceSelection(int diceNumber)
+    {
+        if (diceKeeperDict.ContainsKey(diceNumber))
+        {
+            diceKeeperDict[diceNumber]++;
+        }
+        else
+        {
+            diceKeeperDict.Add(diceNumber, 1);
+        }
+        diceLeft++;
+    }
+    /*
+    private void Update()
+    {
+        if(readDict)
+        {
+            foreach (KeyValuePair<int, int> entry in diceKeeperDict)
+            {
+                // do something with entry.Value or entry.Key
+                Debug.Log(entry.Key + ":" + entry.Value);
+            }
+            readDict = false;
+        }
+        
+    }*/
     public void KeepDiceAndScore()
     {
+
         foreach (Dice die in totalDice)
         {
             if (die.stay)

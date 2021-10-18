@@ -7,6 +7,7 @@ using System;
 public class SelectDice : MonoBehaviour
 {
     public Sprite[] diceSprites;
+    public TotalDiceHandler totalDiceHandler;
 
     // Start is called before the first frame update
     void Start()
@@ -47,12 +48,16 @@ public class SelectDice : MonoBehaviour
             if(child.transform.GetComponent<Toggle>().isOn)
             {
                 Debug.Log("You Are Keeping Dice: "+selectedNumber);//based off that sprite keep dice will keep that rolls
+                //what do i want to do with the kept dice?
+                totalDiceHandler.KeepDiceSelection(selectedNumber);
+
             }
-            
-            
+
+
             //you something will the numbers then... turn everything off
             child.transform.GetComponent<Toggle>().isOn = false;//turn all togles off
         }
-
+        Debug.Log("FINISHED WITH DICE: ");
+        totalDiceHandler.ScoreTimePlaceholder();
     }
 }
