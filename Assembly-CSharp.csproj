@@ -162,6 +162,11 @@
     <Compile Include="Assets/NatSuite/Examples/WebCam/WebCam.cs" />
     <Compile Include="Assets/DiceSelectionManager.cs" />
     <Compile Include="Assets/Scripts/UI/UpdatedScoreHelper.cs" />
+    <Compile Include="Assets/Tinder Swipe/SwipeUp.cs" />
+    <Compile Include="Assets/Tinder Swipe/SwipeUIManager.cs" />
+    <Compile Include="Assets/Tinder Swipe/other assets/SwipeEffect.cs" />
+    <Compile Include="Assets/Tinder Swipe/other assets/InstantiateCard.cs" />
+    <Compile Include="Assets/Tinder Swipe/other assets/SecondCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Resources/Shaders/TMPro.cginc" />
