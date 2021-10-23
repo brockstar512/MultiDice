@@ -3,10 +3,8 @@
     <Files>
       <File FileName="Assets/Scripts/Dice/TotalDiceHandler.cs" Line="579" Column="17" />
       <File FileName="Assets/Dice Selection Addition/SelectDice.cs" Line="79" Column="35" />
-      <File FileName="Assets/GameManager.cs" Line="15" Column="6" />
       <File FileName="Assets/Tinder Swipe/SwipeUIManager.cs" Line="36" Column="43" />
-      <File FileName="Assets/Tinder Swipe/GameManager.cs" Line="14" Column="28" />
-      <File FileName="Assets/Scripts/Player/GameData.cs" Line="12" Column="23" />
+      <File FileName="Assets/Scripts/Player/GameData.cs" Line="131" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
