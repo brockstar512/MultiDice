@@ -161,6 +161,7 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
     <Compile Include="Assets/NatSuite/Examples/WebCam/WebCam.cs" />
     <Compile Include="Assets/DiceSelectionManager.cs" />
+    <Compile Include="Assets/Scripts/UI/UpdatedScoreHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Resources/Shaders/TMPro.cginc" />

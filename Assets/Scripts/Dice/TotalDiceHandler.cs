@@ -7,14 +7,9 @@ using System.Linq;
 
 public class TotalDiceHandler : MonoBehaviour
 {
-    //things to do
-    //-allowing the phone to roll the dice with the gyroscope
-    //-figure out how to determines who wins
-    //-figure out messageing system
-    //-fix pairs and four of a kind and make sure the buttons rerender when clicked for the more complex buttons
-    //-points need to carry over when you roll all your dice and roll again
 
-    public GameInit gameInit;
+
+    private GameInit gameInit;
 
     public bool readDict = false;
 
@@ -49,7 +44,16 @@ public class TotalDiceHandler : MonoBehaviour
 
     public GameObject diceSingle;
 
-    public Dictionary<int, int> diceKeeperDict = new Dictionary<int, int>();
+    public Dictionary<int, int> diceKeeperDict = new Dictionary<int, int>()
+    {
+        {1,0},
+        {2,0},
+        {3,0},
+        {4,0},
+        {5,0},
+        {6,0}
+    };
+
     //public List<int> serializeListOfKeys = new List<int>();
     //public List<int> serializeListOfValues = new List<int>();
 
@@ -102,10 +106,30 @@ public class TotalDiceHandler : MonoBehaviour
         potentialPoints = displayPlayerChanger.PointsToCarryOver;
 
     }
+
     public void ScoreTimePlaceholder()
     {
-        Debug.Log("SCORE YOUR DICTIONARY");
+        //Debug.Log("SCORE YOUR DICTIONARY");
+        InformDiceRoundOver();
+        foreach (KeyValuePair<int, int> entry in diceKeeperDict)
+        {
+            for(int i = 0;i < entry.Value;i++)
+            {
+                Scoring(entry.Key);
+                //diceLeft++;
+
+            }
+
+        }
+
+
+        Score();
+        scoreRollButton.SetActive(false);
+        ButtonController.somethingIsSelected = false;
+        endRoundButton.transform.parent.gameObject.SetActive(false);
     }
+
+    //puts dice in dictionry
     public void KeepDiceSelection(int diceNumber)
     {
         if (diceKeeperDict.ContainsKey(diceNumber))
@@ -118,8 +142,8 @@ public class TotalDiceHandler : MonoBehaviour
         }
         diceLeft++;
     }
-    /*
-    private void Update()
+    
+    /*private void Update()
     {
         if(readDict)
         {
@@ -132,6 +156,7 @@ public class TotalDiceHandler : MonoBehaviour
         }
         
     }*/
+    //
     public void KeepDiceAndScore()
     {
 
@@ -145,12 +170,15 @@ public class TotalDiceHandler : MonoBehaviour
                 diceLeft++;
             }
         }
+
+
         Score();
         scoreRollButton.SetActive(false);
         ButtonController.somethingIsSelected = false;
         endRoundButton.transform.parent.gameObject.SetActive(false);
     }
 
+    //populates list that each 
     private void Scoring(int diceValue)
     {
         switch (diceValue)
@@ -312,10 +340,12 @@ public class TotalDiceHandler : MonoBehaviour
         }
     }
 
-
+    //checks each list for which button to activate
     public void Score()
     {
+        //this needs to be done in a different way //TODO
         diceToContinue = this.gameObject.transform.childCount;
+        Debug.Log("*IMPORTANT* dice to continue :"+ diceToContinue);
         ShowDice(false);
 
         //need to check for of a if with a pair... pair might be read as whats in four of a kind
@@ -327,7 +357,7 @@ public class TotalDiceHandler : MonoBehaviour
         pairForFourOfAKindList = pairForFourOfAKindList.Distinct().ToList();
 
         bool hasScored = false;
-        print("ASSESS WITH BUTTONS" + "Six = " + six + " Five = " + five + " Four = " + four + " Three = " + three + " Two = " + two + " One = " + one);
+        //print("ASSESS WITH BUTTONS" + "Six = " + six + " Five = " + five + " Four = " + four + " Three = " + three + " Two = " + two + " One = " + one);
         if (one >= 1 && two >= 1 && three >= 1 && four >= 1 && five >= 1 && six >= 1 && activeButtonCount < 3)
         {
             buttonOneToSixStraight.SetActive(true);
@@ -405,10 +435,11 @@ public class TotalDiceHandler : MonoBehaviour
         }
         if (score > 0 && activeButtonCount == 0)
         {
+            //TODO does this run?
             totalScore += score;
             display.GetComponent<ChangePlayerController>().PotentialPointsUIUpdate(totalScore);
 
-
+            Debug.Log("Putting dice back: "+ diceLeft);
             if (score <= 500 && totalScore <= 500)
             {
                 DestroyExistingDice();
@@ -470,6 +501,7 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void addSingleDice(int dicePutBack, bool leftOver = false)
     {
+        Debug.Log("putting dice back");
 
         while (dicePutBack > 0)
         {
@@ -505,6 +537,7 @@ public class TotalDiceHandler : MonoBehaviour
 
     public void DestroyExistingDice()
     {
+        Debug.Log("DESTORYING EXISTING DICE");
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
         {
             Destroy(this.gameObject.transform.GetChild(i).gameObject);
@@ -543,16 +576,6 @@ public class TotalDiceHandler : MonoBehaviour
         }
     }
 
-    //private void ClearEmptyArraySlots()
-    //{
-    //    for(int i = 0; i < totalDice2.Count; i++)
-    //    {
-    //        Debug.Log("here is i    "+ i+"  here is whats at i  " + totalDice2[i]);
-    //        if(totalDice2[i]== null) { totalDice2.RemoveAt(i); }
-    //        totalDice2.Remove(null);
-    //    }
-    //}
-
     public void ScoreReset()
     {
         Debug.Log("Score reset is running");
@@ -579,6 +602,10 @@ public class TotalDiceHandler : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// ///////////these functions subtract from the numbers that were selected
+    /// </summary>
     public void SubtractTwoTriples()
     {
         switch (twoTriplesList[0])

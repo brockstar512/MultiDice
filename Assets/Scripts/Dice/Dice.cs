@@ -334,6 +334,7 @@ public class Dice : MonoBehaviour
         }
         else if (hasThrown && hasLanded && stay)
         {
+            Debug.Log("DESTROYING THE DICE**");
             this.gameObject.SetActive(false);
             Destroy(this.gameObject.transform.parent.gameObject);
         }

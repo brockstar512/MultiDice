@@ -8,6 +8,7 @@ public class SelectDice : MonoBehaviour
 {
     public Sprite[] diceSprites;
     public TotalDiceHandler totalDiceHandler;
+    public int destroyDiceSubstitute = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class SelectDice : MonoBehaviour
 
     public void ActivateAvailableDice(int diceNumber)
     {
-        Debug.Log("BUTTON MANAGER HAS: " + diceNumber);
+        //Debug.Log("BUTTON MANAGER HAS: " + diceNumber);
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
         {
             //if the sprite is a default sprite change it otherwise continue
@@ -47,9 +48,11 @@ public class SelectDice : MonoBehaviour
 
             if(child.transform.GetComponent<Toggle>().isOn)
             {
-                Debug.Log("You Are Keeping Dice: "+selectedNumber);//based off that sprite keep dice will keep that rolls
+                //Debug.Log("You Are Keeping Dice: "+selectedNumber);//based off that sprite keep dice will keep that rolls
                 //what do i want to do with the kept dice?
                 totalDiceHandler.KeepDiceSelection(selectedNumber);
+                destroyDiceSubstitute++;
+
 
             }
 
@@ -57,7 +60,22 @@ public class SelectDice : MonoBehaviour
             //you something will the numbers then... turn everything off
             child.transform.GetComponent<Toggle>().isOn = false;//turn all togles off
         }
-        Debug.Log("FINISHED WITH DICE: ");
+        DestroyDiceSubstitute();
+        //Debug.Log("FINISHED WITH DICE: ");
         totalDiceHandler.ScoreTimePlaceholder();
+        //totalDiceHandler.KeepDiceAndScore();
+
+    }
+
+    //because they arent being manually selected anymore in order to work with the previosu ogic I have to take away as many dice as I have selected
+    void DestroyDiceSubstitute()
+    {
+        GameObject diceParent = transform.parent.transform.parent.transform.parent.GetChild(0).gameObject;
+        for (int i = 0; i < destroyDiceSubstitute; i++)
+        {
+            Debug.Log("Destroying child index:" + i);
+            Destroy(diceParent.transform.GetChild(i).gameObject);
+        }
+        destroyDiceSubstitute = 0;
     }
 }
