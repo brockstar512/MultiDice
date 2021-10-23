@@ -1,5 +1,30 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &414522750988544775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5295503110491365136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e569428a596944e9d96efb00bc1f1d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  existingPlayersTemplate: {fileID: 9126194289861403403}
+--- !u!114 &6280292646379790716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5295503110491365136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bfcdf2cd7b9f4e23bd0aae0f789c5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5385220000856455328
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,15 +861,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22f9ebb57a53d4445b02338aa2bb0f1a, type: 3}
---- !u!1 &5295503110491365136 stripped
+--- !u!1 &9126194289861403403 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3496608926999286236, guid: 22f9ebb57a53d4445b02338aa2bb0f1a,
+  m_CorrespondingSourceObject: {fileID: 530820111170530759, guid: 22f9ebb57a53d4445b02338aa2bb0f1a,
     type: 3}
   m_PrefabInstance: {fileID: 8789649122711883468}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &5295503110491365137 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3496608926999286237, guid: 22f9ebb57a53d4445b02338aa2bb0f1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8789649122711883468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5295503110491365136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3496608926999286236, guid: 22f9ebb57a53d4445b02338aa2bb0f1a,
     type: 3}
   m_PrefabInstance: {fileID: 8789649122711883468}
   m_PrefabAsset: {fileID: 0}
