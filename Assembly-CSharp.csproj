@@ -89,6 +89,7 @@
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/IMediaRecorder.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralSimpleUI.cs" />
     <Compile Include="Assets/Scripts/UI/ChangePlayerController.cs" />
+    <Compile Include="Assets/Tinder Swipe/other assets/InstantiateCard.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineEndless.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Devices/CameraDevice.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathBezier.cs" />
@@ -113,9 +114,11 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineTrack.cs" />
     <Compile Include="Assets/Scripts/UI/EndGamePrompt.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Devices/WebCameraDevice.cs" />
+    <Compile Include="Assets/Tinder Swipe/other assets/SecondCard.cs" />
     <Compile Include="Assets/MasterSettings.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Devices/IMediaDevice.cs" />
     <Compile Include="Assets/Scripts/BeginningPrompt/ConfirmationList.cs" />
+    <Compile Include="Assets/Tinder Swipe/SwipeUIManager.cs" />
     <Compile Include="Assets/Scripts/Player/CurrentGame.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/Clocks/FixedIntervalClock.cs" />
     <Compile Include="Assets/Scripts/Dice/TotalDiceHandler.cs" />
@@ -123,6 +126,7 @@
     <Compile Include="Assets/Scripts/Dice/GameInit.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/Inputs/AudioInput.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanTest.cs" />
+    <Compile Include="Assets/DiceSelectionManager.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/Internal/Utility.cs" />
     <Compile Include="Assets/Scripts/LoadItems.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Devices/MediaDeviceCriteria.cs" />
@@ -140,12 +144,15 @@
     <Compile Include="Assets/Scripts/UI/ButtonController.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathBezier2d.cs" />
     <Compile Include="Assets/NatSuite/Examples/HotMic/MicrophoneButton.cs" />
+    <Compile Include="Assets/Tinder Swipe/other assets/SwipeEffect.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Devices/AudioDevice.cs" />
+    <Compile Include="Assets/Tinder Swipe/SwipeUp.cs" />
     <Compile Include="Assets/Scripts/BeginningPrompt/NameTransfer.cs" />
     <Compile Include="Assets/Scripts/Dice/DiceRollCheck.cs" />
     <Compile Include="Assets/Scripts/Dice/Dice.cs" />
     <Compile Include="Assets/Scripts/Selection/ObjectClicker.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/Clocks/RealtimeClock.cs" />
+    <Compile Include="Assets/Scripts/UI/UpdatedScoreHelper.cs" />
     <Compile Include="Assets/Dice Selection Addition/SelectDice.cs" />
     <Compile Include="Assets/Scripts/Player/GameData.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTDescrOptional.cs" />
@@ -160,13 +167,7 @@
     <Compile Include="Assets/Scripts/Selection/IRayProvider.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
     <Compile Include="Assets/NatSuite/Examples/WebCam/WebCam.cs" />
-    <Compile Include="Assets/DiceSelectionManager.cs" />
-    <Compile Include="Assets/Scripts/UI/UpdatedScoreHelper.cs" />
-    <Compile Include="Assets/Tinder Swipe/SwipeUp.cs" />
-    <Compile Include="Assets/Tinder Swipe/SwipeUIManager.cs" />
-    <Compile Include="Assets/Tinder Swipe/other assets/SwipeEffect.cs" />
-    <Compile Include="Assets/Tinder Swipe/other assets/InstantiateCard.cs" />
-    <Compile Include="Assets/Tinder Swipe/other assets/SecondCard.cs" />
+    <Compile Include="Assets/Tinder Swipe/GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Resources/Shaders/TMPro.cginc" />
