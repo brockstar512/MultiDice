@@ -51,6 +51,9 @@ public class GameData
         //create a new player named the count of player totals
         PlayerData player = new PlayerData("Player " + (this.players.Count + 1).ToString());// player 2 = player 2
 
+        //give the player the default roll setting
+        player.rollSetting = LoadItems.data.mRollSetting;//
+
         //add it to the list
         this.players.Add(player); //2nd item in the list = player 2
     }

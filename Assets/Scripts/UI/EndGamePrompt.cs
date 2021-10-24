@@ -13,12 +13,12 @@ public class EndGamePrompt : MonoBehaviour
 
 void Awake()
     {
-        bet.GetComponent<Text>().text = "Bet: " + CurrentGame.data.bet;
+        bet.GetComponent<Text>().text = "Bet: " + GameManager.data.bet;
         //CurrentGame.data.players[currentPlayerNum]
 
         //List<PlayerData> sortedPlayers = CurrentGame.data.players.OrderByDescending(player => player.totalScore).ToList();
-        CurrentGame.data.players = CurrentGame.data.players.OrderByDescending(player => player.totalScore).ToList();
-        GameData completeGame = new GameData(CurrentGame.data);
+        GameManager.data.players = GameManager.data.players.OrderByDescending(player => player.totalScore).ToList();
+        GameData completeGame = new GameData(GameManager.data);
         //test to see if copy works
 
         PopulatePlayerList();
@@ -27,10 +27,10 @@ void Awake()
     private void PopulatePlayerList()
     {
          
-        for(int i = 0; i < CurrentGame.data.players.Count; i++)
+        for(int i = 0; i < GameManager.data.players.Count; i++)
         {
             GameObject player = Instantiate(playerList.transform.GetChild(0).gameObject, transform.position, Quaternion.identity, playerList.transform);
-            var currentPlayer = CurrentGame.data.players[i];
+            var currentPlayer = GameManager.data.players[i];
             player.transform.GetChild(0).GetComponent<Text>().text = currentPlayer.playerName;
             player.transform.GetChild(1).GetComponent<Text>().text = currentPlayer.totalScore.ToString();
 

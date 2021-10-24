@@ -36,7 +36,7 @@ public class ChangePlayerController : MonoBehaviour
     {
         get
         {
-            return CurrentGame.data.players[currentPlayerNum];
+            return GameManager.data.players[currentPlayerNum];
         }
     }
 
@@ -66,7 +66,7 @@ public class ChangePlayerController : MonoBehaviour
     {
         currentPlayerNum = 0;
         DisplayPlayer();
-        playerCountDown = CurrentGame.data.players.Count;
+        playerCountDown = GameManager.data.players.Count;
     }
     // void Update(){
     //     Debug.Log(CurrentGame.data.players[currentPlayerNum].rollSetting);//this part works
@@ -74,7 +74,7 @@ public class ChangePlayerController : MonoBehaviour
     public void DisplayPlayer()
     {
         DisplayScore();
-        PlayerData currentPlayer = CurrentGame.data.players[currentPlayerNum];
+        PlayerData currentPlayer = GameManager.data.players[currentPlayerNum];
         currentName.text = currentPlayer.playerName;
         currentPlayerRollSettings = currentPlayer.rollSetting;
 
@@ -83,7 +83,7 @@ public class ChangePlayerController : MonoBehaviour
     {
         audioManager.Play("Next Turn");
         pointsToCarryOver = 0;
-        if (currentPlayerNum < CurrentGame.data.players.Count - 1) { currentPlayerNum++; }
+        if (currentPlayerNum < GameManager.data.players.Count - 1) { currentPlayerNum++; }
         else { currentPlayerNum = 0; }
         DisplayPlayer();
         ReactivateDice();
@@ -96,13 +96,13 @@ public class ChangePlayerController : MonoBehaviour
         //if need to check if they are still in play or not
         //maybe make a function that decreases until they find a player that is still in play
         if (currentPlayerNum > 0) { currentPlayerNum -= 1; }
-        else { currentPlayerNum = CurrentGame.data.players.Count - 1; }
+        else { currentPlayerNum = GameManager.data.players.Count - 1; }
         DisplayPlayer();
     }
 
     public void DisplayScore()
     {
-        PlayerData currentPlayer = CurrentGame.data.players[currentPlayerNum];
+        PlayerData currentPlayer = GameManager.data.players[currentPlayerNum];
         currentScore.text = "Score: " + currentPlayer.totalScore.ToString();
         finalScoreCheck = currentPlayer.totalScore;
     }
@@ -122,7 +122,7 @@ public class ChangePlayerController : MonoBehaviour
     public void RolledNewScore(int newPoints)
     {
         newPoints += pointsToCarryOver;
-        PlayerData currentPlayer = CurrentGame.data.players[currentPlayerNum];
+        PlayerData currentPlayer = GameManager.data.players[currentPlayerNum];
         currentPlayer.totalScore += newPoints;
         currentPlayer.roundScore.Add(newPoints);
         
@@ -154,11 +154,11 @@ public class ChangePlayerController : MonoBehaviour
         //otherwise pass in 0 he didnt
         if(didFarkle > 0)
         {
-            CurrentGame.data.players[currentPlayerNum].farkleCount++;
-            if(CurrentGame.data.players[currentPlayerNum].farkleCount >= 3)
+            GameManager.data.players[currentPlayerNum].farkleCount++;
+            if(GameManager.data.players[currentPlayerNum].farkleCount >= 3)
             {
                 Debug.Log("player farkled");
-                CurrentGame.data.players[currentPlayerNum].farkleCount = 0;
+                GameManager.data.players[currentPlayerNum].farkleCount = 0;
                 RolledNewScore(-1000);
                 
             }
@@ -167,12 +167,12 @@ public class ChangePlayerController : MonoBehaviour
                 RolledNewScore(0);
             }
         }
-        else { CurrentGame.data.players[currentPlayerNum].farkleCount = 0; }//they rolled something pointworthy
+        else { GameManager.data.players[currentPlayerNum].farkleCount = 0; }//they rolled something pointworthy
     }
 
     private int GetPlayerScore()
     {
-        PlayerData currentPlayer = CurrentGame.data.players[currentPlayerNum];
+        PlayerData currentPlayer = GameManager.data.players[currentPlayerNum];
         //return currentPlayer.totalScore;
         return 11;
     }

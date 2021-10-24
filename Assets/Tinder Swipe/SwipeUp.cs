@@ -8,6 +8,8 @@ public class SwipeUp : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHand
     private Vector3 _initialPosition;
     private float _distanceMoved;
 
+
+    public GameObject theGame;
     //while you drag this script runs
     public void OnDrag(PointerEventData eventData)
     {
@@ -59,6 +61,8 @@ public class SwipeUp : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHand
             yield return null;
         }
         Destroy(this.transform.parent.gameObject);
+        theGame.SetActive(true);
+
 
     }
 }

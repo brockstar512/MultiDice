@@ -223,11 +223,13 @@ public class Dice : MonoBehaviour
                 }
 
             }
-
+        Debug.Log("current roll settings:"+ ChangePlayerController.currentPlayerRollSettings);
         if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Computer || ChangePlayerController.currentPlayerRollSettings == RollSetting.Tap)
         {
+            //Debug.Log("SPACE CLICKED");
             if ((Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 && Input.touches[Input.touches.Length - 1].phase == TouchPhase.Ended))//*****
             {
+                Debug.Log("SPACE CLICKED");
                 RollDice();
             }
         }
@@ -256,6 +258,7 @@ public class Dice : MonoBehaviour
     
     void RollDice()
     {
+        Debug.Log("Rolling");
         KeepScoreAndEndRoundButton.SetActive(false);
         
         if (!hasThrown && !hasLanded)

@@ -29,7 +29,7 @@ public class SwipeUIManager : MonoBehaviour
             i++;
         }
     }
-
+    //add the player and rolling preference
     public void AddPlayer()
     {
         Debug.Log(inputFieldTextInput.text);
@@ -49,5 +49,24 @@ public class SwipeUIManager : MonoBehaviour
 
 
     }
+
+
+    //STORE BET
+    //CurrentGame.data.bet = theBet;
+    /*
+    public void StoreBet()
+    {
+        //the reference the input feild you are storing
+        theBet = inputField.GetComponent<Text>().text;
+        //transfer the bet to the current game singlton
+        CurrentGame.data.bet = theBet;
+
+        //activate the game and destroy everything else
+        //Debug.Log(CurrentGame.data.bet);
+
+
+        //handle the visibilty state of any remaing prompts
+    }
+    */
 
 }

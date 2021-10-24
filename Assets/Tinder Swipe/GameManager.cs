@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     {
         data = new GameData();
     }
+
+    //i should be able to delete names input intirly
     
 
  

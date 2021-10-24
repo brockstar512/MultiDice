@@ -29,7 +29,8 @@ public class TotalDiceHandler : MonoBehaviour
     private int diceToContinue;
     private int potentialPoints;
 
-    
+    const int _FarkleWin = 5000;
+    const int _CarryOverLimit = 500;
     //score is that roll
     //total score is that set
     //potential points is that round after you finish a complete set
@@ -440,7 +441,7 @@ public class TotalDiceHandler : MonoBehaviour
             display.GetComponent<ChangePlayerController>().PotentialPointsUIUpdate(totalScore);
 
             Debug.Log("Putting dice back: "+ diceLeft);
-            if (score <= 500 && totalScore <= 500)
+            if (score <= _CarryOverLimit && totalScore <= _CarryOverLimit)
             {
                 DestroyExistingDice();
                 addSingleDice(diceToContinue);
@@ -479,12 +480,12 @@ public class TotalDiceHandler : MonoBehaviour
     public void KeepScoreNextRound()
     {
         //if you have enough point good! Otherwise game over for you
-        if (totalScore > 500)
+        if (totalScore >= _CarryOverLimit)
         {
             //should be 499
             displayPlayerChanger.RolledNewScore(totalScore);
             displayPlayerChanger.FarkledCounter(0);
-            if ((displayPlayerChanger.FinalScoreCheck + totalScore) >= 200) displayPlayerChanger.LastRound = true;
+            if ((displayPlayerChanger.FinalScoreCheck + totalScore) >= _FarkleWin) displayPlayerChanger.LastRound = true;
             totalScore = 0;
             displayPlayerChanger.NextPlayer();
             KeepScoreAndEndRoundButton.SetActive(false);
@@ -595,7 +596,7 @@ public class TotalDiceHandler : MonoBehaviour
         six = 0;
         score = 0;
         //this 
-        if (totalScore >=500 || potentialPoints >=500)
+        if (totalScore >= _CarryOverLimit || potentialPoints >= _CarryOverLimit)
         {
             KeepScoreAndEndRoundButton.SetActive(true);
             keepRollingButton.SetActive(true);
