@@ -549,6 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eeddb26349924aadb16c5ef0acd0153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theGame: {fileID: 0}
 --- !u!1 &9126194291182783808
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,6 +748,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Back Card
       objectReference: {fileID: 0}
+    - target: {fileID: 5167510518221078950, guid: c05a04ee01bd64b50b9d915c03ebdca0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c05a04ee01bd64b50b9d915c03ebdca0, type: 3}
 --- !u!224 &9126194290075510918 stripped
@@ -766,6 +772,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Swipeable Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496608926999286236, guid: 22f9ebb57a53d4445b02338aa2bb0f1a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3496608926999286237, guid: 22f9ebb57a53d4445b02338aa2bb0f1a,
         type: 3}

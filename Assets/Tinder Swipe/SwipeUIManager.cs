@@ -9,12 +9,14 @@ public class SwipeUIManager : MonoBehaviour
     private TextMeshProUGUI inputFieldTextPlaceholder;
     private TextMeshProUGUI inputFieldTextInput;
     private GameObject _nameContainer;
-    public GameObject existingPlayersTemplate;
+    private GameObject rollSettingParent;
 
 
-    
+
     void Start()
     {
+        rollSettingParent = this.transform.GetChild(1).gameObject;
+
         this.inputFieldParent = this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         int childCount = inputFieldParent.transform.childCount;
         this.inputFieldTextPlaceholder = inputFieldParent.transform.GetChild(childCount-2).GetComponent<TextMeshProUGUI>();
@@ -24,11 +26,21 @@ public class SwipeUIManager : MonoBehaviour
         Debug.Log("HOW MANY ARE IN THE LIST "+GameManager.data.players.Count);
         this.inputFieldTextPlaceholder.text = GameManager.data.players[playerIndex].playerName;
         int i = 0;
-        foreach(PlayerData name in GameManager.data.players){
+        foreach (PlayerData name in GameManager.data.players){
             Debug.Log("PlayerName === "+i+"       "+name.playerName);
             i++;
         }
     }
+    /*
+    //iterates through the toggle group and save the last player on the lists as that toggle
+    public void SavePlayerRollSetting()
+    {
+        int playerIndex = GameManager.data.players.Count - 1;
+        //whatever is toggled
+        GameManager.data.players[playerIndex].rollSetting = RollSetting.Computer;
+
+    }
+    */
     //add the player and rolling preference
     public void AddPlayer()
     {
