@@ -5,17 +5,50 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    private PlayerData player;
-    public List<PlayerData> totalPlayers;
+    //todo ... use this to register the game type
+    public enum GameType
+    {
+        None,
+        JustRoll,
+        Farkle,
+        Threes,
+        LiarsDice
+    }
+    public GameType currentGame;
+    //TODO make game more secure
     public static GameData data;
+    //    public static Datastore Instance
+    //{
+    //    get
+    //    {
+    //        lock (padlock)
+    //        {
+    //            if (instance == null)
+    //            {
+    //                instance = new Datastore();
+    //            }
+    //            return instance;
+    //        }
+    //    }
+    //}
 
     public void Awake()
     {
-        data = new GameData();
+        DontDestroyOnLoad(transform.gameObject);
+        InitializeGame();
+        currentGame = data.currentGame;
+
+    }
+    private void Update()
+    {
+        currentGame = data.currentGame;
     }
 
-    //i should be able to delete names input intirly
-    
-
- 
+    //this should be a factory
+    public void InitializeGame()
+    {
+         
+        data = new GameData();
+        //data.RefreshData();//
+    }
 }

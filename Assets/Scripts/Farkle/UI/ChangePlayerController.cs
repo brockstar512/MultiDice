@@ -125,7 +125,7 @@ public class ChangePlayerController : MonoBehaviour
         newPoints += pointsToCarryOver;
         PlayerData currentPlayer = GameManager.data.players[currentPlayerNum];
         currentPlayer.totalScore += newPoints;
-        currentPlayer.roundScore.Add(newPoints);
+        currentPlayer.farkleCollection.roundScore.Add(newPoints);
         
     }
 
@@ -155,11 +155,11 @@ public class ChangePlayerController : MonoBehaviour
         //otherwise pass in 0 he didnt
         if(didFarkle > 0)
         {
-            GameManager.data.players[currentPlayerNum].farkleCount++;
-            if(GameManager.data.players[currentPlayerNum].farkleCount >= 3)
+            GameManager.data.players[currentPlayerNum].farkleCollection.farkleCount++;
+            if(GameManager.data.players[currentPlayerNum].farkleCollection.farkleCount >= 3)
             {
                 Debug.Log("player farkled");
-                GameManager.data.players[currentPlayerNum].farkleCount = 0;
+                GameManager.data.players[currentPlayerNum].farkleCollection.farkleCount = 0;
                 RolledNewScore(-1000);
                 
             }
@@ -168,7 +168,7 @@ public class ChangePlayerController : MonoBehaviour
                 RolledNewScore(0);
             }
         }
-        else { GameManager.data.players[currentPlayerNum].farkleCount = 0; }//they rolled something pointworthy
+        else { GameManager.data.players[currentPlayerNum].farkleCollection.farkleCount = 0; }//they rolled something pointworthy
     }
 
     private int GetPlayerScore()

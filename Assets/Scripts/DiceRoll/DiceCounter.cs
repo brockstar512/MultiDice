@@ -10,6 +10,12 @@ public class DiceCounter : MonoBehaviour, ISwipeable
     public TextMeshProUGUI textField;
     public Button moreButton;
     public Button lessButton;
+    [SerializeField] GameObject diceParent;
+    private int DestroyDice
+    {
+        get => 6-numberOfDice;
+    }
+
 
     private void Awake()
     {
@@ -31,6 +37,11 @@ public class DiceCounter : MonoBehaviour, ISwipeable
     public void StartGame()
     {
         Debug.Log("INITIATE DICE: pass of the count to dice initializer here");
+        for(int i =0;i < DestroyDice; i++)
+        {
+            Destroy(diceParent.transform.GetChild(i).gameObject);
+        }
+            
 
         Destroy(this.transform.gameObject);
     }

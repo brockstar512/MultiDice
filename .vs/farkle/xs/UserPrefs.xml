@@ -1,20 +1,18 @@
 ﻿<Properties StartupConfiguration="{DEFA4E72-797B-B446-F0BB-714299EC90A1}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Farkle/Player/GameData.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Main menu/ManagePacket.cs">
     <Files>
-      <File FileName="Assets/Tinder Swipe/GameManager.cs" Line="10" Column="27" />
-      <File FileName="Assets/Tinder Swipe/SwipeUp.cs" />
-      <File FileName="Assets/Scripts/Farkle/Player/GameData.cs" Line="92" Column="6" />
-      <File FileName="Assets/Scripts/DiceRoll/DiceCounter.cs" />
-      <File FileName="Assets/Scripts/DiceRoll/StartRoll.cs" />
-      <File FileName="Assets/Interface/ISwipeable.cs" />
-      <File FileName="Assets/Scripts/DiceRoll/NewDiceRoll.cs" Line="77" Column="51" />
-      <File FileName="Assets/Dice Selection Addition/SelectDice.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Datastore.cs" Line="33" Column="11" />
+      <File FileName="Assets/Tinder Swipe/GameManager.cs" Line="5" Column="25" />
+      <File FileName="Assets/Scripts/Farkle/Player/GameData.cs" />
+      <File FileName="Assets/Scripts/Farkle/UI/ChangePlayerController.cs" />
+      <File FileName="Assets/Scripts/Farkle/UI/EndGamePrompt.cs" />
+      <File FileName="Assets/Scripts/Farkle/Audio/AudioManager.cs" />
+      <File FileName="Assets/Main menu/ManagePacket.cs" Line="37" Column="44" />
+      <File FileName="Assets/Main menu/Transport.cs" Line="30" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="fe5cff08-d981-4e6e-997a-357305564077" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8de40b8b-73db-4cc5-a342-e0d3c4279eee" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

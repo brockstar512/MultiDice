@@ -15,6 +15,7 @@ public class SwipeUIManager : MonoBehaviour
 
     void Start()
     {
+
         rollSettingParent = this.transform.GetChild(1).gameObject;
 
         this.inputFieldParent = this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
@@ -23,7 +24,7 @@ public class SwipeUIManager : MonoBehaviour
         this.inputFieldTextInput = inputFieldParent.transform.GetChild(childCount-1).GetComponent<TextMeshProUGUI>();
         
         int playerIndex = GameManager.data.players.Count - 1;
-        Debug.Log("HOW MANY ARE IN THE LIST "+GameManager.data.players.Count);
+        Debug.Log("HOW MANY ARE IN THE LIST "+ GameManager.data.players.Count);
         this.inputFieldTextPlaceholder.text = GameManager.data.players[playerIndex].playerName;
         int i = 0;
         foreach (PlayerData name in GameManager.data.players){

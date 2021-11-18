@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*
 
 //this should probably be renamed
 public class Display : MonoBehaviour
@@ -73,4 +73,4 @@ public class Display : MonoBehaviour
             die.ResetForNewPlayer();
         }
     }
-}
+}*/

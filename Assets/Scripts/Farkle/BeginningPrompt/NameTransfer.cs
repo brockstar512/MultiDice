@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*
 //display could be turn controller and name transfer could be called current game
 //this is attached to PromptList Controller
 public class NameTransfer : MonoBehaviour
@@ -21,7 +21,7 @@ public class NameTransfer : MonoBehaviour
     public List<PlayerData> totalPlayers;
 
     //public GameData data;
-    [SerializeField] public static GameData data;
+    //[SerializeField] public static GameData data;
 
 
     //public GameObject promptListParent;
@@ -29,7 +29,7 @@ public class NameTransfer : MonoBehaviour
     void Awake()
     {
         //create a game 
-        data = new GameData();
+        //data = new GameData();
         //start_time = System.DateTime.Now;
         Debug.Log(data.start_time);
     }
@@ -55,4 +55,4 @@ public class NameTransfer : MonoBehaviour
     
 
    
-}
+}8*/

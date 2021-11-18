@@ -58,13 +58,16 @@
     <Compile Include="Assets/Scripts/Farkle/UI/PauseController.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/Internal/Bridge.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/WAVRecorder.cs" />
+    <Compile Include="Assets/MultipleTargetCamera.cs" />
     <Compile Include="Assets/Scripts/Farkle/Dice/KeepDice.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanTween.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/LogoCinematic.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralCameraShake.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTDescr.cs" />
+    <Compile Include="Assets/Scripts/DiceRoll/DiceCounter.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanTweenExt.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Devices/CameraDeviceTypes.cs" />
+    <Compile Include="Assets/Scripts/DiceRoll/DiceRollMode.cs" />
     <Compile Include="Assets/NatSuite/Examples/Giffy/Giffy.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingUnitTests.cs" />
     <Compile Include="Assets/LeanTween/Examples/Archived/TestingPunch.cs" />
@@ -76,27 +79,34 @@
     <Compile Include="Assets/Scripts/Farkle/UI/Display.cs" />
     <Compile Include="Assets/Scripts/Farkle/Audio/AudioManager.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralUISpace.cs" />
-    <Compile Include="Assets/NatSuite/Examples/HotMic/ClipRecorder.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Devices/MediaDeviceQuery.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanAudio.cs" />
+    <Compile Include="Assets/NatSuite/Examples/HotMic/ClipRecorder.cs" />
     <Compile Include="Assets/NatSuite/Examples/ReplayCam/RecordButton.cs" />
+    <Compile Include="Assets/ArionDigital/CrashCrate/Scripts/CrashCrateSpawner.cs" />
     <Compile Include="Assets/Scripts/Farkle/Selection/MouseScreenRayProvider.cs" />
     <Compile Include="Assets/Scripts/Farkle/Audio/Sounds.cs" />
     <Compile Include="Assets/Scripts/Farkle/Selection/HighlightSelectionResponse.cs" />
     <Compile Include="Assets/Tinder Swipe/GameManager.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Devices/MixerDevice.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/IMediaRecorder.cs" />
+    <Compile Include="Assets/FollowHelper.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralSimpleUI.cs" />
+    <Compile Include="Assets/Scripts/DiceRoll/StartRoll.cs" />
     <Compile Include="Assets/Scripts/Farkle/UI/ChangePlayerController.cs" />
     <Compile Include="Assets/Tinder Swipe/other assets/InstantiateCard.cs" />
+    <Compile Include="Assets/Main menu/Transport.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineEndless.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Devices/CameraDevice.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathBezier.cs" />
+    <Compile Include="Assets/ArionDigital/CrashCrate/Scripts/CrashCrate.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/HEVCRecorder.cs" />
+    <Compile Include="Assets/Interface/ISwipeable.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSpline.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Devices/Internal/NativeAudioDevice.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/MP4Recorder.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Devices/Internal/NativeCameraDevice.cs" />
+    <Compile Include="Assets/ArionDigital/CrashCrate/Scripts/DestroyAfterTime.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralAdvancedTechniques.cs" />
     <Compile Include="Assets/NatSuite/Examples/MiniCam/MiniCam.cs" />
     <Compile Include="Assets/Scripts/Farkle/GameSaveManager.cs" />
@@ -130,12 +140,14 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacy.cs" />
     <Compile Include="Assets/NatSuite/Examples/HotMic/HotMic.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSpline2d.cs" />
+    <Compile Include="Assets/ArionDigital/CrashCrate/Scripts/Shooter.cs" />
     <Compile Include="Assets/Scripts/Farkle/UI/SettingsMenu.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacyExt.cs" />
     <Compile Include="Assets/Scripts/Farkle/BeginningPrompt/PromptController.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplinePerformance.cs" />
     <Compile Include="Assets/Scripts/Farkle/Selection/OutlineSelectionResponse.cs" />
     <Compile Include="Assets/Scripts/Farkle/Player/playerController.cs" />
+    <Compile Include="Assets/Scripts/DiceRoll/NewDiceRoll.cs" />
     <Compile Include="Assets/Scripts/Farkle/UI/ButtonController.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathBezier2d.cs" />
     <Compile Include="Assets/NatSuite/Examples/HotMic/MicrophoneButton.cs" />
@@ -148,6 +160,7 @@
     <Compile Include="Assets/Scripts/Farkle/Selection/ObjectClicker.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/Clocks/RealtimeClock.cs" />
     <Compile Include="Assets/Scripts/Farkle/UI/UpdatedScoreHelper.cs" />
+    <Compile Include="Assets/Scripts/DiceRoll/IFollow.cs" />
     <Compile Include="Assets/Dice Selection Addition/SelectDice.cs" />
     <Compile Include="Assets/Scripts/Farkle/Player/GameData.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTDescrOptional.cs" />
@@ -162,16 +175,8 @@
     <Compile Include="Assets/Scripts/Farkle/Selection/IRayProvider.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
     <Compile Include="Assets/NatSuite/Examples/WebCam/WebCam.cs" />
-    <Compile Include="Assets/Scripts/DiceRoll/DiceCounter.cs" />
-    <Compile Include="Assets/Scripts/DiceRoll/StartRoll.cs" />
-    <Compile Include="Assets/Interface/ISwipeable.cs" />
-    <Compile Include="Assets/ArionDigital/CrashCrate/Scripts/Shooter.cs" />
-    <Compile Include="Assets/ArionDigital/CrashCrate/Scripts/CrashCrateSpawner.cs" />
-    <Compile Include="Assets/ArionDigital/CrashCrate/Scripts/CrashCrate.cs" />
-    <Compile Include="Assets/ArionDigital/CrashCrate/Scripts/DestroyAfterTime.cs" />
-    <Compile Include="Assets/Scripts/DiceRoll/DiceRollMode.cs" />
-    <Compile Include="Assets/Scripts/DiceRoll/NewDiceRoll.cs" />
-    <Compile Include="Assets/Scripts/Datastore.cs" />
+    <Compile Include="Assets/Main menu/ScreenPacket.cs" />
+    <Compile Include="Assets/Main menu/ManagePacket.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Resources/Shaders/TMPro.cginc" />
@@ -773,8 +778,14 @@
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Hub/Editor/2020.3.19f1/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

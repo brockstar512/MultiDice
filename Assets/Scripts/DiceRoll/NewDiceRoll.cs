@@ -5,7 +5,7 @@ using UnityEngine;
 public class NewDiceRoll : MonoBehaviour
 {
     bool hasLanded;
-    bool hasThrown;
+    public bool hasThrown;
     Rigidbody rb;
     public int diceValue;
     public DiceRollCheck[] diceRollCheck;
@@ -74,11 +74,9 @@ public class NewDiceRoll : MonoBehaviour
         //loop over all the children with the dice roll check script and get the value
         foreach (DiceRollCheck side in diceRollCheck)
         {
-            Debug.Log("--------" + side.OnGround());
 
             if (side.OnGround())
             {
-                Debug.Log("--------" + side.sideValue);
 
                 diceValue = side.sideValue;
                 //TODOdiceSelectionManager.ProvideDiceAsOption(diceValue);

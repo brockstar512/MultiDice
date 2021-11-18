@@ -8,13 +8,11 @@ using System;
 public class GameData
 {
     public List<PlayerData> players;
-    public int roundTotal;
+    public GameManager.GameType currentGame;
     public int numberOfPlayers => players.Count;
-
     public string bet;
     public System.DateTime start_time;
     public string url;
-
 
 
     public GameData()
@@ -24,7 +22,7 @@ public class GameData
         player.playerName = "Player 1";
 
         // Debug.Log("INCOMING NAME : "+newPlayer);
-
+        currentGame = GameManager.GameType.None;
         players = new List<PlayerData>();
         player.rollSetting = LoadItems.data.mRollSetting;//data.mRollSetting
         players.Add(player);
@@ -37,8 +35,6 @@ public class GameData
         this.players = new List<PlayerData>(copy.players);
         this.start_time = copy.start_time;
     }
-
-    //    public void AddPlayer(string playerName, RollSetting rollSetting)
 
     public void AddPlayer(string playerName)
     {
@@ -70,28 +66,51 @@ public class GameData
 
     }
 
-}
-public class PlayerData
-{
-    public string playerName;
-    public bool isInPlay;
-    public List<int> roundScore;
-    public int totalScore;
-    public int farkleCount;
-    public RollSetting rollSetting;
-
-    //this is called a constructor it gives the class pre defined values
-    //if you make the constructor have variables in the () you have to pass them in aas arguments when you create an instance of it
-    public PlayerData(string name = "")
+    public void RefreshData()
     {
-        playerName = name;
-        isInPlay = true;
-        totalScore = 0;
-        roundScore = new List<int>();
-        farkleCount = 0;
+        //each game creates new game data , each player input creates new player data
+        PlayerData player = new PlayerData();
+        player.playerName = "Player 1";
+
+         Debug.LogError("Refreshing the game");
+
+        players = new List<PlayerData>();
+        player.rollSetting = LoadItems.data.mRollSetting;//data.mRollSetting
+        players.Add(player);
+        start_time = System.DateTime.Now;
+
     }
 
 }
+
+public class PlayerData
+{
+    public string playerName;
+    public int totalScore;
+    public RollSetting rollSetting;
+    public FarkleData farkleCollection;
+
+ 
+    public PlayerData(string name = "")
+    {
+        playerName = name;
+        totalScore = 0;
+        farkleCollection = new FarkleData();
+    }
+
+}
+public class FarkleData
+{
+    public int farkleCount;
+    public List<int> roundScore;
+    public FarkleData()
+    {
+        roundScore = new List<int>();
+        farkleCount = 0;
+    }
+}
+
+
 
 
 
