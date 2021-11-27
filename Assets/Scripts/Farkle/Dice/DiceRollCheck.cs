@@ -13,6 +13,7 @@ public class DiceRollCheck : MonoBehaviour
     {
         if(col.tag == "Ground")//if the trigger hits the collider with tag ground
         {
+            //Debug.Log("__on the ground clollider");
             onGround = true;
 
         }

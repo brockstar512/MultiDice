@@ -23,6 +23,7 @@ public class SwipeUIManager : MonoBehaviour
         this.inputFieldTextPlaceholder = inputFieldParent.transform.GetChild(childCount-2).GetComponent<TextMeshProUGUI>();
         this.inputFieldTextInput = inputFieldParent.transform.GetChild(childCount-1).GetComponent<TextMeshProUGUI>();
         
+        
         int playerIndex = GameManager.data.players.Count - 1;
         Debug.Log("HOW MANY ARE IN THE LIST "+ GameManager.data.players.Count);
         this.inputFieldTextPlaceholder.text = GameManager.data.players[playerIndex].playerName;
@@ -31,6 +32,7 @@ public class SwipeUIManager : MonoBehaviour
             Debug.Log("PlayerName === "+i+"       "+name.playerName);
             i++;
         }
+        
     }
     /*
     //iterates through the toggle group and save the last player on the lists as that toggle

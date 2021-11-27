@@ -9,8 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: 24ad5b5315ae64afba46a82e7795dd0c
   - enabled: 1
+    path: Assets/Scenes/RollDice.unity
+    guid: 9f545e6f8fce84e809aed55ed75dd5f9
+  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Threes.unity
+    guid: 1187cf77893df43c8bfa573610c35615
+  - enabled: 1
+    path: Assets/Scenes/Test.unity
+    guid: b976cf4bd76a24c77aef94c7cc1b797d
   - enabled: 1
     path: Assets/Scenes/GameFinished.unity
     guid: 24983380e506743ac8151e6281f2cb2b

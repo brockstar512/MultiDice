@@ -1,18 +1,50 @@
 ﻿<Properties StartupConfiguration="{DEFA4E72-797B-B446-F0BB-714299EC90A1}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Main menu/ManagePacket.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MultipleTargetCamera.cs">
     <Files>
-      <File FileName="Assets/Tinder Swipe/GameManager.cs" Line="5" Column="25" />
-      <File FileName="Assets/Scripts/Farkle/Player/GameData.cs" />
-      <File FileName="Assets/Scripts/Farkle/UI/ChangePlayerController.cs" />
-      <File FileName="Assets/Scripts/Farkle/UI/EndGamePrompt.cs" />
-      <File FileName="Assets/Scripts/Farkle/Audio/AudioManager.cs" />
-      <File FileName="Assets/Main menu/ManagePacket.cs" Line="37" Column="44" />
-      <File FileName="Assets/Main menu/Transport.cs" Line="30" Column="10" />
+      <File FileName="Assets/Tinder Swipe/SwipeUIManager.cs" Line="20" Column="1" />
+      <File FileName="Assets/Tinder Swipe/other assets/InstantiateCard.cs" Line="19" Column="1" />
+      <File FileName="Assets/MultipleTargetCamera.cs" Line="33" Column="13" />
+      <File FileName="Assets/Scripts/Farkle/Player/GameData.cs" Line="54" Column="1" />
+      <File FileName="Assets/Scripts/Farkle/Audio/AudioManager.cs" Line="27" Column="11" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="farkle" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Dice Selection Addition" expanded="True" />
+              <Node name="Main menu" expanded="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="3's" expanded="True" />
+                <Node name="DiceRoll" expanded="True" />
+                <Node name="Farkle" expanded="True">
+                  <Node name="Audio" expanded="True" />
+                  <Node name="Dice" expanded="True" />
+                  <Node name="Player" expanded="True" />
+                  <Node name="UI" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Tinder Swipe" expanded="True">
+                <Node name="other assets" expanded="True" />
+              </Node>
+              <Node name="MultipleTargetCamera.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Unity" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8de40b8b-73db-4cc5-a342-e0d3c4279eee" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="fe5cff08-d981-4e6e-997a-357305564077" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

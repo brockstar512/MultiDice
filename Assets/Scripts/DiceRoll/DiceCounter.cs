@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class DiceCounter : MonoBehaviour, ISwipeable
 {
+    const int MAX_NUMBER_OF_DICE = 6;
+    const int MIN_NUMBER_OF_DICE = 1;
+
     public int numberOfDice = 1;
     public TextMeshProUGUI textField;
     public Button moreButton;
@@ -15,6 +18,7 @@ public class DiceCounter : MonoBehaviour, ISwipeable
     {
         get => 6-numberOfDice;
     }
+    [SerializeField] GameObject DoneRollingSpritePrompt;
 
 
     private void Awake()
@@ -41,20 +45,20 @@ public class DiceCounter : MonoBehaviour, ISwipeable
         {
             Destroy(diceParent.transform.GetChild(i).gameObject);
         }
-            
 
+        DoneRollingSpritePrompt.SetActive(true);
         Destroy(this.transform.gameObject);
     }
 
     void HandleButtonChange()
     {
         textField.text = numberOfDice.ToString();
-        if (numberOfDice >= 10)
+        if (numberOfDice >= MAX_NUMBER_OF_DICE)
         {
             moreButton.interactable = false;
 
         }
-        else if(numberOfDice <= 1)
+        else if(numberOfDice <= MIN_NUMBER_OF_DICE)
         {
             lessButton.interactable = false;
         }

@@ -16,6 +16,8 @@ public class ManagePacket : MonoBehaviour
     [SerializeField] Image backgroundImage;
     GameManager.GameType queueGame;
 
+    GameObject loadingScreen;
+
     private void Update()
     {
 
@@ -63,7 +65,16 @@ public class ManagePacket : MonoBehaviour
                 Debug.Log("This function will transport you to threes");
                 break;
         }
+        //SceneManager.LoadSceneAsync((int)this.queueGame,LoadSceneMode.Additive);
         SceneManager.LoadScene((int)this.queueGame);
+
+    }
+
+    public void LoadGame()
+    {
+        //loadingScreen.SetActive(true);
+        //SceneManager.UnloadSceneAsync((int)this.queueGame);
+
     }
 
 }

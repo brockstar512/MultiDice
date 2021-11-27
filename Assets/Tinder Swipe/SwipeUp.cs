@@ -13,10 +13,16 @@ public class SwipeUp : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHand
     //while you drag this script runs
     public void OnDrag(PointerEventData eventData)
     {
+        Debug.Log("DISTANCE: ");
         transform.localPosition = new Vector2(transform.localPosition.x,transform.localPosition.y + eventData.delta.y);
         if(transform.localPosition.y - _initialPosition.y > 0){
 
         }
+    }
+
+    private void Update()
+    {
+        //Debug.Log("Swipe Up is working");
     }
     public void OnBeginDrag(PointerEventData eventData)
     {

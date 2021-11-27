@@ -13,15 +13,17 @@ public class MultipleTargetCamera : MonoBehaviour
     public float maxZoom = 20f;
     public float zoomLimiter = 50f;
 
+    private Vector3 startPos;
     private Vector3 velocity;
     private Camera cam;
 
     private void Start()
     {
         cam = GetComponent<Camera>();
+        startPos = this.transform.position;
     }
 
-
+    //todo write a reset function
 
     void LateUpdate()
     {
@@ -75,5 +77,12 @@ public class MultipleTargetCamera : MonoBehaviour
         }
         //Debug.Log(bounds.center);
         return bounds.center;
+    }
+
+    [ContextMenu("reset Camera")]
+    public void ResetCamera()
+    {
+        targets.Clear();
+        this.transform.position = startPos;
     }
 }

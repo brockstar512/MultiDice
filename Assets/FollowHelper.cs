@@ -16,10 +16,17 @@ public class FollowHelper : MonoBehaviour, IFollow
     }
     void  LateUpdate()
     {
+
         this.isThrown = dice.hasThrown; //public get private set
-        if (isThrown)
+        //this will run every frame until I roll it
+        if (!targetCameraScript.targets.Contains(this.transform))
         {
-            InitializeFollow();
+            //once I roll this will be true and but the above if statemtn wont run anymore
+            if (isThrown)
+            {
+                InitializeFollow();
+                //isThrown = false;
+            }
         }
     }
     public void GetCamera()

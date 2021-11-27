@@ -568,6 +568,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 963194228}
     m_Modifications:
+    - target: {fileID: 422944158986160984, guid: 1cb1ba485fb724e9e8722cf178dd675d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.5000019
+      objectReference: {fileID: 0}
+    - target: {fileID: 910846310196040379, guid: 1cb1ba485fb724e9e8722cf178dd675d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5385220002005692378, guid: 1cb1ba485fb724e9e8722cf178dd675d,
         type: 3}
       propertyPath: m_Pivot.x
@@ -683,6 +693,11 @@ PrefabInstance:
       propertyPath: theGame
       value: 
       objectReference: {fileID: 1129955962}
+    - target: {fileID: 9126194290006982328, guid: 1cb1ba485fb724e9e8722cf178dd675d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cb1ba485fb724e9e8722cf178dd675d, type: 3}
 --- !u!224 &124096538 stripped

@@ -119,6 +119,7 @@
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/JPGRecorder.cs" />
     <Compile Include="Assets/NatSuite/Examples/ReplayCam/CameraPreview.cs" />
     <Compile Include="Assets/Scripts/Farkle/UI/ButtonScoreList.cs" />
+    <Compile Include="Assets/Scripts/3&apos;s/SelectDiceThree.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralEventsListeners.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineTrack.cs" />
     <Compile Include="Assets/Scripts/Farkle/UI/EndGamePrompt.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Assets/DiceSelectionManager.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/Internal/Utility.cs" />
     <Compile Include="Assets/Scripts/Farkle/LoadItems.cs" />
+    <Compile Include="Assets/Scripts/3&apos;s/ThreeManager.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Devices/MediaDeviceCriteria.cs" />
     <Compile Include="Assets/NatSuite/Plugins/Managed/Recorders/Internal/NativeRecorder.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacy.cs" />
@@ -145,7 +147,9 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacyExt.cs" />
     <Compile Include="Assets/Scripts/Farkle/BeginningPrompt/PromptController.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplinePerformance.cs" />
+    <Compile Include="Assets/Main menu/ScreenPacket.cs" />
     <Compile Include="Assets/Scripts/Farkle/Selection/OutlineSelectionResponse.cs" />
+    <Compile Include="Assets/Main menu/ManagePacket.cs" />
     <Compile Include="Assets/Scripts/Farkle/Player/playerController.cs" />
     <Compile Include="Assets/Scripts/DiceRoll/NewDiceRoll.cs" />
     <Compile Include="Assets/Scripts/Farkle/UI/ButtonController.cs" />
@@ -175,8 +179,7 @@
     <Compile Include="Assets/Scripts/Farkle/Selection/IRayProvider.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
     <Compile Include="Assets/NatSuite/Examples/WebCam/WebCam.cs" />
-    <Compile Include="Assets/Main menu/ScreenPacket.cs" />
-    <Compile Include="Assets/Main menu/ManagePacket.cs" />
+    <Compile Include="Assets/Scripts/3&apos;s/ThreePlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Resources/Shaders/TMPro.cginc" />

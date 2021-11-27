@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
+        //DontDestroyOnLoad(transform.gameObject);
 
         currentMusic.source = gameObject.AddComponent<AudioSource>();
         Debug.Log("current music has an audio source");

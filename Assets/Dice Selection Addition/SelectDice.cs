@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
+
 
 public class SelectDice : MonoBehaviour
 {
@@ -32,13 +34,25 @@ public class SelectDice : MonoBehaviour
             if(this.gameObject.transform.GetChild(i).gameObject.GetComponent<Image>().sprite == diceSprites[0])
             {
                 this.gameObject.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = diceSprites[diceNumber];
-                return;
+                //return;
+                break;
             }
         }
+        //Debug.Log("dice scene:::: "+ SceneManager.GetActiveScene().name);
+        //
+        if(SceneManager.GetActiveScene().name == "RollDice")
+        {
+            this.gameObject.transform.parent.GetChild(1).gameObject.SetActive(true);
+            Debug.Log(""+this.gameObject.transform.parent.GetChild(1).gameObject.name);
+            this.gameObject.transform.parent.GetChild(2).gameObject.SetActive(true);
+            Debug.Log("" + this.gameObject.transform.parent.GetChild(2).gameObject.name);
 
+
+
+        }
     }
 
-    public void KeepDice()
+    public virtual void KeepDice()
     {
             for(int i = 0; i < this.gameObject.transform.childCount;i++){
             GameObject child = this.gameObject.transform.GetChild(i).gameObject;

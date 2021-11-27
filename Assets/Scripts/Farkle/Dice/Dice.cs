@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Dice : MonoBehaviour
 {
@@ -64,8 +65,8 @@ public class Dice : MonoBehaviour
         initPosition = transform.position;
 
         //rb.mass = mass;
-        //dice                //total dice      //button and dice prefab        //UI
-        diceSelectionManager = this.transform.parent.transform.parent.transform.parent.gameObject.transform.GetChild(1).transform.GetChild(3).gameObject.GetComponent<DiceSelectionManager>();
+                                                                            //dice                //total dice      //button and dice prefab        //UI
+        diceSelectionManager =SceneManager.GetActiveScene().name =="Game" ? this.transform.parent.transform.parent.transform.parent.gameObject.transform.GetChild(1).transform.GetChild(3).gameObject.GetComponent<DiceSelectionManager>() : this.transform.parent.parent.parent.gameObject.GetComponent<DiceSelectionManager>();
 
         rb.useGravity= false;
         if(ChangePlayerController.currentPlayerRollSettings == RollSetting.Computer) rb.isKinematic = true;
@@ -223,7 +224,7 @@ public class Dice : MonoBehaviour
                 }
 
             }
-        Debug.Log("current roll settings:"+ ChangePlayerController.currentPlayerRollSettings);
+        //Debug.Log("current roll settings:"+ ChangePlayerController.currentPlayerRollSettings);
 
         if (ChangePlayerController.currentPlayerRollSettings == RollSetting.Computer || ChangePlayerController.currentPlayerRollSettings == RollSetting.Tap)
         {
@@ -249,7 +250,7 @@ public class Dice : MonoBehaviour
         //illegable roll
         else if(rb.IsSleeping() && hasLanded && diceValue == 0)
         {
-            Debug.Log("--------");
+            Debug.Log("-------- roll again");
 
             //errorMessage.SetActive(true);
             RollAgain();

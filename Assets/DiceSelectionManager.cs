@@ -6,7 +6,6 @@ public class DiceSelectionManager : MonoBehaviour
 {
 
     public GameObject diceButtonParent;
-    public GameObject diceObjectParent;
 
 
 
@@ -17,5 +16,10 @@ public class DiceSelectionManager : MonoBehaviour
         diceButtonParent.GetComponent<SelectDice>().ActivateAvailableDice(diceRoll);
     }
 
+    //function that deletes a certain amount
+
+    //a function that creates a certain amount of dice
+
+    //
 
 }
